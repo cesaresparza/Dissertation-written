@@ -217,9 +217,16 @@ In our code we do not use all the characteristics described for a genetic algori
 
 we use another variable which we call exploitation rate. The concept of this is taken from..........................And we implement it as   an additional decision parameter to give more possibility to other less efficient strategies to reproduce. An exploitation rate of 1 (100\%) means that only the agent with highest payoff has a possibility of reproducing itself and a 0 (0\%) means that the whole population is considered a candidate for reproducing itself for the next generation, and this decision is let to be handled by a random choice function. 
 
+\newpage
 \section{Software development practices}
+\maketitle
+\begin{abstract}
+In this section a description on how the code was built will be found. The focus used to build the code was a discipline in computer programming called test driven development, some information about this and an example of how to work using this focus will be shown. Version control system will be explained, what is a version control system and the elemental use of the version control system Git will be explained, which is used for interaction between different people that contribute to a single project. An overview of the library built, explaining how the different modules contained interact with each other.
 
-\section{Test Driven Development}
+\end{abstract}
+
+
+\subsection{Test Driven Development}
 The idea of OOP goes well with a programming discipline which is being used more commonly, and that is test-driven development(TDD). Is very similar to the idea of test first development (TDF) described by Kent Beck in "Extreme programming", and the main idea is to build a test to assert that the result from a small piece of the application code will be reached, this is very likely to make the programmer think of what is the result she wishes to obtain and very likely as consequence build a very efficient code. Usually a fundamental  step of TDF is described as "write a test that will fail", then under that idea build the functional part of the code that will make that test pass. Test driven development (TDD) follows this same idea, but adds an additional ingredient which is refactoring. In the book "Test-driven development: an example" Kent talks about a TDD "mantra" which is described in 3 simple steps, the first two are the same principles as the ones of TDF. The first step he calls it "Red" and says to write a small test that doesn't work, the second step "Green" is to make the test work (by writing the functional code), and the last step "Refactor" which is getting rid of all possible redundancies in the code without affecting the functional code (Kent 2003)$\cite{beck2003test}$. The testing is usually automated unit testing, the concept of unit testing is useful when using OOP, since the intention of OOP is to keep a clear and functional code with a certain degree of abstraction, unit testing is testing each small component of a program. It is important to say that TDD is intended to test the code in small steps, and not the final application of the code. So in TDD testing and designing the code go together in small steps to produce a final simple and testable code. 
 
 \begin{center}
@@ -239,23 +246,66 @@ For testing in this code $\textbf{unittest}$ test module contained in the standa
 \end{itemize}
 
 `
-\section{Version Control}
+\subsection{Version Control}
+When teaming with other people with common goals for developing any kind of project, one of the most important elements is communication. There should be a common agreement for a communication channel so every element of the team can be updated with any changes made during the project. 
+Developing a project in computer programming is not the exception, and from some years back computer programmers have been using very efficient communication channels. A very useful tool are version control systems (VCS). The main goal from a VCS is to keep track of the development of a project with a very intelligent system that allows people (programmers) to track changes in a project through time. It keeps record of changes that have been made to a project and allows to retrieve the information from those other points in time. VCS basically can create a backups for every changes made to a project, revert specific files, the whole project to a previous state, compare changes over time, see who did last modifications that could be causing a problem, who introduced an issue, when among other (Chacon 2009)$\cite{chacon2009pro}$. Version controlled systems can be local, centralized or distributed, to collaborate in a project nowadays the most popular and perhaps effective choice is to use distributed version control systems where the users fully mirror the set of files or directories under version control commonly known as repository (Chacon 2009)$\cite{chacon2009pro}$. This means that each contributor has a copy of the full repository and if the main server has a malfunction and information is lost, it can be restored by any contributor. 
 
+The VCS used for this project was Git. Git was authored and developed by the creator of Linux kernel, Linus Trovalds in 2005 and many other developers from the Linux community after a commercial break down between the community that developed Linux kernel and the company that provided them DVCS called BitKeeper (Chacon 2009)$\cite{chacon2009pro}$ . 
 
-\section{Methodology}
+Git thinks of data like snapshots of a miniature filesystem. Git has a command that is called commit and this helps to record the different snapshots taken in different points of time, one can think of commits as some kind of milestones for the individual and the collective part of the project. An important fact about Git is that since all the history of the project being developed is in each users local disk, the speed to browse around the history of the project is very efficient. This also allows the user to work even if there is no access to the network where the repository is. 
 
-\section{Library (Package)}\label{library_section}
-The library is the file that contains all the components of the code. Because of the object oriented properties that Python facilitates, the code is segmented into 4 modules. According to their function the order in describing each is not relevant.
-
-The population module contains the instructions to create a class named Agent (why agent described in ABM)the class has an initialization(\_\_init\_\_) method that takes as parameters strategies, utility and the possibility to add a label. After the initialization, another method is presented increment\_utility which is set for incrementing the agent’s utility, the criteria for this increment\_utility will be explained in another module.
+For this project only basic, but still essential features of Git were used. The webpage where the repository for the project was stored is Github, first a user name needs to be created in this webpage and create a repository. Which is relatively easy by following the instructions given in the webpage. It basically asks us to give a name a name and an optional description, the repository can be public or private, the repository for this project is public. It is advised to create a README for describing the project. At the end of the steps one selects create repository and the repository is created. Setting up Git in the pc is not hard, for this I used Git bash which is a build environment shell for Windows and enables Windows to use the Git commands.
+There is a lot of information about how to set up Git bash in the web which involves generating a key, by adding a command in bash along with which I added the email address used when signing up in Github in this case and then follow the steps and it is set. 
+To start working with a repository from Github either our own or someone else's. We copy an URL that appears on the right bar in the page from the repository we intend to work with. 
+This URL was pasted into the Git bash  in the same line after the following command $\textbf{git clone}$ and with this a local clone of the repository is created.
+Once the local directory for the project is in the pc we start working on it. Every file that will be included in the project should be in that directory, the state of the files when they are first created is untracked. The following are the commands used during for Git during the project and a short description for each is provided:
 
 \begin{itemize}
-\item $\textbf{Strategies:}$ Each created agent will be assigned a strategy
-\item $\textbf{Utility:}$ The utility each created agent generates after each interaction with another agent.
-\item $\textbf{Label:}$ The possibility of adding a label to each created agent, to track their performance.
+	\item $\textbf{git status:}$ Used to see the what the status on the working directory. It will display two sections, one with the staged changes that are ready to be committed and another section displaying the changes that have not been staged, along with a small legend on the left side of the name of the file, that indicates what changes have been done to that file (deleted, modified, new file, etc.)
+	\item $\textbf{git add:}$ Used to stage the changes we have made in the directory for the local repository clone specific files. Before using this command all changes that have been made in the directory are considered unstaged. This means that any new file added or any already existing file that has been modified has to be staged with this command in order to include them in the next commit, any changes made that have not been staged with $\textbf{git add}$ will not be considered in the next commit.
+	\item $\textbf{git commit:}$ Takes a snapshot of the status of the local cloned repository, of course the files that considers are the ones that $textbf{git add}$ was previously used on. Creates a new point in the history of the project. Once this command is run, it commonly opens a text editor where I introduced the changes that were made in the files that are being changed in this commit.
+	\item $\textbf{git diff:}$ Using this command directly displays the content that has been changed in the project since the last   commit and that are not staged for the next commit. If the command is run $\textbf{git diff - - cached}$ it will display the changes that have been staged. If we wish to see staged and unstaged changes together we use $\textbf{git diff HEAD}$ and if there is no interest in watching the specific changes but we want to display more information than just the one presented by $\textbf{git status}$ we add $\textbf{- - stat}$ after the different options we had with $\textbf{git diff [options] - - stat}$ and this displays a summary of the changes.
+	\item $\textbf{git fetch [remote-name]:}$ This command pulls all the data from the remote project that is not contained the current copy we hold in our local repository clone. Basically used to update with all the changes other users (contributors) to the project have made, but it does not merge it with the work we have done because this has to be done manually. The name given to the remote repository we created a clone from is usually origin.
+	\item $\textbf{git branch:}$  Without any arguments the command gives a list of the existing branches in the local repository.The command followed with the name of the branch $\textbf{git branch (branchname)}$ will create a branch with that given name out of the main project line (master), in the last commit made before the branch. So if we continue working on the master and then we switch to the branch all the changes made to that point will be reverted to the context where the branch was created.  If we wish to delete a local branch we use $\textbf{git branch -d (branchname)}$. To delete a remote branch we use the command $\textbf{git push (remote-name) :(branchname)}$.
+	\item $\textbf{git checkout (branchname):}$ This command is used to change between the different existing branches. A way of creating a branch and changing to it at the same time is a shortcut provided by Git $\textbf{git checkout -b (branchname)}$. 
+	\item $\textbf{git merge:}$ This command is used to merge the changes that have been made in a branch are complete. And what is usually done is change into the main project line (master) with $\textbf{git checkout (name of the branch we want to merge into)}$ and then use $\textbf{git merge (name of the branch wished to be merged in)}$. This way the changes, if there exists no conflict, will be merged into the main project line (master).
+	\item $\textbf{git pull:}$ Basically does first a $\textbf{git fetch}$ immediately followed by a $\textbf{git merge}$ from the tracked branch into the branch we are currently in. This command basically does the same as those two commands, but it can if there are changes that may cause a problem, it might make the process a bit more complex. 
+
+\begin{center}
+	\includegraphics[scale=0.7]{gittreec}
+
+Figure ???. Basic Example of a main branch with a branch for being merged.
+\end{center}
+	
+	\item $\textbf{git push:}$ This command helps to update the local changes we have made to the remote repository. And the way to use it is $\textbf{git push (name given to the remote) (name of the local branch)}$. We just need to be careful to not overwrite changes. 
+	\item $\textbf{git log:}$  This command displays all the commit messages that have been previously used in the state of the project we currently are in. There is an alternative command that displays how the project has been modified up to the point we currently are in and is $\textbf{git log - - oneline  - - decorate - - graph - - all}$
+
+\begin{center}
+	\includegraphics[scale=0.7]{gitlog1}
+
+Figure ???. Basic Example of git log oneline.
+\end{center}
+
+
+
 \end{itemize}
 
-The environment module for this project the representation of the environment has only two characteristics. It is set to make two agents interact pairing them randomly and it also sets the rules which these paired agents use to interact. Some of the methods contained in this module make use of a module named ‘random’ from python. This module is imported when the environment module is executed. 
+
+\subsection{Library (Package)}\label{library_section}
+The name chosen for the library is 'Ablearn' and it stands for agent-based learning, the intention is for different people to contribute to this library in the future for it to grow and therefore have a wider range in application at some point in time.
+
+The library is the file that contains all the components of the code. Because of the object oriented properties that Python facilitates, the code is segmented into 6 modules. According to their function the order in describing each is not relevant.
+
+The population module is intended to create agents that will be used in the simulation. The reason of being called agents instead of the classic name player, is because of the intended focus in agent-based modeling as mentioned before. It was build in a very generic way so it can be used, if possible, for any other type of interaction and algorithm in the future. The basic information contained in this class is very generic and it's attributes can be modified when using it. 
+This module contains the instructions to create a class named Agent the class has an initializatin(\_\_init\_\_) method that takes as parameters strategies, utility and the possibility to add a label. After the initialization, another method is presented increment\_utility which is set for incrementing the agent’s utility, the criteria for this increment\_utility will be explained in another module.
+
+\begin{itemize}
+	\item $\textbf{Strategies:}$ Each created agent will be assigned a strategy
+	\item $\textbf{Utility:}$ The utility each created agent generates after each interaction with another agent.
+	\item $\textbf{Label:}$ The possibility of adding a label to each created agent, to track their performance.
+\end{itemize}
+
+The environment module for this project is the representation of the environment in which the agents will interact and has only two characteristics. It is set to make two agents interact pairing them randomly and it also sets the rules which these paired agents use to interact. Some of the methods contained in this module make use of a module named ‘random’ from python. This module is imported when the environment module is executed. 
 
 Environment module creates a class BiMatrixRandomEnv, named after the characteristics bimatrix and random environment. This class has an initialization (\_\_init\_\_) method that takes as parameters number\_of\_agents and bimatrix, within the initialization the some variables are defined, these variables along with the parameters will now be explained:
 
@@ -287,6 +337,16 @@ Following `interact’ the method previously mentioned `strategies\_to\_utilitie
 
 After `strategies\_to\_utilities’ the method `randomly\_pair\_agents’ is defined. This method is used by `interact’ too, and what it does is that the previously created row and column agents that are contained in lists are randomly selected (one of each type) and then paired so they can interact.
 
+
+
+\newpage
+\section{Application of the code}
+
+\maketitle
+\begin{abstract}
+In this section the runs of the program will be discussed. What was consider when running a simulation. An explanation of what games were simulated, and of the results against the known techniques to indicate how the program outputs our expected results when running it with known classic game theory games. A comparison of the results given by the  library 'Axelrod' from python with results from this code 'Ablearn'.
+\end{abstract}
+
 \subsection{How the simulation was built.}
 After building the code the objective is to determine if the program gives us the expected results. We know that an evolutionary stable strategy is a strategy that survives through time. And as we have mentioned before there are certain conditions that we can verify in order to identify and evolutionary stable strategy, as a reminder those conditions are the following:
 
@@ -296,8 +356,9 @@ After building the code the objective is to determine if the program gives us th
 \item $\textit{If X (any strategy s) is a Nash equilibrium, but  $\textit{a = c and b $<$ d}$ then X is not evolutionarily stable.}$
 \end{itemize}
 
-The games we will run the code are the prisoner's dilemma, matching pennies which is a pure conflict zero-sum game, the battle of sexes game which is a coordination game and the hawk-dove which is a game that is used often in evolutionary game theory.
+The following tables represent some of the most well known examples of games in the normal form. 
 
+Perhaps the most known is the the prisoner's dilemma which was mentioned before and it basically has two Nash equilibria strategies one in which both cooperate and the other in which non cooperate.
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -313,6 +374,8 @@ Cooperate & 3, 3 & 0, 5\\
 	Figure???: Prisoner's Dilemma
 \end{center}
 
+
+Matching pennies which is a pure conflict zero-sum game in which the winner of the game takes all and the loser ends up losing her share. We see that there is no scenario where both players can agree in a strategy. The equilibrium for this game is a mixed Nash equilibrium.
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -328,6 +391,8 @@ Heads & 1, -1 & -1, 1\\
 	Figure???: Matching Pennies
 \end{center}
 
+
+The battle of sexes game is a coordination game in which both agents cannot exchange information about what option out of two to choose, they both have a preferred strategy, but if they both choose their preferred strategy they have no payoff from it because they rather choose the same strategy and concur,  even if it has a higher payoff for one of them than the other. In the example from the table there is a representation of preferences, and we should assume that it is a couple trying to decide where to go, the female agent prefers going to the opera, whilst the male agent prefers going to watch football. But we see that if they both end up choosing different strategies from each other they get a payoff of 0. 
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -343,6 +408,7 @@ Opera & 1, 2 & 0, 0\\
 	Figure???: Battle of Sexes
 \end{center}
 
+And the hawk-dove game. This game is often used in  evolutionary game theory. And it represents the 2 strategies an agent can choose,  and the result of the interaction. There is an aggressive strategy which is the hawk strategy and a passive strategy which is the dove. When both agents choose to play hawk, the payoff they get is 0, the explanation is that since they are both aggressive, the possible payoff they could have had from the resource they are competing for is not greater than the cost they pay for playing this strategy against each other. When they both choose dove, they split in equal parts the resource and the payoff they receive is the same for both. When one plays hawk and the other dove, the agent using hawk strategy gets a higher payoff than the one using the dove strategy.    
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -359,7 +425,7 @@ Hawk & 0, 0 & 3, 1\\
 \end{center}
 
 
-The following table indicates how the simulations were be run.
+The following table indicates how the simulations for prisoner's dilemma were run.
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
 \hline
@@ -422,13 +488,12 @@ Num. & Population & Generations& Rounds per Gen. & Death Rate & Mutation Rate & 
 \end{tabular}
 \end{center}
 \begin{center}
-Table???: Configuration of simulations.
+Table???: Configuration of simulations for prisoner's dilemma.
 \end{center}
 
 
 \subsection{Prisoner's Dilemma}
-Prisoners dilemma
-I consider not relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. But I do consider important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of the table ???(Configuration of simulations).
+For Prisoner's dilemma I do not consider relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. But I do consider important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of the table ???(Configuration of simulations).
 1.
 The simulation starts by assigning the following proportions to row and column agents to the strategies cooperate and defect
 \begin{center}
