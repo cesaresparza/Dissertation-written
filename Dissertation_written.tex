@@ -1,4 +1,5 @@
 \documentclass{article} 
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 
@@ -21,12 +22,8 @@ Introduction
 \maketitle
 \begin{abstract}
 The literature review can be found in the following section. Some history of Game theory will be mentioned, Nash equilibrium is briefly mentioned but still important since the concept of equilibrium is important to discuss in game theory, simple concept about normal form games, history of evolutionary game theory and an explanation of what evolutionary game theory is and the introduction of the concept of equilibrium in evolutionary game theory which is known as evolutionary stable strategies(ESS), and a brief explanation of the similarities with Nash equilibrium.
-% This will need a lot of work - note that you need various abstracts, summaries
-% etc\dots
-
 
 \end{abstract}
-
 
 \newpage
 \section{Game Theory}\label{first_section}
@@ -69,7 +66,7 @@ r$_i$ & u$_1$(r$_i$,s$_j$), u$_2$(r$_i$,s$_j$) & u$_1$(r$_i$,s$_j$), u$_2$(r$_i$
 
 
 
-$\textbf{Table 1: Normal form game bi-matrix}$
+$\textbf{Table 1.1: Normal form game bi-matrix}$
 \end{center}
 
 We can see that each intersection of row and column have two utility functions. The first utility function represents the payoff for the row player and the second utility function represents the payoff for the column player. Utilities can be of type ordinal, which is used only to rank the alternatives from better to worse, or cardinal which indicates that the value assigned is meaningful and represents the satisfaction of the player (McCarty et al 2007)$\cite{mccarty2007political}$.
@@ -113,9 +110,9 @@ Y & c, b & d, d\\
 \end{tabular}
 \end{center}
 \begin{center}
-	Figure???: General Symmetric Game
+	Figure 1.2: General Symmetric Game
 \end{center}
-We assume that there exists a large population of agents that always take action X. Now we suppose that within the population appears a small group that take action Y and the   fraction representing the number of agents in this group is $\epsilon$.  Since $\epsilon$ represents the number of agents that choose Y, we can say that 1 - $\epsilon$ is the fraction of the agents that choose X.  We will assume then that the probability of an agent using X encountering another agent at uses X is 1 - $\epsilon$, and with a mutated that uses Y the probability is $\epsilon$.  With these and the values from the table ??? we build the payoff equation for the agent that use strategy X as follows:
+We assume that there exists a large population of agents that always take action X. Now we suppose that within the population appears a small group that take action Y and the   fraction representing the number of agents in this group is $\epsilon$.  Since $\epsilon$ represents the number of agents that choose Y, we can say that 1 - $\epsilon$ is the fraction of the agents that choose X.  We will assume then that the probability of an agent using X encountering another agent at uses X is 1 - $\epsilon$, and with a mutated that uses Y the probability is $\epsilon$.  With these and the values from the figure 1.2 we build the payoff equation for the agent that use strategy X as follows:
 \begin{equation}
 (1-{\epsilon})a + {\epsilon}b
 \end{equation}
@@ -171,7 +168,7 @@ Small & 5, 5 & 1, 7\\
 \end{tabular}
 \end{center}
 \begin{center}
-	Figure???: Wolves Hunting
+	Figure 1.3: Wolves Hunting
 \end{center}
 
 Now we will determine if the small size wolf is an evolutionarily stable strategy, for this we will use the pay-off formulas previously defined, and we have that in this population of wolves, the small size have a pay-off of:
@@ -193,35 +190,31 @@ $(1-{\epsilon})1 + 5{\epsilon} = 1 + 4{\epsilon}$
 \end{center}
 In this population, we can see that the expected pay-off of the big sized wolves is greater than the one for small size wolves. This means that the big size wolf population is evolutionarily stable and a strict Nash Equilibrium.
 
-\subsubsection{How we use it}
-Evolution can be thought as a game. According to the *theory of evolution* the existing organisms are the result of many different selections, in which the ancestors resulted the most fitted. These selections were the result of the interaction between the organisms of the same and other species.
-\\\\For the purpose of this work, we will be focusing on the interaction between the same species. The model we will use is simplified.
-
-
 \subsection{Agent-Based Modelling (ABM) and object oriented programming (OOP)}
 Generally speaking agents are created entities that represent entities of the real world, and make them interact to study their behavior. One of the first known scientists to show interest in the concept of entities was John von Neumann (Wilensky, Rand 2015)$\cite{wilensky2015introduction}$. He thought in the future it would be useful to have artificial machines that could reproduce autonomously, in order to represent objects such as celestial objects (Wilensky, Rand 2015)$\cite{wilensky2015introduction}$. Given to the suggestion of his colleague Stanislaw Ulam, von Neumann developed a simple model of cellular automaton. In which each cell take one of multiple states, and then the changes in it are based on the history of previous states from the cell and neighboring cells (Janssen, Ostrom 2006)$\cite{janssen2006empirically}$.
 \\\\In 1970 Martin Gardner published a game by the british mathematician John Conway. Which was a simplified model of cellular automata applied into what he called “Game of Life” (Janssen, Ostrom 2006)$\cite{janssen2006empirically}$. In which an infinite universe is divided into cells, each cell interact with the neighboring cells (8 cells around it), according to a set of established rules creating complicated patterns according to simple states of the cells, which are alive or dead (Rendell 2001)$\cite{rendell2001turing}$. In 1973 in a joint paper published in Nature (Nature Publishing Group)  by Professor Maynard Smith and George R. Price describe the results of simulations made, which can be considered an example of an agent-based model (Maynard \& Price 1973)$\cite{smith1974theory}$.
 \\\\In 1971, 1978 the economist Thomas Schelling used a chessboard in which by moving pennies and dimes he represented what he described in his work ``Models of segregation'' (Janssen, Ostrom 2006)$\cite{janssen2006empirically}$.  Finally another important work using agents were the simulations made by the political scientist Robert Axelrod in 1984 (Janssen, Ostrom 2006)$\cite{janssen2006empirically}$, in which he asked game theorists from different disciplines to submit a strategy which was used in the simulation of a tournament of one of the types of games called `prisoners’ dilemma'. Each strategy interacted with the other strategies, during a number of rounds (Axelrod 1984))$\cite{axelrod1984evolution}$.
 \\\\The previously mentioned works are some of the most relevant that involve this agent based modeling. Agent-based models (ABM) are being increasingly used to model complex systems.( Billari, et al 2006))$\cite{billiari2006agent}$. Robert Axelrod in his book `The complexity of Cooperation’ defines ABM as the simulation of agents and their interactions. This type of modeling is different from the traditional type, and it is a type of simulation that is viewed as `bottom-up’ (Axelrod 1997, Billari 2006, Bonabeau 1994, Gilbert 1999)$\cite{axelrod1997complexity}$ used for understanding properties of social systems (Axelrod 1997)$\cite{axelrod1997complexity}$, by representing complex behaviours in the hopes of emulating some specific aspect. There are 3 ways for doing science according to Axelrod, which are induction, deduction and agent-based modeling, the latter starts like deduction with a set of explicit assumptions then it generates simulated data that can be analized inductively. And unlike induction the data produced comes from specific rules rather than real world data (Axelrod 1997)$\cite{axelrod1997complexity}$. Joshua Epstein points ABM as ``a new tool for empirical research" (Epstein, 2006)$\cite{epstein2007agent}$. So it is very important to remember that our final goal with ABM is not to recreate reality, its rather for demonstrating a principal and understand how it works. 
-There are at least three main components to take in account when building an ABM, the number of agents with characteristic variables (agents contain data together with methods which act of the data), a set of rules and the environment in which the interaction takes place (Bruun 2004)$\cite{bruun2004agent}$ these will be described in further detail in the description of the simulation. In agent based modeling what matters is not how decisions are made but how the interaction is given (Bruun 2004)$\cite{bruun2004agent}$. 
-\\\\A very important step when building a simulation is to choose a programming language.Axelrod mentions that a good agent based model should achieve three goals: validity this is for the program to implement the model correctly, usability which involves the fact that the person building the model and other users can run the program, interpret the output and understand how it works, and the third point is extendability which means the program should be adaptable for new uses in the future (Axelrod 1997)$\cite{axelrod1997complexity}$ . For the type of simulation that will be built, object oriented programming (OOP) is appropriate. In the recent years this language has gained popularity, even that it can be traced for a long way back. Before the concept of OOP was well established, all computing languages were procedural languages, which means that it looked like he program was all contained in one long procedure all data and the logic were presented in a long code.
+There are at least three main components to take in account when building an ABM, the number of agents with characteristic variables (agents contain data together with methods which act of the data), a set of rules and the environment in which the interaction takes place (Bruun 2004)$\cite{bruun2004agent}$ this will be described in further detail in the description of the simulation. In agent based modeling what matters is not how decisions are made but how the interaction is given (Bruun 2004)$\cite{bruun2004agent}$. 
+\\\\A very important step when building a simulation is to choose a programming language. Axelrod mentions that a good agent based model should achieve three goals: validity this is for the program to implement the model correctly, usability which involves the fact that the person building the model and other users can run the program, interpret the output and understand how it works, and the third point is extendability which means the program should be adaptable for new uses in the future (Axelrod 1997)$\cite{axelrod1997complexity}$ . For the type of simulation that will be built, object oriented programming (OOP) is appropriate. In the recent years this language has gained popularity, even that it can be traced for a long way back. Before the concept of OOP was well established, all computing languages were procedural languages, which means that it looked like he program was all contained in one long procedure all data and the logic were presented in a long code.
 \\\\OOP's concern is on `objects' (Pokkunuri 1989)$\cite{pokkunuri1989object}$ this objects can be anything one can think of i.e. an action, a thing, a person, a place, of course they have to be well defined. Object is the basic element. Objects possess attributes of procedures and data. Storing the data in variables and responds to messages by executing procedures (in Python called ‘methods’). The program is divided in individual objects (modules) each one can be viewed as an abstract data type. Each of the objects contain their own methods and data (Pokkunuri 1989)$\cite{pokkunuri1989object}$. Communication between objects requesting action can be called ‘message’. The purpose of this is that each object represent parts of whole program, but by breaking it down in modules each can be thought of as a particular action which we can relate in an easier how ideas and actions are structured in our everyday life. As an example we can think of an apple which would be our object and this apple contains attributes such as color, size, weight, etc. but it can also contain methods such as growing, changing color, falling from a tree, etc. This way of conceptualizing ideas in such conventional way in relation to our everyday life make it a perfect candidate for using in simulations. In this project OOP would simplify structuring the ABM, in which it was mentioned before we have so very defined concepts (agents, rules and environments). 
 \\\\To be able to work with OOP there is one idea we need to understand properly, which is the difference between class and object. A class can be thought of as a general description or blueprints of something but is not the thing itself.  And what the class is defining are abstract ideas of what was mentioned before, `attributes’ and `methods’, formally a class is defined as a template from which objects are created (Dyke 1989)$\cite{dyke1989object}$. The next concept is object,  would be the ``tangible'' instance of the initial template which is the class(Luna 2012)$\cite{luna2012economic}$. To understand this correctly we can think of the class as the blueprints of something we want to build, and the object is that thing we wanted to build from the blueprints. And when creating an object the abstract ideas from the class, become specific characteristics of the object. A relevant property is inheritance, which allows a class to inherit methods and attributes from another class, this makes the class that inherits a subclass of the class it inherits from, it’s important to mention that this subclass can redefine inherited methods and can add methods that can differentiate it from the class it inherited from (Dyke 1989)$\cite{dyke1989object}$.  Some other relevant properties from OOP are dynamic binding, which is not exclusive for OOP, means that the binding of operator to a particular operation takes place at the run time. Encapsulation is another and it describes the scope of unrestricted reference to the attributes of an object. An object can examine and modify its own attributes, and allows access to its attributes to other objects through accessing functions allowing it to have control over any changes requested from other variables. Data abstraction refers to how any object can be required for any information, and the fact that who requests gets what he/she asked for (Pokkunuri 1989)$\cite{pokkunuri1989object}$. 
 
-\section{Python and genetic algorithm(relating evolutionary game theory)}
-We can trace genetic algorithm implementations since...
+With the created code it will be noticed that individual agents with individual characteristics are created, and they are set to interact in a certain way under determined rules, the final goal will be to have a general perspective of how the interaction of these individual objects leads to a resulting conclusion. In this case we will be able to observe how agents represent different strategies and what is the result of the interaction which will be how one strategy dominates another or how they interact and find a balance. The language chosen for writing the code is Python which is a high level programming language, designed by Guido van Rossum. It serves general programming purposes and it is a very effective object oriented language.
 
-Genetic algorithm is a type of evolutionary algorithm. It is widely used 
+\section{Genetic algorithm relating to evolutionary game theory}
+Algorithms inspired in evolution for optimization and machine learning, have been the subject of interest for many. After the second world war von Neumann showed great interest in artificial intelligence, his main studies were focused and can be said that originated what now known as cellular automata(Boden 2006) $\cite{boden2006mind}$. The mathematician Nils Barricelli wrote simulations of evolutionary processes, in the interest of creating artificial life in computers using nature processes. He beccame the first to write a genetic algorithm software, and his first work about it was published in 1954 (Simon 2013)$\cite{simon2013evolutionary}$. Another person who would use computer programs to simulate evolution was the biologist Alexander Fraser. Fraser was interested in evolution, but in the real world evolution happened to slowly for this reason he decided to use simulations created in digital computers. Fraser wrote in 1957 "Simulation of genetic systems by automatic digital computers" and with these he became the first person to use computer simulations with the purpose of simulation biological evolution (Simon 2013)$\cite{simon2013evolutionary}$.  Other scientists also used computers to simulate evolutionary processes like Han-Joachim Bremermann his first paper  about it was a published in 1958 entitled " The evolution of intelligence".  George Box, was another scientist who worked in the field. Interesting about Box is that his main interest was not artificial life or evolution, his interest was more in solving real life problems. The first paper he published that can be related to genetic algorithm was in 1957 and the title was "Evolutionary operation: A method for increasing industrial productivity"(Simon 2013)$\cite{simon2013evolutionary}$. Box states that living things advance in means of two mechanisms: 1. Genetic variability and 2. Natural selection (Goldberg 1989)$\cite{golberg1989genetic}$, and in raw terms he associates a new discovery of a process to a mutation and using or discarding different less efficient processes as natural selection. George Friedman outlined in 1956 how a "selective feedback computer" might evolve electrical circuits to maintain internal temperature of a mobile robot (Boden 2006) $\cite{boden2006mind}$, this work being similar to nowadays genetic algorithm (Simon 2013)$\cite{simon2013evolutionary}$.In 1966 Lawrence Fogel along with Alvin Owens and Michael Walsh wrote a book about genetic algorithms with the title "Artificial Intelligence through Simulated evolution" (Simon 2013)$\cite{simon2013evolutionary}$.  In 1960s and 1970s James Holland with students and colleagues from University of Michigan developed the genetic algorithm (Melanie 1999)$\cite{melanie1999introduction}$. Holland's goal was to study the phenomenon of adaptation of processes in natural systems and develop ways in which the mechanics of adaptation might be imported to computer systems. Holland introduced a population-based algorithm with crossover, inversion and mutation (Melanie 1999)$\cite{melanie1999introduction}$.
 
-In our code we do not use all the characteristics described for a genetic algorithm. Our agents are created at the beginning of the simulation and are assigned with a specific strategy which they will continue to use until they are eliminated or until the simulation ends. For this the agents created do not posses a chain of phenotypes from which they will occasionally choose and play a different strategy. In our simulation the strategy is assigned randomly and this assures that at least every possible strategy have representatives during the simulation. Additionally we use the concept of asexual reproduction, which means there is no two parents for each "newborn" agent, but instead it is copy of one of the individuals that had the higher utility(fitness) during the generation. The concept of mutation allows us to not always select the individual with the highest payoff to reproduce, but introduces the possibility of another agent with a less efficient strategy to appear. In addition to this concept of mutation
+Genetic algorithm is a type of evolutionary algorithm. In general terms genetic algorithm can be seen as an imitation of biological evolution for problem solving. A genetic algorithm combines the survival of the fittest with  structured yet randomized information exchange. Genetic algorithms are no simple random walk, they exploit historical information to speculate on new search points expecting improved performance. The main research in genetic algorithms revolves around robustness, the balance between eficiency and efficacy for survival in different environments (Goldberg 1989)$\cite{golberg1989genetic}$ Genetic algorithms are blind, they perform an effective search only requiring payoff values associated with individual strings (Goldberg 1989)$\cite{golberg1989genetic}$.  Melanie 1999 mentions that although there no widely accepted definition for genetic algorithm in the evolutionary - computational community, most methods self called "genetic algorithm" have in common the use of population of chromosomes, selection according to fitness, crossover to produce new offsprings, and random mutation of the new offspring.  
 
-we use another variable which we call exploitation rate. The concept of this is taken from..........................And we implement it as   an additional decision parameter to give more possibility to other less efficient strategies to reproduce. An exploitation rate of 1 (100\%) means that only the agent with highest payoff has a possibility of reproducing itself and a 0 (0\%) means that the whole population is considered a candidate for reproducing itself for the next generation, and this decision is let to be handled by a random choice function. 
+In our code we do not use all the characteristics described for a genetic algorithm. The characteristics for the algorithm resemble more those of evolutionary game theory. The agents are created at the beginning of the simulation and are assigned with a specific strategy which they will continue to use until they are eliminated or until the simulation ends. For this the agents created do not posses a chain of phenotypes from which they will occasionally choose and play a different strategy. In our simulation the strategy is assigned randomly and this assures that at least every possible strategy have representatives during the simulation. Additionally we use the concept of asexual reproduction, which means there is no two parents for each "newborn" agent, but instead it is copy of one of the individuals that had the higher utility(fitness) during the generation. For convenience a constant population number is maintained. The concept of mutation allows us to not always select the individual with the highest payoff to reproduce, but introduces the possibility of another agent with a less efficient strategy to appear. In addition to this concept of mutation. The use a variable called exploitation rate is introduced mainly because of the article by James March "Exploration and Exploitation in Organizational Learning" in which he names two concepts that can or should be taken in account when making a choice in the organizational aspect. But I considered these concepts valid to the context of our experiment, because the simulations made by the code are random, and though randomness should help to cope with any potential bias, the random interactions may favour one strategy over another potentially good potential strategy. March 1991 mentions that exploration includes things captured by terms such as search, variation, risk taking, experimentation, play, flexibility, discovery and innovation: whilst exploitation includes refinement, choice, production, efficiency, selection, implementation and execution (March 1991)$\cite{march1991exploration}$. In raw terms exploration implies looking for another feasible alternative, in the case of our code we can do this in any percentage of the population, or choosing the alternative that appears to generate the highest utility in every run. In the code it is implemented as  an additional decision parameter to give more possibility to other less efficient strategies during a generation to reproduce. An exploitation rate of 1 (100\%) means that only the agent with highest payoff has a possibility of reproducing itself and a 0 (0\%) means that the whole population is considered a candidate for reproducing itself for the next generation, and this decision is let to be handled by a random choice function. 
+\\\\For the purpose of this work, we will be focusing on the interaction between the same species. The model we will use is simplified.
 
 \newpage
 \section{Software development practices}
 \maketitle
 \begin{abstract}
-In this section a description on how the code was built will be found. The focus used to build the code was a discipline in computer programming called test driven development, some information about this and an example of how to work using this focus will be shown. Version control system will be explained, what is a version control system and the elemental use of the version control system Git will be explained, which is used for interaction between different people that contribute to a single project. An overview of the library built, explaining how the different modules contained interact with each other.
+In this section a description on how the code was built will be found. The focus used to build the code was a discipline in computer programming called test driven development, a description of what it is will be given. Version control system will be explained, what is a version control system and the elemental use of the version control system Git will be explained, which is used for interaction between different people that contribute to a single project. An overview of the library built, explaining how the different modules contained.
 
 \end{abstract}
 
@@ -232,7 +225,7 @@ The idea of OOP goes well with a programming discipline which is being used more
 \begin{center}
 	\includegraphics[scale=0.35]{TDD}
 
-Figure ???. Basic TDD diagram.
+Figure 3.1. Basic TDD diagram.
 \end{center}
 
 For testing in this code $\textbf{unittest}$ test module contained in the standard Python library was used. $\textbf{unittest}$ from Python supports some important concepts for testing for example test fixture, test case, test suite and test runner (Van Rossum 2003)$\cite{van2003python}$. For the code given that each function of each module was tested we used the smallest unit for testing which is the class $\textbf{TestCase}$. Although there exist many methods for testing in $\textbf{TestCase}$,  for this code the main methods used when testing were:
@@ -262,9 +255,29 @@ Once the local directory for the project is in the pc we start working on it. Ev
 
 \begin{itemize}
 	\item $\textbf{git status:}$ Used to see the what the status on the working directory. It will display two sections, one with the staged changes that are ready to be committed and another section displaying the changes that have not been staged, along with a small legend on the left side of the name of the file, that indicates what changes have been done to that file (deleted, modified, new file, etc.)
+
 	\item $\textbf{git add:}$ Used to stage the changes we have made in the directory for the local repository clone specific files. Before using this command all changes that have been made in the directory are considered unstaged. This means that any new file added or any already existing file that has been modified has to be staged with this command in order to include them in the next commit, any changes made that have not been staged with $\textbf{git add}$ will not be considered in the next commit.
+
+\begin{center}
+	\includegraphics[scale=0.5]{imggitadd}
+
+Figure 3.2: Example of one file staged with git add.
+\end{center}
+
 	\item $\textbf{git commit:}$ Takes a snapshot of the status of the local cloned repository, of course the files that considers are the ones that $textbf{git add}$ was previously used on. Creates a new point in the history of the project. Once this command is run, it commonly opens a text editor where I introduced the changes that were made in the files that are being changed in this commit.
+\begin{center}
+	\includegraphics[scale=0.4]{gitcommitmsg}
+
+Figure 3.3: Example after using git commit asking for message for the commit.
+\end{center}
+
 	\item $\textbf{git diff:}$ Using this command directly displays the content that has been changed in the project since the last   commit and that are not staged for the next commit. If the command is run $\textbf{git diff - - cached}$ it will display the changes that have been staged. If we wish to see staged and unstaged changes together we use $\textbf{git diff HEAD}$ and if there is no interest in watching the specific changes but we want to display more information than just the one presented by $\textbf{git status}$ we add $\textbf{- - stat}$ after the different options we had with $\textbf{git diff [options] - - stat}$ and this displays a summary of the changes.
+\begin{center}
+	\includegraphics[scale=0.5]{gitdiff}
+
+Figure 3.4: Example of general output with git diff and git diff  HEAD - - stat (red color represent the deleted lines and green the added) .
+\end{center}
+
 	\item $\textbf{git fetch [remote-name]:}$ This command pulls all the data from the remote project that is not contained the current copy we hold in our local repository clone. Basically used to update with all the changes other users (contributors) to the project have made, but it does not merge it with the work we have done because this has to be done manually. The name given to the remote repository we created a clone from is usually origin.
 	\item $\textbf{git branch:}$  Without any arguments the command gives a list of the existing branches in the local repository.The command followed with the name of the branch $\textbf{git branch (branchname)}$ will create a branch with that given name out of the main project line (master), in the last commit made before the branch. So if we continue working on the master and then we switch to the branch all the changes made to that point will be reverted to the context where the branch was created.  If we wish to delete a local branch we use $\textbf{git branch -d (branchname)}$. To delete a remote branch we use the command $\textbf{git push (remote-name) :(branchname)}$.
 	\item $\textbf{git checkout (branchname):}$ This command is used to change between the different existing branches. A way of creating a branch and changing to it at the same time is a shortcut provided by Git $\textbf{git checkout -b (branchname)}$. 
@@ -274,28 +287,27 @@ Once the local directory for the project is in the pc we start working on it. Ev
 \begin{center}
 	\includegraphics[scale=0.7]{gittreec}
 
-Figure ???. Basic Example of a main branch with a branch for being merged.
+Figure 3.5: Example diagram from Github of a master branch with a branch 1 for being merged.
 \end{center}
 	
 	\item $\textbf{git push:}$ This command helps to update the local changes we have made to the remote repository. And the way to use it is $\textbf{git push (name given to the remote) (name of the local branch)}$. We just need to be careful to not overwrite changes. 
 	\item $\textbf{git log:}$  This command displays all the commit messages that have been previously used in the state of the project we currently are in. There is an alternative command that displays how the project has been modified up to the point we currently are in and is $\textbf{git log - - oneline  - - decorate - - graph - - all}$
 
 \begin{center}
-	\includegraphics[scale=0.7]{gitlog1}
+	\includegraphics[scale=0.5]{gitlog1}
 
-Figure ???. Basic Example of git log oneline.
+Figure 3.6: Basic example of git log oneline.
 \end{center}
-
-
 
 \end{itemize}
 
-
+\newpage
 \subsection{Library (Package)}\label{library_section}
 The name chosen for the library is 'Ablearn' and it stands for agent-based learning, the intention is for different people to contribute to this library in the future for it to grow and therefore have a wider range in application at some point in time.
 
 The library is the file that contains all the components of the code. Because of the object oriented properties that Python facilitates, the code is segmented into 6 modules. According to their function the order in describing each is not relevant.
 
+\subsubsection{Population module}
 The population module is intended to create agents that will be used in the simulation. The reason of being called agents instead of the classic name player, is because of the intended focus in agent-based modeling as mentioned before. It was build in a very generic way so it can be used, if possible, for any other type of interaction and algorithm in the future. The basic information contained in this class is very generic and it's attributes can be modified when using it. 
 This module contains the instructions to create a class named Agent the class has an initializatin(\_\_init\_\_) method that takes as parameters strategies, utility and the possibility to add a label. After the initialization, another method is presented increment\_utility which is set for incrementing the agent’s utility, the criteria for this increment\_utility will be explained in another module.
 
@@ -305,9 +317,16 @@ This module contains the instructions to create a class named Agent the class ha
 	\item $\textbf{Label:}$ The possibility of adding a label to each created agent, to track their performance.
 \end{itemize}
 
-The environment module for this project is the representation of the environment in which the agents will interact and has only two characteristics. It is set to make two agents interact pairing them randomly and it also sets the rules which these paired agents use to interact. Some of the methods contained in this module make use of a module named ‘random’ from python. This module is imported when the environment module is executed. 
+\begin{center}
+	\includegraphics[scale=0.5]{agentdiag}
 
-Environment module creates a class BiMatrixRandomEnv, named after the characteristics bimatrix and random environment. This class has an initialization (\_\_init\_\_) method that takes as parameters number\_of\_agents and bimatrix, within the initialization the some variables are defined, these variables along with the parameters will now be explained:
+Figure 3.7: Diagram of population module.
+\end{center}
+
+\subsubsection{Environments module}
+The environments module for this project is the representation of the environment in which the agents will interact.The environment created within this module for this project is $\textbf{bimatrix\_random\_environment}$ and has only two characteristics. It is set to make two agents interact pairing them randomly and it also sets the rules which these paired agents use to interact. Some of the methods contained in this module make use of a module named ‘random’ from python. This module is imported when the environment module is executed. 
+
+$\textbf{Bimatrix\_random\_environment}$ creates a class BiMatrixRandomEnv, named after the characteristics bimatrix and random environment. This class has an initialization ( $\textbf{\_\_init\_\_}$) method that takes as parameters $\textbf{number\_of\_agents}$ and $\textbf{bimatrix}$, within the initialization some variables are defined, these variables along with the parameters will now be explained:
 
 \begin{itemize}
 \item $\textbf{ Number\_of\_agents:}$ Input by user, total population of agents regardless of the type of agent(i.e. row agent or column agent).
@@ -318,25 +337,99 @@ Environment module creates a class BiMatrixRandomEnv, named after the characteri
 \item $\textbf{Number\_of\_col\_strategies:}$ Number of strategies that will be available for column agents. Calculated by counting how many columns the bimatrix has.
 \item $\textbf{Row\_strategies:}$ List containing the available strategies for row agents.
 \item $\textbf{Col\_strategies:}$ List containing the available strategies for column agents.
-\item $\textbf{Row\_agents:}$ Instances of class Agent are created according to the number\_of\_row\_agents. 
-\item $\textbf{Col\_agents:}$ Instances of class Agent are created according to the number\_of\_col\_agents.
 \end{itemize}
 
-After the initialization, a method `interact’ is defined. This method first defines a variable called ``pairs'' which is assigned to a function `randomly\_pair\_agents’ that will be explained later. It also contains a ``for'' loop this loop within other things contains a variable which is set to a function ``strategies\_to\_utilities'' which will be explained, variables in the ``for'' loop are the following:
+After the initialization, a method $\textbf{interact}$ is defined. This method first defines a variable called $\textbf{pairs}$ which is assigned to a function $\textbf{randomly\_pair\_agents}$ that will be explained later. It also contains a $\textbf{``for'' loop}$ this loop within other things contains a variable which is set to a function $\textbf{strategies\_to\_utilities}$ which will be explained, variables in the $\textbf{``for'' loop}$ are the following:
 
 \begin{itemize}
-\item $\textbf{Ra}$
-\item $\textbf{Ca}$
-\item $\textbf{Pairs}$
-\item $\textbf{Utility}$
+\item $\textbf{Ra}$: Used in the code during for loops in exchange of $\textbf{row\_agents}$.
+\item $\textbf{Ca}$: Used in the code during for loops in exchange of $\textbf{col\_agents}$.
+\item $\textbf{Pairs}$: Variable created to represent the group of paired $\textbf{row\_agents}$ with $\textbf{col\_agents}$.
+\item $\textbf{Utility}$: Variable used to obtain the utilities resulting from the interaction from each pair of agents ($\textbf{row\_agents and col\_agents}$).
 \item $\textbf{Agent.increment\_utility}$: The increment utility function is defined in the population model. The structure for in this “for” loop is as follows:
-\\ agent.increment\_utility(utility[x]) and what it does is assign the function increment utility to an agent can be ra (row\_agent) or ca (col\_agent), the ``utility'' in parenthesis was assigned in the previous variable, and it is only calling the value with the position x in the list. Given that we only have 2 types of players (we are using a bimatrix) x can be either 0 or 1.
+\\ agent.increment\_utility(utility[x]) and what it does is assign the function increment utility to an agent can be $\textbf{ra (row\_agent)}$ or$\textbf{ ca (col\_agent)}$, the $\textbf{utility}$ in parenthesis was assigned in the previous variable, and it is only calling the value with the position x in the list. Given that we only have 2 types of players (we are using a bimatrix) x can be either 0 or 1.
 \end{itemize}
 
-Following `interact’ the method previously mentioned `strategies\_to\_utilities’ is defined. This method is in charge of obtaining the specific pair of utilities (assigned to row and column) from the ‘bimatrix’. It then returns these values to the `utility’ variable in the `interact’ method and interact uses it to assign the utilities to each agent.
+Following $\textbf{interact}$ the method previously mentioned $\textbf{strategies\_to\_utilities}$ is defined. This method is in charge of obtaining the specific pair of utilities (assigned to row and column) from the $\textbf{bimatrix}$. It then returns these values to the $\textbf{utility}$ variable in the $\textbf{interact}$ method and interact uses it to assign the utilities to each agent.
 
-After `strategies\_to\_utilities’ the method `randomly\_pair\_agents’ is defined. This method is used by `interact’ too, and what it does is that the previously created row and column agents that are contained in lists are randomly selected (one of each type) and then paired so they can interact.
+After $\textbf{strategies\_to\_utilities}$ the method $\textbf{randomly\_pair\_agents}$ is defined. This method is used by $\textbf{interact}$ too, and what it does is that the previously created row and column agents that are contained in lists are randomly selected (one of each type) and then paired so they can interact.
 
+\begin{center}
+	\includegraphics[scale=0.5]{envdiag}
+
+Figure 3.8: Diagram of environments module.
+\end{center}
+
+\newpage
+\subsubsection{Algorithms module}
+The $\textbf{algorithms module}$ is a module that is meant to contain different algorithms by which the created $\textbf{agents}$ from $\textbf{population module}$ will be processed. For this project $\textbf{algorithms module}$ contains a $\textbf{genetic algorithm}$.
+The  $\textbf{genetic algorithm}$ is named  $\textbf{genetic}$ and it creates a class  $\textbf{Genetic}$. In the initialization ($\textbf{\_\_init\_\_}$) takes the following parameters:
+
+\begin{itemize}
+	\item $\textbf{generations:}$ Are the number of generations (times) the whole code will be run.
+	\item $\textbf{rounds\_per\_generation:}$ Are the number of times the interaction of the agents will be given within each generation. 
+	\item $\textbf{death\_rate:}$ Represents the proportion of agents that will be eliminated after each generation has run.
+	\item $\textbf{mutation\_rate:}$ This parameter is given as a limit for agents with the highest accumulated utility not being reproduced. A $\textbf{mutation\_rate}$ value is established and is compared against a $\textbf{random.random()}$ number. Every time the $\textbf{mutation\_rate}$ is higher than the value given by the $\textbf{random.random()}$ a mutation will occur. This comparison occurs every time a new agent is created when all the interactions within a generation have happened. This means that each new agent is passed under this condition. The numbers given by $\textbf{random.random()}$ are decimal numbers, which means that the range for $\textbf{mutation\_rate}$ should also be in decimal numbers from $\textbf{ 0 to 1}$.
+	\item $\textbf{exploitation\_rate:}$ Is a variable introduced to determine if the concept of $\textit{exploitation or exploration}$ will be used. Where a value of 1 (100$\%$) represents a total exploitation, this means reproducing only the agent with the highest utility for each type of agent ($\textbf{row\_agents and col\_agents}$) and a value of 0 (0$\%$) is used to consider the whole population of agents.
+\end{itemize}
+
+Following the initialization ($\textbf{\_\_init\_\_}$), the method $\textbf{assign\_strategies}$ is found. This method takes parameters $\textbf{agents}$, which according to the type of agent in turn will be represented by $\textbf{row\_agents}$ or $\textbf{col\_agents}$  and the parameter $\textbf{agents\_strategies}$, also which according to the type of agent in turn will be represented by $\textbf{row\_strategies}$ or $\textbf{col\_strategies}$. This method is used after the different types of agents are created in the $\textbf{initialization}$ of the class $\textbf{BiMatrixRandomEnv}$ of the module $\textbf{environments}$. The $\textbf{assign\_strategies}$ method assigns a random strategy for each agent according to the strategies available given their type through a $\textbf{``for'' loop}$ and $\textbf{random.choice(agents\_strategies)}$ this random choice selects from the $\textbf{row\_strategies or col\_strategies}$ randomly according to the type of agent.
+
+After the $\textbf{assign\_strategies}$ method, comes a method named $\textbf{kill\_agents}$. This method takes as parameters $\textbf{agents, number\_of\_agents, number\_of\_x\_agents, and agents\_strategies}$. In this method a variable $\textbf{number\_of\_deaths\_per\_generation}$ is created, which determines the number of agents that will be eliminated for each type of agent group ($\textbf{row\_agents or col\_agents}$) it does so by taking the integer value from the product of the multiplication of the variables $\textbf{death\_rate}$ \* $\textbf{number\_of\_x\_agents}$(this last variable represents the total number of row\_agents or col\_agents).  The value $\textbf{number\_of\_deaths\_per\_generation}$ is used in a $\textbf{``while'' loop}$ to eliminate the agents while the condition is not satisfied. Within the ``while'' loop the agents ($\textbf{row\_agents or col\_agents)}$  are sorted according to their accumulated $\textbf{utility}$ from smallest to highest and the one with the lowest accumulated $\textbf{utility}$ is deleted from the list of the corresponding type of agents.
+
+After the method $\textbf{kill\_agents}$ comes the method $\textbf{reproduce\_agents}$. This method takes as parameters $\textbf{agents, number\_of\_agents, number\_of\_x\_agents and agents\_strategies}$. A variable $\textbf{choice}$ is created by taking the integer value of ($\textbf{((number\_of\_agents / 2) \*  (exploitation\_rate - 1) + 0.05) -1}$ this value is used within the ``while'' loop that follows. The ``while'' loop used in this method works while the existing number of row or col agents is less than the number of row or col agents created at the beginning of the simulation. Within this loop, the agents are sorted according to their accumulated $\textbf{utility}$ values from low to high, and a $\textbf{copy.deepcopy}$  function is used to create a copy of an agents chosen with $\textbf{random.choice(agents[choice:])}$ where the variable $\textbf{choice}$ will indicate the start of the range of agents that can be chosen within the list of agents. After this within the same loop and ``if'' statement is presented which condition is that if the $\textbf{mutation\_rate}$ value is greater than a $\textbf{random.random()}$ number, the agent that will be reproduced can be any agent (row or col agent) with any value of accumulated $\textbf{utility}$ except for the agent (row or col agent) with the highest accumulated $\textbf{utility}$  value of that generation.
+
+\begin{center}
+	\includegraphics[scale=0.5]{algodiag}
+
+Figure 3.9: Diagram of algorithms module.
+\end{center}
+
+\subsubsection{Simulation module}
+The $\textbf{simulation module}$ is a module that is makes all the other modules interact with each other. For this project $\textbf{simulation module}$ is named $\textbf{simulation}$  and it creates a class $\textbf{Simulation}$. In the initialization ($\textbf{\_\_init\_\_}$) takes the parameters used in the other modules in addition to another parameter named $\textbf{tog}$ which stands for ``type of game''. There are 7 predetermined games within the code, which can be selected by typing the correct value of $\textbf{tog}$. $\textbf{tog}$ and the other parameters taken by the class $\textbf{Simulation}$ have the following characteristics:
+
+\begin{itemize}
+	\item $\textbf{tog:}$ Stands for ``type of game'' and it serves to pick one of the available choices of bimatrix that have been coded in. The values that can be selected have to go between single quotation marks and are the following: $\textbf{`pd'}$ an example of prisoner's dilemma, $\textbf{`psr'}$ an example of the game paper-scissors-rock, $\textbf{`mp'}$ an example of matching pennies, $\textbf{`bos'}$ an example of battle of sexes game, $\textbf{`hd'}$, $\textbf{`sh'}$ an example of stag hunt game, $\textbf{`cs'}$ an example of choosing sides game and $\textbf{`axl'}$ an example emulating the first tournament from Robert Axelrod with 8 out of the 14 original strategies. This strategies are taken from the axelrod package available for python and with the following strategies: $\textit{Tit for Tat, Grofman, Shubik, Grudger, Davis, Feld, Joss, Tullock and a Random strategy}$.
+	\item$\textbf{na:}$ Stands for the value of $\textbf{number\_of\_agents}$ explained in the $\textbf{bimatrix\_random\_environment}$ module.
+	\item $\textbf{ge:}$ Stands for the value of $\textbf{generations}$ explained in the $\textbf{genetic}$ algorithm module. And is the number of generations (times) the whole code will be run.
+	\item $\textbf{rpg:}$ Stands for the value of $\textbf{rounds\_per\_generation}$ explained in the $\textbf{genetic}$  algorithm module. Is the number of times the interaction of the agents will be given within each generation. 
+	\item $\textbf{dr:}$ Stands for $\textbf{death\_rate}$ explained in the $\textbf{genetic}$ algorithm module. And represents the proportion of agents that will be eliminated after each generation has run.
+	\item $\textbf{mr:}$ Stands for $\textbf{mutation\_rate}$ explained in the $\textbf{genetic}$ algorithm module. And this parameter is given as a limit for agents with the highest accumulated utility not being reproduced. A $\textbf{mutation\_rate}$ value is established and is compared against a $\textbf{random.random()}$ number. Every time the $\textbf{mutation\_rate}$ is higher than the value given by the $\textbf{random.random()}$ a mutation will occur. This comparison occurs every time a new agent is created when all the interactions within a generation have happened. This means that each new agent is passed under this condition. The numbers given by $\textbf{random.random()}$ are decimal numbers, which means that the range for $\textbf{mutation\_rate}$ should also be in decimal numbers from $\textbf{ 0 to 1}$.
+	\item $\textbf{er:}$ Stands for $\textbf{exploitation\_rate}$ explained in the $\textbf{genetic}$ algorithm module. And it is a variable introduced to determine if the concept of $\textit{exploitation or exploration}$ will be used. Where a value of 1 (100$\%$) represents a total exploitation, this means reproducing only the agent with the highest utility for each type of agent ($\textbf{row\_agents and col\_agents}$) and a value of 0 (0$\%$) is used to consider the whole population of agents.
+\end{itemize}
+
+In the initialization (\_\_init\_\_) method an instance of the class $\textbf{Genetic}$ from the genetic module is created, an instance for the class $\textbf{Agents}$ from the population module is created also and when selecting the $\textbf{tog}$ value, an instance of the class $\textbf{BiMatrixRandomEnv}$ from the environment module is created. After the instances are created within the initialization method, the function $\textbf{ga.assign\_strategies()}$ from the genetic algorithm module is used to assign the values for the strategies for each type of agent ($\textbf{row\_agents and col\_agents}$) that have been created through the instance of the module environment.After pair of lists with the names $\textbf{row\_accumulated\_strategies}$ and $\textbf{col\_acummulated\_strategies}$ are created respectively and the purpose for each list is the following:
+
+\begin{itemize}
+	\item$\textbf{row\_accumulated\_strategies}$: Creates a list, that within itself contains a certain number of individual lists according to the length of $\textbf{row\_strategies}$ which is the number of strategies available for the $\textbf{row\_agents}$ obtained from the module environment.
+	\item$\textbf{col\_accumulated\_strategies}$: Creates a list, that within itself contains a certain number of individual lists according to the length of $\textbf{col\_strategies}$ which is the number of strategies available for the $\textbf{col\_agents}$ obtained from the module environment.
+
+\end{itemize}
+
+After the initialization method has created the different instances from the other modules, a method with the name $\textbf{run(plot=False)}$ is presented. This method is used to start running the whole simulation (all the modules). And this method take an attribute $\textbf{plot}$ which is set by default as $\textbf{False}$, if using the method $\textbf{run(plot=True)}$, the simulation will plot the results from each generation in a graph. The graph is produced with the module $\textbf{matplotlib}$ from python and the functions used are $\textbf{pyplot and cm(color map)}$. The graph is set in interactive mode by the function $\textbf{ion( )}$. The limit for the y axis is set $\textbf{ylim(0, 1)}$, the limit for the x axis is the number of $\textbf{generations}$. The x axis is labeled $\textbf{xlabel(``Generations")}$ and the y axis is labeled $\textbf{ylabel(``Probability'')}$. For the coloring the lines representing the different strategies for each type of agents color map is used for the $\textbf{row\_accumulated\_strategies[ ]}$ the color map copper is used and for the $\textbf{col\_accumulated\_strategies[ ]}$ the color map winter is used, how these $\textbf{accumulated\_strategies}$ values were obtained will be explained later, the thing to know about them is that each of them represent the proportion within a type of agent that is using a certain strategy. The graph indicates how the population of the different types of agents with strategies varied through time, the value of interest from this is the strategy the types of agents are using.
+
+After the code for creating the graph a function $\textbf{generations\_passing( )}$ is presented, this function takes attributes $\textbf{generations}$, $\textbf{rounds\_per\_generation}$, $\textbf{number\_of\_agents}$, $\textbf{row\_agents}$, $\textbf{col\_agents}$, and $\textbf{plot}$ and takes us to the next method.
+
+After the $\textbf{run}$ method, there is a method $\textbf{generations\_passing}$ that takes attributes $\textbf{generations}$,  $\textbf{row\_agents}$, $\textbf{col\_agents}$, $\textbf{number\_of\_agents}$, $\textbf{ plot}$. In this method there is a ``for'' loop that loops until the $\textbf{generations}$ value is reached, within this loop exist two other ``for'' loops.
+ he first one loops around the $\textbf{row\_agents}$ and  $\textbf{col\_agents}$ setting for each agent  the $\textbf{utility}$ value to 0. 
+The second ``for'' loop loops according to the $\textbf{number\_of\_rounds}$ chosen at the beginning of the simulation. Within this loop we find the function $\textbf{interact( )}$ from the module environment, explained before, which in general terms makes the $\textbf{row\_agents and col\_agents}$ interact with each other and as a result obtains the payoff for each type of agent and an attributed $\textbf{utility}$. The loop from the rounds causes this process to repeat several times and when the last round is played all the different agents have an accumulated utility product of the repeated interactions.
+When the second loop concludes a function $\textbf{distributions( )}$ follows. This function is for the method $\textbf{distributions}$ that takes attributes $\textbf{number\_of\_agents}$, $\textbf{ row\_agents}$, $\textbf{col\_agents}$, $\textbf{row\_strategies}$, $\textbf{col\_strategies}$, and$\textbf{ plot}$.
+
+Before the method $\textbf{distributions}$ there is a method $\textbf{proportion\_classified\_strategies}$ that takes attributes $\textbf{agents and strategies}$. This method will do some calculations when the code is using the method $\textbf{distributions}$.   The method first creates a varibale $\textbf{frequency\_per\_strategy\_per\_agent}$ with an empty list. Then it has a ``main'' ``for'' loop that loops around the variable $\textbf{strategies}$ (this variable can be $\textbf{row\_strategies}$ or $\textbf{col\_strategies}$ according to which values are being used) of the $\textbf{agent}$ in turn and appends a value of 0 to the list. Then an ``secondary'' loop is contained within the previous loop of $\textbf{strategies}$, this loops around the agents in turn (can be $\textbf{row\_agents}$ or $\textbf{col\_agents}$) and contains an ``if'' statement, which conditions if  the strategy from the $\textbf{agent}$ in turn is equal to the counter in the ``main'' loop ($\textbf{strategies}$) the last value of the list $\textbf{frequency\_per\_strategy\_per\_agent}$ will increment by 1. When both loops finish the function returns a list with all the values that are contained in the $\textbf{frequency\_per\_strategy\_per\_agent}$, each of those values are devided by the number agents. This values are the proportion that strategy represents in the type of agents in turn. It is important to note that the variable $\textbf{agents}$ taken by this function can be either $\textbf{row\_agents}$ or $\textbf{col\_agents}$   and the variable $\textbf{strategies}$ can be either $\textbf{row\_strategies}$ or $\textbf{col\_strategies}$. 
+
+When the method $\textbf{distributions}$ starts first it creates a variable $\textbf{row\_strategies\_distribution}$ this variable contains a function $\textbf{proportion\_classified\_strategies( )}$ that takes as attributes $\textbf{row\_agents}$ and $\textbf{row\_strategies}$. And then has a ``for'' loop which loops around the number of  $\textbf{row\_strategies}$ and appends into the list created at the initialization $\textbf{row\_accumulated\_strategies}$ the resulting value from the $\textbf{row\_strategies\_distribution}$. According to which strategy it belongs, it appends the value to the corresponding list. 
+Then the method creates another variable which has the same process as the previous, but with $\textbf{col\_agents}$. The variable it creates is $\textbf{col\_strategies\_distribution}$ this variable contains a function $\textbf{proportion\_classified\_strategies( )}$ that takes as attributes $\textbf{col\_agents and col\_strategies}$. Then has a ``for'' loop which loops around the number of  $\textbf{col\_strategies}$ and appends into the list created at the initialization $\textbf{col\_accumulated\_strategies}$ the resulting value from the $\textbf{col\_strategies\_distribution}$. According to which strategy it belongs, it appends the value to the corresponding list.
+After the two variables, and the append of $\textbf{row\_strategies\_distribution[  ]}$ to $\textbf{row\_accumulated\_strategies[  ]}$ and $\textbf{col\_strategies\_distribution[  ]}$ to $\textbf{col\_accumulated\_strategies[  ]}$ is finished. The method $\textbf{prints}$ for lines the first one contains the following text $\textit{``Row players' strategy distribution:"}$, the second line prints the list $\textbf{row\_strategies\_distribution}$, the third line prints the text $\textit{``Column players' strategy distribution:"}$, and the fourth line prints the list $\textbf{col\_strategies\_distribution}$. 
+After these lines come two lines, each with the function $\textbf{kill\_agents( )}$ from the genetic algorithm module. One of which is for eliminating $\textbf{row\_agents}$ and the other for eliminating $\textbf{col\_agents}$.  
+Then we have other two lines, each with the function $\textbf{reproduce\_agents( )}$ from the genetic algorithm module. One to create the $\textbf{row\_agents}$ that were previously eliminated until reaching the required number of $\textbf{row\_agents}$ and the other to create $\textbf{col\_agents}$ until reaching the required number of $\textbf{col\_agents}$. 
+After the last $\textbf{reproduce\_agents( )}$ function, a code to update the graph is run (if it was chosen to graph at the beginning of the simulation). 
+The whole cycle is repeated until the simulation reaches the number of $\textbf{generations}$ that was established at the beginning. 
+
+\begin{center}
+	\includegraphics[scale=0.5]{simdiag}
+
+Figure 3.10: Diagram of simulation module.
+\end{center}
 
 
 \newpage
@@ -371,7 +464,7 @@ Cooperate & 3, 3 & 0, 5\\
 \end{tabular}
 \end{center}
 \begin{center}
-	Figure???: Prisoner's Dilemma
+	Figure 4.1: Prisoner's Dilemma
 \end{center}
 
 
@@ -388,7 +481,7 @@ Heads & 1, -1 & -1, 1\\
 \end{tabular}
 \end{center}
 \begin{center}
-	Figure???: Matching Pennies
+	Figure 4.2: Matching Pennies
 \end{center}
 
 
@@ -405,7 +498,7 @@ Opera & 1, 2 & 0, 0\\
 \end{tabular}
 \end{center}
 \begin{center}
-	Figure???: Battle of Sexes
+	Figure 4.3: Battle of Sexes
 \end{center}
 
 And the hawk-dove game. This game is often used in  evolutionary game theory. And it represents the 2 strategies an agent can choose,  and the result of the interaction. There is an aggressive strategy which is the hawk strategy and a passive strategy which is the dove. When both agents choose to play hawk, the payoff they get is 0, the explanation is that since they are both aggressive, the possible payoff they could have had from the resource they are competing for is not greater than the cost they pay for playing this strategy against each other. When they both choose dove, they split in equal parts the resource and the payoff they receive is the same for both. When one plays hawk and the other dove, the agent using hawk strategy gets a higher payoff than the one using the dove strategy.    
@@ -421,7 +514,7 @@ Hawk & 0, 0 & 3, 1\\
 \end{tabular}
 \end{center}
 \begin{center}
-	Figure???: Hawk-Dove
+	Figure 4.4: Hawk-Dove
 \end{center}
 
 
@@ -488,12 +581,12 @@ Num. & Population & Generations& Rounds per Gen. & Death Rate & Mutation Rate & 
 \end{tabular}
 \end{center}
 \begin{center}
-Table???: Configuration of simulations for prisoner's dilemma.
+Table 4.5: Configuration of simulations for prisoner's dilemma.
 \end{center}
 
 
 \subsection{Prisoner's Dilemma}
-For Prisoner's dilemma I do not consider relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. But I do consider important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of the table ???(Configuration of simulations).
+For Prisoner's dilemma I do not consider relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. But I do consider important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of the table 4.5 (Configuration of simulations).
 1.
 The simulation starts by assigning the following proportions to row and column agents to the strategies cooperate and defect
 \begin{center}
@@ -508,7 +601,7 @@ Column Agents & 0.502 & 0.498\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Initial Prisoner’s Dilemma distribution for simulation 1.
+Figure 4.6: Initial Prisoner’s Dilemma distribution for simulation 1.
 \end{center}
 
 In generation 5 it can be seen that one of the strategies is considerably dominating.
@@ -524,7 +617,7 @@ Column Agents & 0.24 & 0.76\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 5 Prisoner’s Dilemma distribution for simulation 1.
+Figure 4.7: Generation 5 Prisoner’s Dilemma distribution for simulation 1.
 \end{center}
 
 By generation 10 it can be seen that the dominance of one strategy is almost absolute.
@@ -541,7 +634,7 @@ Column Agents & 0.074 & 0.926\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 10 Prisoner’s Dilemma distribution for simulation 1.
+Figure 4.8: Generation 10 Prisoner’s Dilemma distribution for simulation 1.
 \end{center}
 
 In generation 25 it can be seen that the condition persists and the strategy defect for both types of agents dominates in frequency.
@@ -557,7 +650,7 @@ Column Agents & 0.054 & 0.946\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 25 Prisoner’s Dilemma distribution for simulation 1.
+Figure 4.9: Generation 25 Prisoner’s Dilemma distribution for simulation 1.
 \end{center}
 
 
@@ -574,7 +667,7 @@ Column Agents & 0.044 & 0.956\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 50 Prisoner’s Dilemma distribution for simulation 1.
+Figure 4.10: Generation 50 Prisoner’s Dilemma distribution for simulation 1.
 \end{center}
 
 2. We now run the simulation with 25 rounds and we verify the same generations as before
@@ -592,7 +685,7 @@ Column Agents & 0.524 & 0.476\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Initial Prisoner’s Dilemma distribution for simulation 2.
+Figure 4.11 : Initial Prisoner’s Dilemma distribution for simulation 2.
 \end{center}
 
 In generation 5 it can be seen that the proportions changed slightly. For row agents the proportion increased and is very close to the proportion of the column agents in generation 5 from the previous simulation and for the column agents decreased and is very close to the proportion . 
@@ -608,7 +701,7 @@ Column Agents & 0.378 & 0.622\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 5 Prisoner’s Dilemma distribution for simulation 2.
+Figure 4.12: Generation 5 Prisoner’s Dilemma distribution for simulation 2.
 \end{center}
 
 For generation 10 it can be noticed that with respect to simulation 1, an small increase in the defect strategy for row agents, and a small decrease in the same strategy for column agents. 
@@ -624,7 +717,7 @@ Column Agents & 0.094 & 0.906\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 10 Prisoner’s Dilemma distribution for simulation 2.
+Figure 4.13: Generation 10 Prisoner’s Dilemma distribution for simulation 2.
 \end{center}
 
 In generation 25, the proportions increased slightly for strategy defect for both agents. But I do not consider this increment significant.
@@ -640,7 +733,7 @@ Column Agents & 0.047 & 0.953\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 25 Prisoner’s Dilemma distribution for this simulation.
+Figure 4.14: Generation 25 Prisoner’s Dilemma distribution for this simulation.
 \end{center}
 
 
@@ -657,7 +750,7 @@ Column Agents & 0.08 & 0.92\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 50 Prisoner’s Dilemma distribution for this simulation.
+Figure 4.15: Generation 50 Prisoner’s Dilemma distribution for this simulation.
 \end{center}
 
 3. We now run the simulation with 5 rounds and compare with the same generations number in the previous 2 simulations.
@@ -675,7 +768,7 @@ Column Agents & 0.49 & 0.51\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Initial Prisoner’s Dilemma distribution for simulation 3.
+Figure 4.16: Initial Prisoner’s Dilemma distribution for simulation 3.
 \end{center}
 
  For generation 5 the value for strategy defect for row agents is slightly higher than simulation 1 and slightly smaller than simulation 2. And for the same strategy in column agents compared to simulation 1 it decreased slightly and to simulation 2 it increased. The differences do not appear to be significant.
@@ -691,7 +784,7 @@ Column Agents & 0.314 & 0.686\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 5 Prisoner’s Dilemma distribution for simulation 3.
+Figure 4.17: Generation 5 Prisoner’s Dilemma distribution for simulation 3.
 \end{center}
 
 In generation 10 the strategy defect for row agents is slightly smaller with respect to the value in simulation 1 and 2. For the same strategy in column agents it increased slightly when compared to simulation 1 and 2.
@@ -707,7 +800,7 @@ Column Agents & 0.07 & 0.93\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 10 Prisoner’s Dilemma distribution for simulation 3.
+Figure 4.18: Generation 10 Prisoner’s Dilemma distribution for simulation 3.
 \end{center}
 
 In generation 25, are slightly smaller for the strategy defect for row agents than previous simulations. For same strategy for column agents is slightly higher than values previous simulations.
@@ -723,7 +816,7 @@ Column Agents & 0.054 & 0.972\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 25 Prisoner’s Dilemma distribution for this simulation 3.
+Figure 4.19: Generation 25 Prisoner’s Dilemma distribution for this simulation 3.
 \end{center}
 
 
@@ -740,96 +833,13 @@ Column Agents & 0.028 & 0.972\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure???: Generation 50 Prisoner’s Dilemma distribution for this simulation 3.
+Figure 4.20: Generation 50 Prisoner’s Dilemma distribution for this simulation 3.
 \end{center}
 
 After the 3 runs for the simulations, there does not appear to be specific pattern when using the different values for the number of rounds used. For this reason in prisoner's dilemma simulations we will use 5 rounds per generation.
 
-Let us continue to try the different combinations of values that are shown in the table ???(Configuration of simulations). 
+Let us continue to try the different combinations of values that are shown in the table 4.5 (Configuration of simulations). 
 
-4.
-
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0. & 0.\\
-\hline
-Column Agents & 0. & 0.\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure???: Initial Prisoner’s Dilemma distribution for simulation .
-\end{center}
-
-
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0. & 0.\\
-\hline
-Column Agents & 0. & 0.\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure???: Generation 5 Prisoner’s Dilemma distribution for simulation .
-\end{center}
-
-
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0. & 0.\\
-\hline
-Column Agents & 0. & 0.\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure???: Generation 10 Prisoner’s Dilemma distribution for simulation .
-\end{center}
-
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0. & 0.\\
-\hline
-Column Agents & 0. & 0.\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure???: Generation 25 Prisoner’s Dilemma distribution for this simulation .
-\end{center}
-
-
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0. & 0.\\
-\hline
-Column Agents & 0. & 0.\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure???: Generation 50 Prisoner’s Dilemma distribution for this simulation .
-\end{center}
-
-\begin{center}
-	\includegraphics[scale=0.5]{pd4}
-\end{center}
 
 
 
