@@ -73,17 +73,79 @@ We can see that each intersection of row and column have two utility functions. 
 
 
 \subsection{Nash Equilibrium}\label{third_section}
-John Nash writes in his dissertation ``... an equilibrium point is an n-tuple s so that each player's mixed strategy maximizes his payoff if the strategies of the others are held fixed. Thus each player's strategy is optimal against those of the others.'' (Nash 1950)$\cite{nash1951non}$.  After this he describes under what circumstances a mixed strategy behaves as a pure strategy. Nowadays the definition of Nash's equilibrium point is known as a Nash equilibrium and we will commonly find the phrase "no regrets" when describing the Nash equilibrium and this is because paraphrasing Nash, no player in the game could have had a better payoff given the action chosen by her opponent. In (Osborne 2004)$\cite{osborne2004introduction}$ a definition for Nash equilibrium of strategic games with ordinal preferences, where `` a$^*$ represents an action(strategy) profile in a strategic game with ordinal preferences, and it is a Nash equilibrium if for every player $\textit{i}$ and every action $\textit{a$_i$}$ of player $\textit{i}$, $\textit{a$^*$}$ is at least as good according to player $\textit{i's}$ preferences as the action profile $\textit{(a$_i$, a$^*$$_{-i}$)}$  in which player $\textit{i}$ chooses $\textit{a$_i$}$ while every other player $\textit{j}$ chooses $\textit{a$^*$$_j$}$ along with the following inequality. Where $\textit{u$_i$}$ represents player $\textit{i}$'s preferences.'':
+John Nash writes in his dissertation ``... an equilibrium point is an n-tuple s so that each player's mixed strategy maximizes his payoff if the strategies of the others are held fixed. Thus each player's strategy is optimal against those of the others.'' (Nash 1950)$\cite{nash1951non}$.  After this he describes under what circumstances a mixed strategy behaves as a pure strategy. Nowadays the definition of Nash's equilibrium point is known as a Nash equilibrium and we will commonly find the phrase "no regrets" when describing the Nash equilibrium and this is because paraphrasing Nash, no player in the game could have had a better payoff given the action chosen by her opponent. For an N player normal form game Nash equilibrium Knight 20?? gives the following definition:
 \begin{equation}
-u_i(a^*)  {\geq}  u_i(a_i, a^* _{-i}))
+u_i(\hat{s}) \geq u_i(\bar{s}_i, \wedge{s}_{-i}) \forall i
 \end{equation}
+ In a two player game, this means each player $\textit{i}$ has a set of strategies $\textit{S}$,  a pair of strategies $(\hat{r}, \hat{s})$ we can define the pure Nash equilibrium as:
+\begin{equation}
+u_1(\hat{r}, \hat{s}) \geq u_1(r, \hat{s}) \forall r \in S_1   \text{ and }  u_2(\hat{r}, \hat{s}) \geq u_2(\hat{r}, s) \forall r \in S_1
+\end{equation}
+An "easy" way to find Nash equilibria in games with pure Nash equilibria is by looking at the table in the normal form that holds the strategies and payoffs for each player, and underlining the best response for each player when the other player's strategies are held fixed.
+As an example we will use the prisoner's dilemma normal form, and first we hold fixed player's 2 strategies and we underline the best response for player 1 for each of player's 2 strategies.
+
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect\\ 
+\hline
+Cooperate & 3, 3 & 0, 5\\
+\hline
+Defect & \underline{5}, 0 & \underline{1}, 1\\
+\hline
+\end{tabular}
+
+Figure 1.1: Best responses for player 1
+\end{center}
+
+In this first table we have that defect is the best response for player 1 in the case where player 2 chooses either of the strategies. 
+Now we explore the options holding player 1's strategies fixed and we have the following.
+
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect\\ 
+\hline
+Cooperate & 3, 3 & 0, \underline{5}\\
+\hline
+Defect & 5, 0 & 1, \underline{1}\\
+\hline
+\end{tabular}
+
+Figure 1.2: Best responses for player 2
+\end{center}
+
+And now we only take the strategies that are best responses for both players. Remembering that is the strategy where neither of the players have any reason to change from given that whatever the other player choice is it will always give them the best payoff available for the interaction.
+ 
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect\\ 
+\hline
+Cooperate & 3, 3 & 0, 5\\
+\hline
+Defect & 5, 0 & \underline{1}, \underline{1}\\
+\hline
+\end{tabular}
+
+Figure 1.3: Nash equilibrium with best responses.
+\end{center}
 
 \subsection{Evolutionary game theory}
 Evolutionary game theory has its roots in evolutionary biology. Even if this overview is not intended to be focused in biology some remarks from it are worth mentioning. From the 6th edition of ‘Origin of species’ Charles Darwin outlines that in nature there exist many struggles for existence. Some examples are the struggles of a species in the nature, between species and within species. Darwin stresses that the most severe struggle might be within species if they become into competition (Darwin 1872)$\cite{darwin1872origin}$. In origin of species with the idea of all possible interactions of the `organic’ beings mentions that there may be infinite varied diversities of structure for each being under the changing conditions of life, and continues saying that through the course of generations, there can occur variations that can give perhaps a slightly advantage to some beings giving them a higher chance of survival and procreation. The preservation of favourable characteristics and destruction of what he called injurious, he called it natural selection or survival of the fittest (Darwin 1872)$\cite{darwin1872origin}$. I go this far because later on we can think of the concept of fitness, as the ‘utility’ a player has in evolutionary game theory which in general terms can be called the ‘fittest’.
 
 Fisher might have been the first to apply game theory to evolution in his study on sex ratios in 1930 (Pallen 2009)$\cite{pallen2009rough}$ although at this time the formal definition of game theory had not been presented yet. Later in 1961 Lewontin discussed species playing against nature, and said that species should adopt the ``maximin'' strategy if nature presented worse-case scenarios (Maynard 1974, Sigmund 2004)$\cite{sigmund2004maynard}$. In 1967 in an the article ‘Extraordinary sex ratios’ wrote in ‘Science’ William D. Hamilton uses game theory to model local competition and frequency-dependent fitness values (Sigmund 2004)$\cite{sigmund2004maynard}$. Perhaps the most important contribution in evolutionary game theory was the one made by Professor John Maynard and Dr. George Price. John Maynard’s attention was first caught by the article ''Antlers, Intraspecific Combat, and Altruism',' written by George Price in 1968 for `Nature’ about ritualized behavior in animal contests (Maynard 1976)$\cite{smith1976evolution}$ unpublished for being too long. Then in 1973 John Maynard and George Price published a joint paper ‘On the logic of animal conflict’ in which the mathematical concept of an evolutionary stable strategy is established, and it applies concepts of game theory to the study of conflicts between animals (Sigmund 2004)$\cite{sigmund2004maynard}$.  The idea Maynard and Price presented was that concepts from game theory could be used to characterize eventually stable endpoints in the evolutionary process, with the concept of evolutionary stable strategy (McNamara 2010)$\cite{mcnamara2010evolutionary}$. It can be said that the concept of evolutionary game theory was born with the ideas of John Maynard and George Price.
 
-Nowadays evolution by natural selection can be thought of as a game, where some behavioural patterns (often referred to as phenotypes the equivalent to strategies when related to traditional game theory) from animals are more successful than others (Carmichael 2005)$\cite{carmichael2005guide}$. Now I can relate evolutionary game theory with traditional game theory in the some essential concepts. Animals in the biological concept are equivalent to the players (agents) that participate in a game; the environment in which animals interact is comparable to the set of rules that regulate interaction in the traditional form; as mentioned before the heritable phenotypes of animals can be thought of as the strategies that players use in the traditional form; a tricky concept to relate to evolutionary game theory is the one of payoffs (utility) in traditional game theory  for this I will refer to how Maynard and Price define it in ‘The logic of animal conflict’ as the contribution the contest has made to the reproductive success of the agent (Maynard \& Price 1973) which could be the expressed in terms of fitness  (Darwin 1872)$\cite{darwin1872origin}$ the fitness in an agent directly influences the frequency of the strategy in the population (Vincent 2005)$\cite{vincent2005evolutionary}$, Maynard and Price take in account three factors to be taken in account: the advantages of winning compared to losing, disadvantage of being seriously injured and disadvantage of wasting time and energy in the contest (Maynard \& Price 1973)$\cite{smith1973lhe}$ this are not usually considered in games but I consider important mentioning. Another very important concept is equilibrium, in some evolutionary games the existence of evolutionary stable strategies (ESS) , I will not yet talk about the mathematical implications of  ESS. Roughly we can consider an ESS as a strategy that predominates in frequency in evolutionary games and that in the case of the emergence of a mutated strategy is not invaded (threatened to be reduce in number) this concept of ESS has similarities with the concept of Nash equilibria as seen by in the sense that both can be ``no-regret'' strategies when in a population a Nash or an ESS is played ``no individual can benefit from unilaterally changing their strategy" (Vincent 2005)$\cite{vincent2005evolutionary}$. According to T.L. Vincent, resistance to invasion is only one of the two notions of an ESS, the second notion is convergence stability which implies that a population evolves to an ESS when its strategy composition is near but not at the ESS mentioned by Eshel in 1983, the implications of this will be discussed later. 
+Nowadays evolution by natural selection can be thought of as a game, where some behavioural patterns (often referred to as phenotypes the equivalent to strategies when related to traditional game theory) from animals are more successful than others (Carmichael 2005)$\cite{carmichael2005guide}$. Now I can relate evolutionary game theory with traditional game theory in the some essential concepts. Animals in the biological concept are equivalent to the players (agents) that participate in a game; the environment in which animals interact is comparable to the set of rules that regulate interaction in the traditional form; as mentioned before the heritable phenotypes of animals can be thought of as the strategies that players use in the traditional form; a tricky concept to relate to evolutionary game theory is the one of payoffs (utility) in traditional game theory  for this I will refer to how Maynard and Price define it in ‘The logic of animal conflict’ as the contribution the contest has made to the reproductive success of the agent (Maynard \& Price 1973) which could be the expressed in terms of fitness  (Darwin 1872)$\cite{darwin1872origin}$ the fitness in an agent directly influences the frequency of the strategy in the population (Vincent 2005)$\cite{vincent2005evolutionary}$, Maynard and Price take in account three factors to be taken in account: the advantages of winning compared to losing, disadvantage of being seriously injured and disadvantage of wasting time and energy in the contest (Maynard \& Price 1973)$\cite{smith1973lhe}$ this are not usually considered in games but I consider important mentioning. Another very important concept is equilibrium, in some evolutionary games the existence of evolutionary stable strategies (ESS) , I will not yet talk about the mathematical implications of  ESS. Roughly we can consider an ESS as a strategy that predominates in frequency in evolutionary games and that in the case of the emergence of a mutated strategy is not invaded (threatened to be reduce in number) this concept of ESS has similarities with the concept of Nash equilibria as seen by in the sense that both can be ``no-regret'' strategies when in a population a Nash or an ESS is played ``no individual can benefit from unilaterally changing their strategy" (Vincent 2005)$\cite{vincent2005evolutionary}$.  
 
 Thinking of how the idea of evolutionary game theory was conceived from behavior of animals, comparing it to the traditional game theory, there are some characteristics that distinguish them from each other. First and perhaps one of the most relevant assumptions in traditional game theory is that every player is rational which means they make rational decisions to maximize their profits, and also they are aware of the possible payoffs of the other players and that other players are rational, also the rational players are aware of the game rules, evolutionary game theory does not make such assumption of rational players, instead the strategies are ‘hard wired’ to them.  Traditional game theory it is about choosing from different strategies looking to optimize the payoffs, whilst evolutionary game theory is to determine strategies that will endure through time. Traditional game theory as said before has a set of strategies from which it can choose, whilst in evolutionary game theory the strategies are already defined given that they are inherited although there can be present some occasional mutations. Also evolutionary game theory there will be groups of players that possess the same set of strategies and the same related payoff from these strategies, in traditional game theory each player has their own set of strategies and their own associated payoffs per strategy (Vincent 2005)$\cite{vincent2005evolutionary}$.  The application of evolutionary game theory in different areas of study has grown, and with this some assumptions change. For example in the biological application players do not choose their strategies and never change them, unlike in the economic application the players are people, who can choose and change their strategies (Samuelson 1997)$\cite{samuelson1998evolutionary}$.
 \\\\What is evolutionary game theory?
@@ -91,7 +153,7 @@ It can be defined as the combination of some game theoretical concepts, with the
 
 \subsection{Evolutionary Stable Strategy (ESS)}
 To explain better the concept a symmetric game will be analysed. It is important to mention that the games that we will focus on are two player games. 
-When describing ESS the most frequent example used is Hawk-Dove, first used by Maynard and Price in their paper ``The logic of animal conflict'' in 1973 which has been mentioned before. It is worth mentioning that this game has a structure of the well-known ‘prisoner’s dilemma’ game. `Prisoner’s dilemma’ formally presented by Albert Tucker to psychology students in Stanford University in 1950. As we may know ‘prisoner’s dilemma’ is a zero-sum game, in which two individuals who committed a crime are interrogated in separate rooms, and they are not able to exchange information with each other. So they are presented with 2 options (strategies), they can confess or not. And the interaction between the choices each one have go as follow. One confesses and the other does not, both of them confess or neither confess. Each interaction has a pay-off. From this point on I will refer to the players of the games we describe as agents.
+When describing ESS the most frequent example used is Hawk-Dove, first used by Maynard and Price in their paper ``The logic of animal conflict'' in 1973 which has been mentioned before. It is worth mentioning that this game has a structure of the well-known ‘prisoner’s dilemma’ game. `Prisoner’s dilemma’ formally presented by Albert Tucker to psychology students in Stanford University in 1950. As we may know ‘prisoner’s dilemma’ is a game in which two individuals who committed a crime are interrogated in separate rooms, and they are not able to exchange information with each other. So they are presented with 2 options (strategies), they can confess or not. And the interaction between the choices each one have go as follow. One confesses and the other does not, both of them confess or neither confess. Each interaction has a pay-off. From this point on I will refer to the players of the games we describe as agents.
 First a general definition of the ESS. To illustrate this it will be used a similar approach to the one by Easley \& Kleinberg in ``Networks, Crowds and Markets: Reasoning about a Highly connected World''
 We know that a strategy is evolutionarily stable when a population of agents can resist the invasion of emergent mutated agents (new strategy). As mentioned before in evolutionary biology as well as in evolutionary game theory, fitness can be defined as reproductive success (Kleinber 2010)$\cite{easley2010networks}$. Therefore agents with higher fitness value are majority in a population or in time will become majority, whereas agents will low fitness value will be minority and in time with a very high probability will disappear. The fitness value is obtained using the pay-off values from each interaction. With the following table it will be presented a clearer explanation of this.
 For a symmetric strategic two-player game we have the following bimatrix.
@@ -110,7 +172,7 @@ Y & c, b & d, d\\
 \end{tabular}
 \end{center}
 \begin{center}
-	Figure 1.2: General Symmetric Game
+	Figure 1.4: General Symmetric Game
 \end{center}
 We assume that there exists a large population of agents that always take action X. Now we suppose that within the population appears a small group that take action Y and the   fraction representing the number of agents in this group is $\epsilon$.  Since $\epsilon$ represents the number of agents that choose Y, we can say that 1 - $\epsilon$ is the fraction of the agents that choose X.  We will assume then that the probability of an agent using X encountering another agent at uses X is 1 - $\epsilon$, and with a mutated that uses Y the probability is $\epsilon$.  With these and the values from the figure 1.2 we build the payoff equation for the agent that use strategy X as follows:
 \begin{equation}
@@ -127,8 +189,8 @@ For X to be an evolutionary stable strategy, we need:
 It should be easy to see that for X to be an ESS a $\>$ c for small values of $\epsilon$, on the other hand when the values of $\epsilon$ are closer to 1, for X to be ESS a = c and b $\>$ d.
 Since the pay-offs for each agents are the result from the interactions, we should understand the following.
 \begin{itemize}
-\item $\textit{For X to be an ESS, the pay-off for interacting with X should be greater or at least equal to the pay-off that an Y gets when interacting with X.}$ 
-\item $\textit{Or for X to be an ESS when X and Y get the same pay-off while interacting with X, X needs to get a better pay-off when interacting with Y than Y interacting with Y.}$ 
+\item For X to be an ESS, the pay-off for interacting with X should be greater or at least equal to the pay-off that an Y gets when interacting with X.
+\item Or for X to be an ESS when X and Y get the same pay-off while interacting with X, X needs to get a better pay-off when interacting with Y than Y interacting with Y.
 \end{itemize}
 We see that if the previous does not hold, then $(1-{\epsilon})a + {\epsilon}b < (1-{\epsilon})c + {\epsilon}d$ and therefore X is not an ESS.
 
@@ -140,7 +202,7 @@ Looking back at table ???, we can take (X, X) as a Nash equilibrium, therefore w
 \begin{center}
 $\textit{a $\geq$ c}$
 \end{center}
-The conditions for a strategy to be evolutionary stable are the following:
+The conditions for a strategy to be evolutionarily stable are the following:
 \begin{center}
 $\textit{a $>$ c, or a = c and b $>$ d}$
 \end{center}
@@ -168,7 +230,7 @@ Small & 5, 5 & 1, 7\\
 \end{tabular}
 \end{center}
 \begin{center}
-	Figure 1.3: Wolves Hunting
+	Figure 1.5: Wolves Hunting
 \end{center}
 
 Now we will determine if the small size wolf is an evolutionarily stable strategy, for this we will use the pay-off formulas previously defined, and we have that in this population of wolves, the small size have a pay-off of:
@@ -207,8 +269,7 @@ Algorithms inspired in evolution for optimization and machine learning, have bee
 
 Genetic algorithm is a type of evolutionary algorithm. In general terms genetic algorithm can be seen as an imitation of biological evolution for problem solving. A genetic algorithm combines the survival of the fittest with  structured yet randomized information exchange. Genetic algorithms are no simple random walk, they exploit historical information to speculate on new search points expecting improved performance. The main research in genetic algorithms revolves around robustness, the balance between eficiency and efficacy for survival in different environments (Goldberg 1989)$\cite{golberg1989genetic}$ Genetic algorithms are blind, they perform an effective search only requiring payoff values associated with individual strings (Goldberg 1989)$\cite{golberg1989genetic}$.  Melanie 1999 mentions that although there no widely accepted definition for genetic algorithm in the evolutionary - computational community, most methods self called "genetic algorithm" have in common the use of population of chromosomes, selection according to fitness, crossover to produce new offsprings, and random mutation of the new offspring.  
 
-In our code we do not use all the characteristics described for a genetic algorithm. The characteristics for the algorithm resemble more those of evolutionary game theory. The agents are created at the beginning of the simulation and are assigned with a specific strategy which they will continue to use until they are eliminated or until the simulation ends. For this the agents created do not posses a chain of phenotypes from which they will occasionally choose and play a different strategy. In our simulation the strategy is assigned randomly and this assures that at least every possible strategy have representatives during the simulation. Additionally we use the concept of asexual reproduction, which means there is no two parents for each "newborn" agent, but instead it is copy of one of the individuals that had the higher utility(fitness) during the generation. For convenience a constant population number is maintained. The concept of mutation allows us to not always select the individual with the highest payoff to reproduce, but introduces the possibility of another agent with a less efficient strategy to appear. In addition to this concept of mutation. The use a variable called exploitation rate is introduced mainly because of the article by James March "Exploration and Exploitation in Organizational Learning" in which he names two concepts that can or should be taken in account when making a choice in the organizational aspect. But I considered these concepts valid to the context of our experiment, because the simulations made by the code are random, and though randomness should help to cope with any potential bias, the random interactions may favour one strategy over another potentially good potential strategy. March 1991 mentions that exploration includes things captured by terms such as search, variation, risk taking, experimentation, play, flexibility, discovery and innovation: whilst exploitation includes refinement, choice, production, efficiency, selection, implementation and execution (March 1991)$\cite{march1991exploration}$. In raw terms exploration implies looking for another feasible alternative, in the case of our code we can do this in any percentage of the population, or choosing the alternative that appears to generate the highest utility in every run. In the code it is implemented as  an additional decision parameter to give more possibility to other less efficient strategies during a generation to reproduce. An exploitation rate of 1 (100\%) means that only the agent with highest payoff has a possibility of reproducing itself and a 0 (0\%) means that the whole population is considered a candidate for reproducing itself for the next generation, and this decision is let to be handled by a random choice function. 
-\\\\For the purpose of this work, we will be focusing on the interaction between the same species. The model we will use is simplified.
+In our code we do not use all the characteristics described for a genetic algorithm. The characteristics for the algorithm resemble more those of evolutionary game theory. The agents are created at the beginning of the simulation and are assigned with a specific strategy which they will continue to use until they are eliminated or until the simulation ends. For this the agents created do not posses a chain of phenotypes from which they will occasionally choose and play a different strategy. In our simulation the strategy is assigned randomly and this assures that at least every possible strategy have representatives during the simulation. Additionally we use the concept of asexual reproduction, which means there is no two parents for each "newborn" agent, but instead it is copy of one of the individuals that had the higher utility(fitness) during the generation. For convenience a constant population number is maintained. The concept of mutation allows us to not always select the individual with the highest payoff to reproduce, but introduces the possibility of another agent with a less efficient strategy to appear. In addition to this concept of mutation. The use a variable called exploitation rate is introduced mainly because of the article by James March "Exploration and Exploitation in Organizational Learning" in which he names two concepts that can or should be taken in account when making a choice in the organizational aspect. But I considered these concepts valid to the context of our experiment, because the simulations made by the code are random, and though randomness should help to cope with any potential bias, the random interactions may favour one strategy over another potentially good potential strategy. March 1991 mentions that exploration includes things captured by terms such as search, variation, risk taking, experimentation, play, flexibility, discovery and innovation: whilst exploitation includes refinement, choice, production, efficiency, selection, implementation and execution (March 1991)$\cite{march1991exploration}$. In raw terms exploration implies looking for another feasible alternative, in the case of our code we can do this in any percentage of the population, or choosing the alternative that appears to generate the highest utility in every run. In the code it is implemented as  an additional decision parameter to give more possibility to other less efficient strategies during a generation to reproduce. An exploitation rate of 1 (100\%) means that only the agent with highest payoff has a possibility of reproducing itself and a 0 (0\%) means that the whole population is considered a candidate for reproducing itself for the next generation, and this decision is let to be handled by a random choice function. For the purpose of this work, we will be focusing on the interaction between the same species. The model we will use is simplified.
 
 \newpage
 \section{Software development practices}
@@ -453,6 +514,9 @@ The following tables represent some of the most well known examples of games in 
 
 Perhaps the most known is the the prisoner's dilemma which was mentioned before and it basically has two Nash equilibria strategies one in which both cooperate and the other in which non cooperate.
 \begin{center}
+Prisoner 2
+
+Prisoner1
 \begin{tabular}{|l|c|c|}
 \hline
  & Cooperate & Defect \\ 
@@ -468,8 +532,12 @@ Cooperate & 3, 3 & 0, 5\\
 \end{center}
 
 
-Matching pennies which is a pure conflict zero-sum game in which the winner of the game takes all and the loser ends up losing her share. We see that there is no scenario where both players can agree in a strategy. The equilibrium for this game is a mixed Nash equilibrium.
+Matching pennies which is a pure conflict zero-sum game in which the winner of the game takes all and the loser ends up losing her share. We see that there is no scenario where both players can agree in a strategy. Player 1 preference of choice is from tossing a coin involves getting 2 heads or 2 tails, whilst player 2 prefers having a mixed combination.  The equilibrium for this game is a mixed Nash equilibrium.
 \begin{center}
+Player 2
+
+
+Player 1
 \begin{tabular}{|l|c|c|}
 \hline
  & Heads & Tails \\ 
@@ -487,6 +555,10 @@ Heads & 1, -1 & -1, 1\\
 
 The battle of sexes game is a coordination game in which both agents cannot exchange information about what option out of two to choose, they both have a preferred strategy, but if they both choose their preferred strategy they have no payoff from it because they rather choose the same strategy and concur,  even if it has a higher payoff for one of them than the other. In the example from the table there is a representation of preferences, and we should assume that it is a couple trying to decide where to go, the female agent prefers going to the opera, whilst the male agent prefers going to watch football. But we see that if they both end up choosing different strategies from each other they get a payoff of 0. 
 \begin{center}
+Female
+
+
+Male
 \begin{tabular}{|l|c|c|}
 \hline
  & Opera & Football \\ 
@@ -586,9 +658,8 @@ Table 4.5: Configuration of simulations for prisoner's dilemma.
 
 
 \subsection{Prisoner's Dilemma}
-For Prisoner's dilemma I do not consider relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. But I do consider important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of the table 4.5 (Configuration of simulations).
-1.
-The simulation starts by assigning the following proportions to row and column agents to the strategies cooperate and defect
+For Prisoner's dilemma I do not consider relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. However, I do consider important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of the table 4.5 (Configuration of simulations).
+\\\\The simulations start by assigning the following proportions to row and column agents to the strategies cooperate and defect
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -604,75 +675,6 @@ Column Agents & 0.502 & 0.498\\
 Figure 4.6: Initial Prisoner’s Dilemma distribution for simulation 1.
 \end{center}
 
-In generation 5 it can be seen that one of the strategies is considerably dominating.
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.348 & 0.652\\
-\hline
-Column Agents & 0.24 & 0.76\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure 4.7: Generation 5 Prisoner’s Dilemma distribution for simulation 1.
-\end{center}
-
-By generation 10 it can be seen that the dominance of one strategy is almost absolute.
-
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.054 & 0.946\\
-\hline
-Column Agents & 0.074 & 0.926\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure 4.8: Generation 10 Prisoner’s Dilemma distribution for simulation 1.
-\end{center}
-
-In generation 25 it can be seen that the condition persists and the strategy defect for both types of agents dominates in frequency.
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.068 & 0.932\\
-\hline
-Column Agents & 0.054 & 0.946\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure 4.9: Generation 25 Prisoner’s Dilemma distribution for simulation 1.
-\end{center}
-
-
-In generation 50, the last generation, it be seen that the strategy defect dominates the strategy cooperate.
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.01 & 0.99\\
-\hline
-Column Agents & 0.044 & 0.956\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure 4.10: Generation 50 Prisoner’s Dilemma distribution for simulation 1.
-\end{center}
-
-2. We now run the simulation with 25 rounds and we verify the same generations as before
-
-The simulation starts almost with the same proportions as the previous simulation for the strategies of the row and column agents so there is no significant difference at this stage.
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -685,10 +687,41 @@ Column Agents & 0.524 & 0.476\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure 4.11 : Initial Prisoner’s Dilemma distribution for simulation 2.
+Figure 4.7 : Initial Prisoner’s Dilemma distribution for simulation 2.
 \end{center}
 
-In generation 5 it can be seen that the proportions changed slightly. For row agents the proportion increased and is very close to the proportion of the column agents in generation 5 from the previous simulation and for the column agents decreased and is very close to the proportion . 
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.512 & 0.488\\
+\hline
+Column Agents & 0.49 & 0.51\\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Figure 4.8: Initial Prisoner’s Dilemma distribution for simulation 3.
+\end{center}
+ The 3 simulations start with very similar proportions for each strategy for agent type. They all start close to 0.5 so there is not a significant difference at this stage.
+
+By generation 5 it can be seen that the strategy `Defect' is dominating.
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.348 & 0.652\\
+\hline
+Column Agents & 0.24 & 0.76\\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Figure 4.9: Generation 5 Prisoner’s Dilemma distribution for simulation 1.
+\end{center}
+
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -701,10 +734,44 @@ Column Agents & 0.378 & 0.622\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure 4.12: Generation 5 Prisoner’s Dilemma distribution for simulation 2.
+Figure 4.10: Generation 5 Prisoner’s Dilemma distribution for simulation 2.
 \end{center}
 
-For generation 10 it can be noticed that with respect to simulation 1, an small increase in the defect strategy for row agents, and a small decrease in the same strategy for column agents. 
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.35 & 0.65\\
+\hline
+Column Agents & 0.314 & 0.686\\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Figure 4.11: Generation 5 Prisoner’s Dilemma distribution for simulation 3.
+\end{center}
+
+For simulation 2 in generation 5 it can be seen that the proportions are slightly different than first simulation. For row agents the proportion increased and is very close to the proportion of the column agents in generation 5 from the previous simulation 1 and for the column agents decreased and is very close to the proportion for row agents in the simulation 1.
+In simulation 3 for this generation the value for strategy `Defect' for row agents is slightly higher than simulation 1 and slightly smaller than simulation 2. And for the same strategy in column agents compared to simulation 1 it decreased slightly and to simulation 2 it increased. The differences presented between simulations do not appear significant for this generation.
+
+
+By generation 10 it can be seen that the dominance of strategy `Defect'  is almost absolute in the 3 simulations.
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.054 & 0.946\\
+\hline
+Column Agents & 0.074 & 0.926\\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Figure 4.12: Generation 10 Prisoner’s Dilemma distribution for simulation 1.
+\end{center}
+
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -720,74 +787,6 @@ Column Agents & 0.094 & 0.906\\
 Figure 4.13: Generation 10 Prisoner’s Dilemma distribution for simulation 2.
 \end{center}
 
-In generation 25, the proportions increased slightly for strategy defect for both agents. But I do not consider this increment significant.
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.045 & 0.955\\
-\hline
-Column Agents & 0.047 & 0.953\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure 4.14: Generation 25 Prisoner’s Dilemma distribution for this simulation.
-\end{center}
-
-
-In generation 50, both proportions decreased slightly. Since the change in the proportions are very small I do not consider there is significant difference between using 50 or 25 rounds.
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.024 & 0.976\\
-\hline
-Column Agents & 0.08 & 0.92\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure 4.15: Generation 50 Prisoner’s Dilemma distribution for this simulation.
-\end{center}
-
-3. We now run the simulation with 5 rounds and compare with the same generations number in the previous 2 simulations.
-
-The simulation starts with proportions for strategies for row and column agents very similar to the previous 2 simulations so there is no significant difference at this stage.
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.512 & 0.488\\
-\hline
-Column Agents & 0.49 & 0.51\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure 4.16: Initial Prisoner’s Dilemma distribution for simulation 3.
-\end{center}
-
- For generation 5 the value for strategy defect for row agents is slightly higher than simulation 1 and slightly smaller than simulation 2. And for the same strategy in column agents compared to simulation 1 it decreased slightly and to simulation 2 it increased. The differences do not appear to be significant.
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.35 & 0.65\\
-\hline
-Column Agents & 0.314 & 0.686\\
-\hline
-\end{tabular}
-\end{center}
-\begin{center}
-Figure 4.17: Generation 5 Prisoner’s Dilemma distribution for simulation 3.
-\end{center}
-
-In generation 10 the strategy defect for row agents is slightly smaller with respect to the value in simulation 1 and 2. For the same strategy in column agents it increased slightly when compared to simulation 1 and 2.
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -800,10 +799,45 @@ Column Agents & 0.07 & 0.93\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure 4.18: Generation 10 Prisoner’s Dilemma distribution for simulation 3.
+Figure 4.14: Generation 10 Prisoner’s Dilemma distribution for simulation 3.
+\end{center}
+In simulation 2 for generation 10  with respect to simulation 1, a small increase in the strategy `Defect'  for row agents, and a small decrease in the same strategy for column agents. For simulation 3 strategy `Defect' for row agents is slightly decreased with respect to the value in simulation 1 and 2. For the same strategy in column agents it increased slightly when compared to simulation 1 and 2.
+In this generation for the 3 different simulations, the value for strategy `Defect' are above 0.9, but again there is no obvious pattern so the variations may be given by the effect of the randomized variables for each simulation.
+
+
+In generation 25 it can be seen that the condition persists and the strategy `Defect' for both types of agents dominates in frequency.
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.068 & 0.932\\
+\hline
+Column Agents & 0.054 & 0.946\\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Figure 4.15: Generation 25 Prisoner’s Dilemma distribution for simulation 1.
 \end{center}
 
-In generation 25, are slightly smaller for the strategy defect for row agents than previous simulations. For same strategy for column agents is slightly higher than values previous simulations.
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.045 & 0.955\\
+\hline
+Column Agents & 0.047 & 0.953\\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Figure 4.16: Generation 25 Prisoner’s Dilemma distribution for simulation 2.
+\end{center}
+
+
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -816,11 +850,52 @@ Column Agents & 0.054 & 0.972\\
 \end{tabular}
 \end{center}
 \begin{center}
-Figure 4.19: Generation 25 Prisoner’s Dilemma distribution for this simulation 3.
+Figure 4.17: Generation 25 Prisoner’s Dilemma distribution for this simulation 3.
 \end{center}
 
+In simulation 2, the proportions increased slightly for strategy defect for both agents in relation to simulation 1. For simulation 3 the proportions are slightly smaller for the strategy `Defect' for row agents than in simulations 1 and 2. For same strategy in column agents is slightly higher than values from simulations 1 and 2. Still all the values for strategy `Defect' are above 0.9.
 
-In generation 50, value for row agent in strategy defect is slightly higher compared to simulation 2  and smaller from simulation 1. For column agents for the same strategy the value is higher in comparison to the values from the previous simulations.
+For generation 50, the last generation we see that strategy `Defect' dominates the strategy `Cooperate' for all simulations.The graphs from the 3 different simulations are presented.
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.01 & 0.99\\
+\hline
+Column Agents & 0.044 & 0.956\\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Figure 4.18: Generation 50 Prisoner’s Dilemma distribution for simulation 1.
+\end{center}
+\begin{center}
+	\includegraphics[scale=0.5]{1pd50}
+
+Figure ????: Prisoner's dilemma 50 rounds per generation.
+\end{center}
+
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.024 & 0.976\\
+\hline
+Column Agents & 0.08 & 0.92\\
+\hline
+\end{tabular}
+\end{center}
+\begin{center}
+Figure 4.19: Generation 50 Prisoner’s Dilemma distribution for this simulation.
+\end{center}
+\begin{center}
+	\includegraphics[scale=0.5]{2pd25}
+
+Figure 4.20: Prisoner's Dilemma 25 rounds per generation.
+\end{center}
+
 \begin{center}
 \begin{tabular}{|l|c|c|}
 \hline
@@ -835,15 +910,250 @@ Column Agents & 0.028 & 0.972\\
 \begin{center}
 Figure 4.20: Generation 50 Prisoner’s Dilemma distribution for this simulation 3.
 \end{center}
+\begin{center}
+	\includegraphics[scale=0.5]{3pd5}
 
-After the 3 runs for the simulations, there does not appear to be specific pattern when using the different values for the number of rounds used. For this reason in prisoner's dilemma simulations we will use 5 rounds per generation.
+Figure 4.21: Prisoner's Dilemma 5 rounds per generation.
+\end{center}
+Simulation 2, both proportions decreased slightly. Since the changes in the proportions are very small I do not consider there is significant difference between using 50 or 25 rounds. For simulation 3 the value for row agent in strategy `Defect' is slightly higher compared to simulation 2  and smaller from the one in simulation 1. For column agents for the same strategy the value is higher in comparison to the values from simulations 1 and 2.
 
+
+After the 3 runs for the simulations, we can see in the graphs from each simulation that they all have a similar pattern. And after analysing the different specific points (generations), the variations between them do not appear to be caused by the number of rounds. The strategies through the generation have a similar behaviour, the strategy `Defect' for row and column agents dominate the strategy `Cooperate'. The strategy `Cooperate' in the 3 different simulations starts declining from as early as the second generation, and around generation 10 it reaches the lowest values continuing to oscillate between 0.02 and 0.06 for the rest of the simulation. Again it is important to mention that the length of the simulations in terms of generations do not appear to be very relevant, since we can see that the behaviour for both strategies is very similar from generation 10 to generation 50 (when the simulation ends). On the other hand, we can see that the behaviour for the strategies is cyclical, with not a very clear pattern. For this reason in prisoner's dilemma simulations the configuration with 5 rounds per generation will used.
+When there is a small increment in the `Cooperate' or `Defect' is given to the mutation rate, that is allowing more of either to appear, but since it is very low (0.1) it does not change the behaviour significantly. This is how the graphs behave without mutation rate.
+
+\begin{center}
+	\includegraphics[scale=0.5]{1pdno}
+	
+Figure 4.22: Prisoner's Dilemma 50 rounds per generation mutation rate 0.
+	
+	\includegraphics[scale=0.5]{2pdno}
+	
+Figure 4.23: Prisoner's Dilemma 25 rounds per generation mutation rate 0.
+
+	\includegraphics[scale=0.5]{3pdno}
+
+Figure 4.24: Prisoner's Dilemma 5 rounds per generation mutation rate 0.
+\end{center}
+These graphs show how mutation rate allows the less effective strategy `Cooperate' to be present throughout the generations, and without mutation they will just disappear as early as the 5th generation. 
 Let us continue to try the different combinations of values that are shown in the table 4.5 (Configuration of simulations). 
 
-
-
-
+\newpage
 \section{Results}
+``Prisoner's Dilemma''
+For simulations 3, 4 and 5 we have constant values for mutation rate with 0.1 and exploitation rate of 1. The resulting graphs from simulations 3, 4, and 5 are presented. It is important to note that in these first 3 simulations the value that varies is death rate, and that the smaller the death rate, the gap between strategies `Defect' and `Cooperate' is larger.
+
+\begin{center}
+	\includegraphics[scale=0.5]{3pd5}
+	
+Figure 5.1: Prisoner's Dilemma simulation 3.
+	
+	\includegraphics[scale=0.5]{4pd5}
+	
+Figure 5.2: Prisoner's Dilemma simulation 4.
+
+	\includegraphics[scale=0.5]{5pd5}
+
+Figure 5.3: Prisoner's Dilemma simulation 5.
+\end{center}
+Graphs 5, 6 and 7  have a high death rate of 0.9, this means that it allows the creation off 90\% of new agents each generation while eliminating the least efficient. These three graphs have mutation rates of 0.1, 0.5 and 0.9 respectively with an exploitation rate of 1. And the behaviour can be seen in the following graphs.
+\begin{center}
+	\includegraphics[scale=0.5]{5pd5}
+	
+Figure 5.4: Prisoner's Dilemma simulation 5.
+	
+	\includegraphics[scale=0.5]{6pd5}
+	
+Figure 5.5: Prisoner's Dilemma simulation 6.
+
+	\includegraphics[scale=0.5]{7pd5}
+
+Figure 5.6: Prisoner's Dilemma simulation 7.
+\end{center}
+It can be seen that when the mutation rate is lower the variation is higher, even if the proportions are close to 0.5. There are evident high peaks and low valleys  for both strategies. In the three simulations the strategy `Defect' dominates in general but in simulation 5  for generations 5, 7, 17, 23, 27, 34, 36 and 48, the strategy `Cooperate' briefly dominates `Defect' in fact it only dominates in this generations in the previous of next generation the values are lower. This brief dominance from `Cooperate' may be given to a higher interaction between this type of strategy between each other, in consequence they accumulate a higher utility which allows them to reproduce in the following generation. Because of the high death rate they reproduce quickly. But this means that in the following generation there is a higher probability for `Defect' to encounter with `Cooperate', so `Defect' accumulates more utility and  `Cooperate' quickly dies out. In the other 2 simulations we see how as the mutation level increases the proportion of the strategies become more stable. By looking at the graphs 1, 8 and 9 have a similar behaviour where as the mutation rate increases, less peaks and valleys can be seen.
+
+For graphs 10, 11 and 12 we have an incrementing death rate of 0.1, 0.5 and 0.9 respectively. For all 3 simulations there are constant values for mutation rate of 0.1 and exploitation rate of 0.5. As the death rate increases, as expected the gap between the number of strategies representing `Defect' and `Cooperate' reduces. But it can also be seen that as the as death rate increases given the value of 0.5 for exploitation rate the peaks and valleys increase, they do not get to the point where `Cooperate' dominates `Defect', but it is important to note that with a low mutation rate and a lower exploitation rate than 1 which in these cases is 0.5 strategies that earn lower utility during the interaction are allowed to reproduce in the same probability as the one with highest utility. 
+\begin{center}
+	\includegraphics[scale=0.5]{10pd5}
+	
+Figure 5.7: Prisoner's Dilemma simulation 10.
+	
+	\includegraphics[scale=0.5]{11pd5}
+	
+Figure 5.8: Prisoner's Dilemma simulation 11.
+
+	\includegraphics[scale=0.5]{12pd5}
+
+Figure 5.9: Prisoner's Dilemma simulation 12.
+\end{center}
+When comparing these graphs with the graphs from simulation 3, 4 and 5 which have an increasing value of death rate and a death rate of 0.1 they behave in a similar way. But when comparing graphs from simulation 5 and 12 with each other. They both have a death rate of 0.9 and a mutation rate of 0.1, but a different exploitation rate value of 1 and 0.5 respectively. We can see that since a lower exploitation rate makes other strategies reproduce with the same probability as the strategy with the highest accumulated utility from the generation, a larger gap between strategies is present. Meaning that even if `Cooperate' accumulates a high utility, if there is `Defect' strategy within the 50\% of the population that is allowed to reproduce, it has a possibility to reproduce. This `randomization' gives an equilibrium between the presence of strategies in the population. Simulations 19, 20 and 21 have the same values as these other groups of simulations, but an exploitation rate of 0.1, which makes makes graph from simulation 21 behave very similar to the graph from simulation 12.
+
+For the graphs from simulations 16, 17 and 18 the value that changes is death rate 0.1, 0.5 and 0.9 respectively. With constant values of mutation rate with 0.9 and exploitation rate 0.5. As we have seen before the effect of the death rate reflects with a reducing gap between the type of strategies as death rate increases. 
+ 
+
+\begin{center}
+	\includegraphics[scale=0.5]{16pd5}
+	
+Figure 5.10: Prisoner's Dilemma simulation 16.
+	
+	\includegraphics[scale=0.5]{17pd5}
+	
+Figure 5.11: Prisoner's Dilemma simulation 17.
+
+	\includegraphics[scale=0.5]{18pd5}
+
+Figure 5.12: Prisoner's Dilemma simulation 18.
+\end{center}
+
+But we can see a particular characteristic in the graph for simulation 16, it reaches the lowest value for `Cooperate' strategy later than other simulations with the same death rate. Graphs from simulations 3, 8, 9, 10, 13, 19 and 22 they all reach the lowest value for `Cooperate' around generation 10. Simulation 16 reaches it closer to generation 20, we see a similar behaviour for simulation 25. What this two simulations have in common other than death rate value, is their mutation rate is 0.9. Since mutation rate allows any strategy to reproduce except for the agent with strategy with that accumulated the highest utility, this delays the `Cooperate' strategy for reaching its lowest value.		  
+The remaining simulations, behave in a similar way to the one that have been discussed  so far. It can be seen that the variable that acts as an enabler for the other variables to have an effect is the death rate. 
+
+
+
+
+As we calculated at the before in this work. We can find the Nash Equilibrium for the prisoner's dilemma game, by looking at the normal form table and select the best responses for each player. We can see that the results from the simulations gives us the strategy ``Defect'' as stable and this is also a Nash equilibrium as we can see in the normal form table for the game.
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect\\ 
+\hline
+Cooperate & 3, 3 & 0, 5\\
+\hline
+Defect & 5, 0 & \underline{1}, \underline{1}\\
+\hline
+\end{tabular}
+
+Figure ???.???: Nash equilibrium with best responses.
+\end{center}
+
+Now let us find the ESS for the prisoner's dilemma game. Earlier it was explained how to calculate the evolutionarily stable strategy (ESS) when a mutant strategy appears in the population in the proportion $\epsilon$. We will assume the strategy  `Cooperate' is the population and the invader is the strategy `Defect'. Thus we have that the payoff for the strategy `Cooperate' is the following:
+\begin{equation}
+(1-{\epsilon})3 + 0{\epsilon} = 3 - 3{\epsilon}
+\end{equation}
+And the payoff for the strategy `Defect' is:
+\begin{equation}
+(1-{\epsilon})5 + 1{\epsilon} = 5 - 4{\epsilon}
+\end{equation}
+We can see that the strategy `Defect' appears to be greater than `Cooperate'. Now since our simulation every time gives almost equal starting proportions to each strategy we will assume that the `invading' strategy `Defect' appears in a proportion of $\epsilon$=0.5. And we have the following:
+\begin{equation}
+3 - 3(0.5) = 1.5
+\end{equation}
+And for the strategy `Defect' is:
+\begin{equation}
+ 5 - 4(0.5) = 3
+\end{equation}
+So we have that the payoff for `Defect' is greater than the payoff for `Cooperate' thus we can say that `Cooperate' is not an evolutionarily stable strategy.
+Now we check if the strategy `Defect' is evolutionarily stable. And therefore we assume that `Cooperate is the invader. We can see that it appears that `Defect' might be evolutionarily stable given the previous test. But we should check this in the same way. We first have the expected payoff of the strategy `Defect':
+\begin{equation}
+(1-{\epsilon})1 + 5{\epsilon} = 1 + 4{\epsilon}
+\end{equation}
+And the payoff for the strategy `Defect' is:
+\begin{equation}
+(1-{\epsilon})0 + 3{\epsilon} =  3{\epsilon}
+\end{equation}
+Again it appears that the strategy `Defect' has a greater expected payoff than `Cooperate'. We assume that the `invading' strategy `Cooperate' appears in a proportion of $\epsilon$=0.5. And we have the following for the strategy `Defect':
+\begin{equation}
+1 +  4(0.5) = 3
+\end{equation}
+And for the strategy `Cooperate' is:
+\begin{equation}
+ 3(0.5) = 1.5
+\end{equation}
+So we see that again the strategy`Defect' has a higher expected payoff, so it is an evolutionarily stable strategy (ESS).
+With this we can see that the strategy `Defect' is both a Nash equilibrium and an ESS. And this supports the results we have from the simulation.
+
+
+``Matching Pennies''
+
+We can find the Nash Equilibrium for the matching pennies game, we cannot calculate it just by looking at the normal form table and selecting the best responses since this game has a mixed Nash equilibrium.
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect\\ 
+\hline
+Cooperate & 1, -1 & -1, 1\\
+\hline
+Defect & -1, 1 & 1, -1\\
+\hline
+\end{tabular}
+
+Figure ???.???: Matching pennies bimatrix payoff.
+\end{center}
+
+So we calculate the mixed Nash equilibrium by making equal the expected payoff  when playing heads to the expected payoff of playing tails. We will assume that the probability for player 1 of playing heads for player one is $\sigma$ and for playing tails 1 - $\sigma$, resulting in the following:
+\begin{equation}
+(-1)(\sigma) + (1 - \sigma) = (1)(\sigma) + (-1)(1 - \sigma)
+\end{equation}
+\begin{equation}
+-4 \sigma = -2
+\end{equation}
+\begin{equation}
+\sigma = 1/2
+\end{equation}
+This means that player 1 will play heads 1/2 of the times, and also means she will be playing tails 1/2 also. And now we calculate the probability of playing heads for player 2 with probability $\sigma$ and tails with probability 1 - $\sigma$.
+
+\begin{equation}
+(1)(\sigma) + (1 - \sigma)(-1) = (-1)(\sigma) + (1)(1 - \sigma)
+\end{equation}
+\begin{equation}
+4 \sigma = 2
+\end{equation}
+\begin{equation}
+\sigma = 1/2
+\end{equation}
+
+This means that player 2 when playing against player 1 will play heads  1/2  of the times and in consequence play tails in the other 1/2 of the times. 
+This means that the Nash equilibria is when:
+\begin{equation}
+((1/2, 1/2), (1/2, 1/2))
+\end{equation}
+
+
+Now let us find the ESS for the matching pennies game. In the same way we calculated the prisoner's dilemma ESS. We will assume the strategy  `Heads' is the population and the invader is the strategy `Tails'. Thus we have that the payoff for the strategy `Heads' is the following:
+\begin{equation}
+(1-{\epsilon})(1) + (-1){\epsilon} = 1 - 2{\epsilon}
+\end{equation}
+And the payoff for the strategy `Tails' is:
+\begin{equation}
+(1-{\epsilon})(-1) + (1){\epsilon} = 2{\epsilon} - 1
+\end{equation}
+We can see that both strategies appear to be equivalent unless there is a very small value of $\epsilon$.But since our simulation every time gives almost equal starting proportions to each strategy we will assume that the `invading' strategy `Tails' appears in a proportion of $\epsilon$=0.5. And we calculate as follows:
+\begin{equation}
+1- 2(0.5) = 0
+\end{equation}
+And for the strategy `Defect' is:
+\begin{equation}
+ 2(0.5)- 1 = 0
+\end{equation}
+So we have that the expected payoff for both is 0 thus we can say that `Heads' is not an evolutionarily stable strategy, Given that it does not dominate `Tails'.
+Now we check if the strategy `Tails' is evolutionarily stable. And therefore we assume that `Heads' is the invader. We will check the same way. We first have the expected payoff of the strategy `Tails':
+\begin{equation}
+(1-{\epsilon})(-1) + (1)({\epsilon}) = 2{\epsilon} -1
+\end{equation}
+And the payoff for the strategy `Heads' is:
+\begin{equation}
+(1-{\epsilon})(1) + (-1)({\epsilon}) =  1 - 2{\epsilon}
+\end{equation}
+Again it appears that they are equal. So we can see that `Tails' is not an ESS either. But we calculate it anyway assuming that the `invading' strategy `Heads' appears in a proportion of $\epsilon$=0.5. And we have the following for the strategy `Tails':
+\begin{equation}
+1 -  2(0.5) = 0
+\end{equation}
+And for the strategy `Heads' is:
+\begin{equation}
+ 2(0.5) - 1 = 0
+\end{equation}
+So we see that again the strategy `Tails' is not an ESS either. And this explains the behaviour in our graph, how through time both strategies appear to interact and oscilate in the middle (0.5)
+
+
+
+
+
+
 
 \newpage
 \bibliographystyle{unsrt}
