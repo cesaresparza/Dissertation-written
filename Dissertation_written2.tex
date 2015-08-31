@@ -1,0 +1,133 @@
+\documentclass[12pt]{book} 
+\usepackage[a4paper]{geometry}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{10} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{10}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+\usepackage{listings}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+language=Python,
+basicstyle=\ttm,
+otherkeywords={self, run, kill_agents,reproduce_agents,random.choice,random.random,copy.deepcopy, assign_strategies,randomly_pair_agents,strategies_to_utilities,interact},             % Add keywords here
+keywordstyle=\ttb\color{deepblue},
+emph={Genetic, Agents, BiMatrixRandomEnv,__init__,Simulation},          % Custom highlighting
+emphstyle=\ttb\color{deepred},    % Custom highlighting style
+stringstyle=\color{deepgreen},
+frame=tb,                         % Any extra options here
+showstringspaces=false            % 
+}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+%Tikz package
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+\usetikzlibrary{calc}
+
+% Define block styles
+\tikzstyle{envblock} = [rectangle, draw, fill=gray!20, 
+    text width=13em, text centered, rounded corners, minimum height=4cm]
+\tikzstyle{algblock} = [rectangle, draw, fill=purple!40, 
+    text width=14em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{ageblock} = [rectangle, draw, fill=orange!20, 
+    text width=14em, text centered, rounded corners, minimum height=4em]
+\tikzstyle{simblock} = [rectangle, draw, fill=green!30, 
+    text width=13.5em, text centered, rounded corners, minimum height=6em]
+\tikzstyle{geneblock} = [rectangle, draw, fill=green!30, 
+    text width=12em, text centered, rounded corners, minimum height=2em]
+\tikzstyle{line} = [draw, -latex']
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{graphicx} 
+\graphicspath{ {images/} }
+\usepackage{float}
+
+\usepackage{fullpage}
+\usepackage[parfill]{parskip}
+
+
+\newpage
+\begin{document}
+\thispagestyle{empty}
+\title{
+{Normal form games}\\
+{Cardiff University}\\
+{MSc Operation Research and applied statistics}\\
+{Dissertation project}\\
+}
+
+\author{Cesar Ivan Esparza Soto (esparzasotoci@cf.ac.uk)}
+\date{11 of September of 2015}
+\maketitle
+
+\thispagestyle{empty}
+\chapter*{Abstract}
+The literature review can be found in the following section. Some history of Game theory will be mentioned, Nash equilibrium is briefly mentioned but still important since the concept of equilibrium is important to discuss in game theory, simple concept about normal form games, history of evolutionary game theory and an explanation of what evolutionary game theory is and the introduction of the concept of equilibrium in evolutionary game theory which is known as evolutionary stable strategies(ESS), and a brief explanation of the similarities with Nash equilibrium.
+
+\thispagestyle{empty}
+\chapter*{Dedication}
+To my family
+\thispagestyle{empty}
+\chapter*{Declaration}
+I declare that..
+\thispagestyle{empty}
+\chapter*{Acknowledgements}
+I want to thank..
+
+\newpage
+\thispagestyle{empty}
+\tableofcontents
+
+\newpage
+\thispagestyle{empty}
+\listoftables
+
+\newpage
+\thispagestyle{empty}
+\listoffigures
+
+\newpage
+\maketitle
+ 
+\newpage
+\pagenumbering{arabic}
+\maketitle
+
+\chapter{Introduction}
+\input{chapters/introduction}
+
+\chapter{Literature Review}
+\input{chapters/chapter02}
+
+\chapter{Software development practices}
+\input{chapters/chapter03}
+
+\chapter{Library}
+\input{chapters/chapter04}
+
+\chapter{Application of the code}
+\input{chapters/chapter05}
+
+\appendix
+\chapter{Appendix}
+\input{chapters/appendix}
+
+\newpage
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
+\end{document}
