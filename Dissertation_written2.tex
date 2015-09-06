@@ -1,5 +1,13 @@
-\documentclass[12pt]{book} 
-\usepackage[a4paper]{geometry}
+\documentclass[12pt]{report} 
+\usepackage
+[
+       a4paper,
+        left=8in,
+        right=1.0in,
+        top=1.0in,
+        bottom=1.0in,
+]
+{geometry}
 \usepackage{caption}
 \usepackage{subcaption}
 
@@ -24,12 +32,21 @@ keywordstyle=\ttb\color{deepblue},
 emph={Genetic, Agents, BiMatrixRandomEnv,__init__,Simulation},          % Custom highlighting
 emphstyle=\ttb\color{deepred},    % Custom highlighting style
 stringstyle=\color{deepgreen},
-frame=tb,                         % Any extra options here
-showstringspaces=false            % 
+breaklines=true,
+numbers=left,
+numberstyle=\footnotesize,
+stepnumber=1,
+numbersep=8pt,
+showstringspaces=false            
 }}
 
 % Python for inline
 \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+\pythonstyle
+\lstinputlisting[#1]{#2}}}
 
 %Tikz package
 \usepackage{tikz}
@@ -62,17 +79,11 @@ showstringspaces=false            %
 
 \newpage
 \begin{document}
-\thispagestyle{empty}
-\title{
-{Normal form games}\\
-{Cardiff University}\\
-{MSc Operation Research and applied statistics}\\
-{Dissertation project}\\
-}
 
-\author{Cesar Ivan Esparza Soto (esparzasotoci@cf.ac.uk)}
-\date{11 of September of 2015}
-\maketitle
+\thispagestyle{empty}
+\input{chapters/titlepage}
+
+
 
 \thispagestyle{empty}
 \chapter*{Abstract}
@@ -99,13 +110,9 @@ I want to thank..
 \newpage
 \thispagestyle{empty}
 \listoffigures
-
-\newpage
-\maketitle
  
 \newpage
 \pagenumbering{arabic}
-\maketitle
 
 \chapter{Introduction}
 \input{chapters/introduction}
@@ -122,9 +129,27 @@ I want to thank..
 \chapter{Application of the code}
 \input{chapters/chapter05}
 
+\chapter{Conclusion and Further work}
+\input{chapters/chapter06}
+
 \appendix
-\chapter{Appendix}
-\input{chapters/appendix}
+\chapter{Git commands}
+\input{chapters/appendixa}
+
+\chapter{Matching pennies simulation table}
+\input{chapters/appendixb}
+
+\chapter{Battle of sexes simulation table}
+\input{chapters/appendixc}
+
+\chapter{Hawk-dove simulation table}
+\input{chapters/appendixd}
+
+\chapter{`Axelrod' package strategies}
+\input{chapters/appendixe}
+
+\chapter{Code}
+\input{chapters/appendixz}
 
 \newpage
 \bibliographystyle{unsrt}
