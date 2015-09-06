@@ -11,6 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
    Index
+   startingcode.rst
 
 This is the documentation for ablearn package.
 
