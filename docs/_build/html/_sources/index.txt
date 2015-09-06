@@ -11,10 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
    Index
-<<<<<<< HEAD
-=======
    startingcode
->>>>>>> august31
 
 This is the documentation for ablearn package.
 
