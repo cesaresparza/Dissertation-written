@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
    Index
    startingcode
+   algo
 
 This is the documentation for ablearn package.
 
