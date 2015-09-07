@@ -12,11 +12,9 @@ Contents:
    :maxdepth: 2
    Index
    startingcode
-<<<<<<< HEAD
    algo
 =======
    some
->>>>>>> august31
 
 This is the documentation for ablearn package.
 
