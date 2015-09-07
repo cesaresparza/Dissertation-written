@@ -1,6 +1,6 @@
 Ablearn package
 ===============
-Is a package build with the purpose
+The current version of ``ablearn`` uses a genetic algorithm to solve the normal form games in an environment where agents interact randomly between each other. 
 
 
 -------------
