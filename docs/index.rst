@@ -10,10 +10,9 @@ Contents:
 
 .. toctree::
    :maxdepth: 2
-   Index
+   
    startingcode
    algo
-=======
    some
 
 This is the documentation for ablearn package.
