@@ -3,9 +3,9 @@ Ablearn package
 Is a package build with the purpose
 
 
-===========
+
 Installing
-===========
+^^^^^^^^^^
 
 To use ablearn, first it is required to have Python installed in your computer.
 
@@ -13,9 +13,9 @@ To use ablearn, first it is required to have Python installed in your computer.
 
 
 
-=========================
+
 Using `ablearn` in Python
-=========================
+^^^^^^^^^^^^^^^^^^^^^^^^^
 The first step after installing, is to open the Python IDE. And import ablearn
 package.::
 
