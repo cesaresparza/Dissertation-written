@@ -1,11 +1,11 @@
 Ablearn package
-=============
+===============
 Is a package build with the purpose
 
 
 
 Installing
-^^^^^^^^^^
+-------------
 
 To use ablearn, first it is required to have Python installed in your computer.
 
