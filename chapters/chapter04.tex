@@ -1,0 +1,250 @@
+\section{Library (Package: Ablearn)}\label{library_section}
+An overview of the library built for this package is given in this section, explaining how the different modules contained work. The name chosen for the package is 'ablearn' and it stands for agent-based learning, the intention is to build a package that can be used to solve different types of game theory problems and for different people to be able to contribute for the expansion of this package in the future and therefore have a wider range in application at some point in time.
+The library is the file that contains all the components of the code. Because of the object oriented properties that Python facilitates, the code is segmented into 6 modules.Two of these modules will not be commented on (`tests' and `axl')  information about them will be found in the DOCUMENTATION WEBPAGE and a link to it can be found in appendix $\ref{app:codemodules}$. According to their function the order in describing the remaining modules is not relevant. The word `simulation' will be used to represent when the code is `run', in addition to the meaning it will have when describing the `Simulation module'.
+
+When building a package in a modular form, a main directory for the package has to be created. Inside this directory subdirectories for each module have to be contained and an additional file for python to be able to execute the directory. This additional file is should be named \_\_init\_\_ with extension .py, and it should contain import commands for the subdirectories that the package will execute. An example of the \_\_init\_\_ file for `ablearn' package can be found in appendix $\ref{app:codemodules}$. Each subdirectory also contains an \_\_init\_\_.py file this file is needed so that python can identify which subdirectories are required to be executed in the package. Each subdirectory as mentioned before representsa module for the package. In this project, each module has the code to create a new class, from which an instance or several instances will be created and will interact during the simulations (runs of the program). 
+
+\subsection{Population module}
+The population module is intended to create agents that will be used in the simulation. The reason of being called agents instead of the classic name player, is because of the intended focus in agent-based modeling as mentioned before. It was built in a very generic way so it can be used, if possible, for any other type of interaction and algorithm in the future. The basic information contained in this class is very generic and it's attributes can be modified when using it. 
+This module contains the instructions to create a $\pythoninline{class Agent}$ the class has an initializatin($\pythoninline{__init__}$) method that takes as parameters strategies, utility and the possibility to add a label. After the initialization, another method is presented $\pythoninline{increment\_utility}$ which is set for incrementing the agent’s utility, the criteria for this $\pythoninline{increment\_utility}$ will be explained in the `Environment' module.
+
+\begin{figure}[H]
+\begin{center}
+\begin{itemize}
+	\item $\pythoninline{Strategies:}$ Each created agent will be assigned a strategy
+	\item $\pythoninline{Utility:}$ The utility each created agent generates after each interaction with another agent.
+	\item $\pythoninline{Label:}$ The possibility of adding a label to each created agent, to track their performance.
+\end{itemize}
+\begin{tikzpicture}
+    \node [ageblock] (agent) at (0,0) [draw, fill=orange!80] {\textbf{Agent} \\ 
+	``This class is for creating empty agents, with the attributes: strategies, utility and label(optional)''};
+    \node [ageblock, below of=agent, node distance=5cm](increment)[draw] {\textbf{Increment utility} \\
+	``This method will increment the accumulated utility for each agent in an amount that will be determined by the payoff each 				type of agent gets in an interaction''};
+    % Draw edges   
+    \path[line,dashed](agent) -- (increment);       
+
+\end{tikzpicture}
+\caption{ Diagram of population module.}
+\label{fig:diagage}
+\end{center}
+\end{figure}
+
+\subsection{Environments module}
+The environments module for this project is the representation of the environment in which the agents will interact.The environment created is called $\pythoninline{bimatrix\_random\_environment}$ and has only two characteristics. It is set to make two agents interact by pairing them randomly and it also sets the rules that these paired agents use to interact. Some of the methods contained in this module make use of the ‘random’ module from python. This module is set to be imported when the environment module is executed. 
+
+$\textbf{Bimatrix\_random\_environment}$ creates a $\pythoninline{class BiMatrixRandomEnv}$, named after the characteristics of the environment of interaction which are that the data is given in the form of a bimatrix and that the agents will interact in a random way. This class has an initialization ( $\pythoninline{\_\_init\_\_}$) method that takes as parameters $\pythoninline{number\_of\_agents}$ and $\pythoninline{bimatrix}$, within the initialization some variables are defined, these variables along with the parameters will now be explained:
+
+\begin{itemize}
+\item $\pythoninline{ number\_of\_agents:}$ Input by user, total population of agents regardless of the type of agent(i.e. row agent or column agent).
+\item $\pythoninline{bimatrix}$ Input by user, bimatrix of payoffs(can be symmetric or assymetric).
+\item $\pythoninline{number\_of\_row\_agents:}$ Result from dividing by “2” the previously input value number\_of\_agents. And gives the number of row agents.
+\item $\pythoninline{number\_of\_col\_agents:}$ Result from dividing by “2” the previously input value number\_of\_agents. And gives the number of column agents.
+\item $\pythoninline{number\_of\_row\_strategies:}$ Number of strategies that will be available for row agents. Calculated by counting how many rows the bimatrix has.
+\item $\pythoninline{number\_of\_col\_strategies:}$ Number of strategies that will be available for column agents. Calculated by counting how many columns the bimatrix has.
+\item $\pythoninline{row\_strategies:}$ List containing the available strategies for row agents.
+\item $\pythoninline{col\_strategies:}$ List containing the available strategies for column agents.
+\end{itemize}
+
+After the initialization, a method $\pythoninline{interact}$ is defined. This method first defines a variable called $\pythoninline{pairs}$ which is assigned to a function $\pythoninline{randomly\_pair\_agents}$ that will be explained later. It also contains a $\pythoninline{``for'' loop}$ this loop within other things contains a variable which is set to a function $\pythoninline{strategies\_to\_utilities}$ which will be explained, variables in the $\textbf{``for'' loop}$ are the following:
+
+\begin{itemize}
+\item $\pythoninline{ra}$: Used in the code during for loops instead of $\pythoninline{row\_agents}$.
+\item $\pythoninline{ca}$: Used in the code during for loops instead of $\pythoninline{col\_agents}$.
+\item $\pythoninline{pairs}$: Variable created to represent the group of paired $\pythoninline{row\_agents}$ with $\pythoninline{col\_agents}$.
+\item $\pythoninline{utility}$: Variable used to obtain the utilities resulting from the interaction from each pair of agents ($\textbf{row\_agents and col\_agents}$).
+\item $\pythoninline{Agent.increment\_utility}$: The increment utility function is defined in the population model. The structure for in this “for” loop is as follows:
+\\ agent.increment\_utility(utility[x]) and what it does is assign the function increment utility to an agent can be $\pythoninline{ra (row\_agent)}$ or$\pythoninline{ ca (col\_agent)}$, the $\pythoninline{utility}$ in parenthesis was assigned in the previous variable, and it is only calling the value with the position x in the list. Given that we only have 2 types of players (we are using a bimatrix) x can be either 0 or 1.
+\end{itemize}
+
+Following $\pythoninline{interact}$ the method previously mentioned $\pythoninline{strategies\_to\_utilities}$ is defined. This method is in charge of obtaining the specific pair of utilities (assigned to row and column) from the $\pythoninline{bimatrix}$. It then returns these values to the $\pythoninline{utility}$ variable in the $\pythoninline{interact}$ method and interact uses it to assign the utilities to each agent.
+
+After $\pythoninline{strategies\_to\_utilities}$ the method $\pythoninline{randomly\_pair\_agents}$ is defined. This method is used by $\pythoninline{interact}$ too, and what it does is that the previously created row and column agents that are contained in lists are randomly selected (one of each type) and then paired so they can interact. The following diagram shows in general terms the structure of the bimatrix random environment module:
+
+\begin{figure}[H]
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[node distance = 2cm, auto]
+    \node [envblock, node distance=4cm] (bimatrix) [draw, fill=gray!80,text=white] {\textbf{BiMatrixRandomEnv} \\
+    ``This class is the type of environment in which the row agents and column agents will interact, which is a bimatrix with random interaction. The attributes the class takes are the number of agents and the bimatrix of the resulting payoffs from interactions.''};
+    \node [envblock, below of=bimatrix, node distance=6cm] (interact) [draw] {\textbf{interact} \\
+	``With this method, agents interact and get a resulting utility from the interaction''};
+    \node [envblock, left of=interact, node distance=6cm](utilities)[draw] {\textbf{strategies\_to\_utilities} \\
+	``This method determines the utility from each interaction of paired of agents''};
+    \node [envblock, right of=interact, node distance=6cm] (pairs) [draw] {\textbf{randomly\_pair\_agents} \\
+	``With this method random row agents are paired with random column agents, to then interact in the interact method.''};  
+    % Draw edges
+    \draw [->, thick, black!100] (bimatrix) edge [out=270, in=90] node[left] {1}  (interact);
+    \draw [->, thick, dotted, black!100] (interact) edge [out=130, in=50]node[above] {4} (utilities);
+    \draw [->, thick,dotted, black!100] (interact) edge [out=50, in=130] node[above] {2} (pairs);
+    \draw [->, thick, dotted, black!100] (utilities) edge [out=310, in=230] node[below] {5} (interact);
+    \draw [->, thick,dotted, black!100] (pairs) edge [out=230, in=310] node[below] {3} (interact);
+ \end{tikzpicture}}
+\caption{ Diagram of environments module.}
+\label{fig:diagenv}
+\end{figure}
+
+\newpage
+\subsection{Algorithms module}
+The $\textbf{algorithms module}$ is a module that is meant to contain different algorithms by which the created $\textbf{agents}$ from $\textbf{population module}$ will be processed. For this project $\textbf{algorithms module}$ contains a $\textbf{genetic algorithm}$.
+The $\textbf{genetic algorithm}$ is named $\textbf{genetic}$ and it creates a $\pythoninline{class Genetic}$. In the initialization ($\pythoninline{\_\_init\_\_}$) takes the following parameters:
+
+\begin{itemize}
+	\item $\pythoninline{generations:}$ Are the number of generations (times) the whole code will be run.
+	\item $\pythoninline{rounds\_per\_generation:}$ Are the number of times the interaction of the agents will be given within each generation. 
+	\item $\pythoninline{death\_rate:}$ Represents the proportion of agents that will be eliminated after each generation has run.
+	\item $\pythoninline{mutation\_rate:}$ This parameter is given as a limit for agents with the highest accumulated utility not being reproduced. A $\pythoninline{mutation\_rate}$ value is established and is compared against a $\pythoninline{random.random()}$ number. Every time the $\pythoninline{mutation\_rate}$ is higher than the value given by the $\pythoninline{random.random()}$ a mutation will occur. This comparison occurs every time a new agent is created when all the interactions within a generation have happened. This means that each new agent is passed under this condition. The numbers given by $\pythoninline{random.random()}$ are decimal numbers, which means that the range for $\pythoninline{mutation\_rate}$ should also be in decimal numbers from $\textbf{ 0 to 1}$.
+	\item $\pythoninline{exploitation\_rate:}$ Is a variable introduced to determine if the concept of $\textit{exploitation or exploration}$ will be used. Where a value of 1 (100$\%$) represents a total exploitation, this means reproducing only the agent with the highest utility for each type of agent ($\pythoninline{row\_agents}$ and $\pythoninline{col\_agents}$) and a value of 0 (0$\%$) is used to consider the whole population of agents.
+	\item $\pythoninline{initial\_strategy\_distribution:}$ Is an optional parameter that will allow to the user to introduce the initial proportions of the strategies, meaning what percentage of the population each strategy will be represented by. The distribution will  be introduced as a form of a list within `[ ]' with commas separating the different values. The proportions that are input have to add up to 1 since the number 1 represents 100\% of the population i.e. [0.7, 0.3] added up are equal to 1, this means that the strategy with the first position in the bimatrix will start will be represented by 70\% of the total population of the created agents and the strategy in the second position will be represented by the remaining 30\% of the created agents in the population at the beginning of the simulation. If a particular $\pythoninline{initial\_strategy\_distribution}$ is not needed, the `list' with the proportions does not need to be introduced and the program will automatically set the distribution in almost equal proportions according to the number of strategies.
+\end{itemize}
+
+Following the initialization ($\pythoninline{\_\_init\_\_}$), the method $\pythoninline{assign\_strategies}$ is found. This method takes parameters $\textbf{agents}$, which according to the type of agent in turn will be represented by $\pythoninline{row\_agents}$ or $\pythoninline{col\_agents}$  and the parameter $\pythoninline{agents\_strategies}$, also which according to the type of agent in turn will be represented by $\pythoninline{row\_strategies}$ or $\pythoninline{col\_strategies}$. This method is used after the different types of agents are created in the $\pythoninline{initialization}$ of the $\pythoninline{class BiMatrixRandomEnv}$ of the module $\pythoninline{environments}$. The $\pythoninline{assign\_strategies}$ method assigns a random strategy for each agent according to the strategies available given their type through a $\textbf{``for'' loop}$ and $\pythoninline{random.choice(agents\_strategies)}$ this random choice selects from the $\pythoninline{row\_strategies}$ or $\pythoninline{col\_strategies}$ randomly according to the type of agent.
+
+After the ($\pythoninline{assign\_strategies}$) method in the code, the method alternative method in case a specific initial distribution is required  $\pythoninline{assign\_strategies\_initial\_distribution}$ is found. This method takes parameters $\textbf{agents}$, which according to the type of agent in turn will be represented by $\pythoninline{row\_agents}$ or $\pythoninline{col\_agents}$, the parameter $\pythoninline{agents\_strategies}$, also which according to the type of agent in turn will be represented by $\pythoninline{row\_strategies}$ or $\pythoninline{col\_strategies}$, the parameter $\pythoninline{number\_of\_agents}$ which is the total number of agents in the simulation, and the parameter $\pythoninline{agent\_initial\_distribution}$ which is a list that holds the proportions in which the strategies are required to appear at the beginning of the simulation. This method has the same purpose as $\pythoninline{assign\_strategies}$ with the only difference that when selecting an initial strategy distribution the program will create the exact proportion of agents strategies that is required. After creating a list of agents with strategies in the proportions required it will be found that the agents were created in order, to continue with the random environment required the method $\pythoninline{random.shuffle}$ from the module $\pythoninline{random}$ is used. This way the order of the agents will not be a specific when interacting with each other in the second generation.
+
+After the $\pythoninline{assign\_strategies}$ method, comes a method named $\pythoninline{kill\_agents}$. This method takes as parameters $\pythoninline{agents, number\_of\_agents, number\_of\_x\_agents}$, and $\pythoninline{agents\_strategies}$. In this method a variable $\pythoninline{number\_of\_deaths\_per\_generation}$ is created, which determines the number of agents that will be eliminated for each type of agent group ($\pythoninline{row\_agents}$ or $\pythoninline{ col\_agents}$) it does so by taking the integer value from the product of the multiplication of the variables $\pythoninline{death\_rate}$ \* $\pythoninline{number\_of\_x\_agents}$(this last variable represents the total number of row\_agents or col\_agents).  The value $\pythoninline{number\_of\_deaths\_per\_generation}$ is used in a $\textbf{``while'' loop}$ to eliminate the agents while the condition is not satisfied. Within the ``while'' loop the agents ($\pythoninline{row\_agents}$ or $\pythoninline{col\_agents)}$  are sorted according to their accumulated $\pythoninline{utility}$ from smallest to highest and the one with the lowest accumulated $\pythoninline{utility}$ is deleted from the list of the corresponding type of agents.
+
+After the method $\pythoninline{kill\_agents}$ comes the method $\pythoninline{reproduce\_agents}$. This method takes as parameters $\pythoninline{agents, number\_of\_agents, number\_of\_x\_agents}$ and $\pythoninline{agents\_strategies}$. A variable $\pythoninline{choice}$ is created by taking the integer value of ($\pythoninline{((number\_of\_agents / 2) \*  (exploitation\_rate - 1) + 0.05) -1}$ this value is used within the ``while'' loop that follows. The ``while'' loop used in this method works while the existing number of row or col agents is less than the number of row or col agents created at the beginning of the simulation. Within this loop, the agents are sorted according to their accumulated $\pythoninline{utility}$ values from low to high, and a $\pythoninline{copy.deepcopy}$  function is used to create a copy of an agents chosen with $\pythoninline{random.choice(agents[choice:])}$ where the variable $\pythoninline{choice}$ will indicate the start of the range of agents that can be chosen within the list of agents. After this within the same loop and ``if'' statement is presented which condition is that if the $\pythoninline{mutation\_rate}$ value is greater than a $\pythoninline{random.random()}$ number, the agent that will be reproduced can be any agent (row or col agent) with any value of accumulated $\pythoninline{utility}$ except for the agent (row or col agent) with the highest accumulated $\pythoninline{utility}$  value of that generation. The following diagram shows the general structure of the genetic algorithm module:
+
+\begin{figure}[H]
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+    \node [algblock] (genetic) at (0,0) [draw, fill=purple!80, text=white] {\textbf{Genetic} \\ 
+	``This class assign strategies for the new agents, eliminates and creates agents. The initial values it takes are the following''};
+    \node [algblock, below of=genetic, node distance=5cm](kill)[draw] {\textbf{kill\_agents} \\
+	``This method eliminates a determined number of agents with the lowest accumulated utility each generation''};
+    \node [algblock, right of=kill, node distance=7cm](repro)[draw] {\textbf{reproduce\_agents} \\
+	``This method maintains the number of agents (row and column agents) in the number determined at the beginning of the 			simulation, by creating new agents with certain characteristics established by the mutation rate and the exploitation rate''};
+    \node [algblock, left of=kill, node distance=7cm](assign)[draw] {\textbf{assign\_strategies} \\
+	``This method randomly assigns strategies to the agents created (row and column agents)''};
+    % Draw edges   
+    \path[line](genetic) edge         node[left] {1} (assign);
+    \path[line](genetic) edge         node[left]{2} (kill);
+    \path[line](genetic) edge         node[right] {3} (repro);         
+\end{tikzpicture}}
+\caption{Diagram of algorithms module.}
+\label{fig:diagalg}
+\end{figure}
+
+
+
+\subsection{Simulation module}
+The $\textbf{simulation module}$ is a module that is makes all the other modules interact with each other. For this project $\textbf{simulation module}$ is named $\pythoninline{simulation}$  and it creates a $\pythoninline{class Simulation}$. In the initialization ($\pythoninline{\_\_init\_\_}$) takes the parameters used in the other modules in addition to another parameter named $\pythoninline{tog}$ which stands for ``type of game''. There are 7 predetermined games within the code, which can be selected by typing the correct value of $\pythoninline{tog}$. $\pythoninline{tog}$ and the other parameters taken by the class $\pythoninline{Simulation}$ have the following characteristics:
+
+\begin{itemize}
+	\item $\pythoninline{tog:}$ Stands for ``type of game'' and it serves to pick one of the available choices of bimatrix that have been coded in. The values that can be selected have to go between single quotation marks and are the following: $\pythoninline{`pd'}$ an example of prisoner's dilemma, $\pythoninline{`psr'}$ an example of the game paper-scissors-rock, $\pythoninline{`mp'}$ an example of matching pennies, $\pythoninline{`bos'}$ an example of battle of sexes game, $\pythoninline{`hd'}$, $\pythoninline{`sh'}$ an example of stag hunt game, $\pythoninline{`cs'}$ an example of choosing sides game and $\pythoninline{`axl'}$ an example emulating the first tournament from Robert Axelrod with 8 out of the 14 original strategies. This strategies are taken from the axelrod package available for python and with the following strategies: $\textit{Tit for Tat, Grofman, Shubik, Grudger, Davis, Feld, Joss, Tullock and a Random strategy}$.
+	\item$\pythoninline{na:}$ Stands for the value of $\pythoninline{number\_of\_agents}$ explained in the $\pythoninline{bimatrix\_random\_environment}$ module.
+	\item $\pythoninline{ge:}$ Stands for the value of $\pythoninline{generations}$ explained in the $\pythoninline{genetic}$ algorithm module. And is the number of generations (times) the whole code will be run.
+	\item $\pythoninline{rpg:}$ Stands for the value of $\pythoninline{rounds\_per\_generation}$ explained in the $\pythoninline{genetic}$  algorithm module. Is the number of times the interaction of the agents will be given within each generation. 
+	\item $\pythoninline{dr:}$ Stands for $\pythoninline{death\_rate}$ explained in the $\pythoninline{genetic}$ algorithm module. And represents the proportion of agents that will be eliminated after each generation has run.
+	\item $\pythoninline{mr:}$ Stands for $\pythoninline{mutation\_rate}$ explained in the $\pythoninline{genetic}$ algorithm module. And this parameter is given as a limit for agents with the highest accumulated utility not being reproduced. A $\pythoninline{mutation\_rate}$ value is established and is compared against a $\pythoninline{random.random()}$ number. Every time the $\pythoninline{mutation\_rate}$ is higher than the value given by the $\pythoninline{random.random()}$ a mutation will occur. This comparison occurs every time a new agent is created when all the interactions within a generation have happened. This means that each new agent is passed under this condition. The numbers given by $\pythoninline{random.random()}$ are decimal numbers, which means that the range for $\pythoninline{mutation\_rate}$ should also be in decimal numbers from $\textbf{ 0 to 1}$.
+	\item $\textbf{er:}$ Stands for $\pythoninline{exploitation\_rate}$ explained in the $\textbf{genetic}$ algorithm module. And it is a variable introduced to determine if the concept of $\textit{exploitation or exploration}$ will be used. Where a value of 1 (100$\%$) represents a total exploitation, this means reproducing only the agent with the highest utility for each type of agent ($\pythoninline{row\_agents and col\_agents}$) and a value of 0 (0$\%$) is used to consider the whole population of agents.
+	\item $\textbf{isd:}$ Stands for $\pythoninline{initial\_strategy\_distribution}$ explained in the $\textbf{genetic}$ algorithm module. It takes a list of decimal numbers which should add up to 1, each value representing the proportion for each strategy available in the $\pythoninline{bimatrix}$. In here is where the user inputs the initial distribution desired for the strategies. At the beginning of the simulation this value will be used by the instance created from the $\pythoninline{class Genetic}$ from the genetic module to assign the initial strategies to each agent.
+\end{itemize}
+
+In the initialization ($\pythoninline{\_\_init\_\_}$) method an instance of the $\pythoninline{class Genetic}$ from the genetic module is created, an instance for the $\pythoninline{class Agents}$ from the population module is created also and when selecting the $\pythoninline{tog}$ value, an instance of the $\pythoninline{class BiMatrixRandomEnv}$ from the environment module is created. After the instances are created within the initialization method, the functions $\pythoninline{ga.assign\_strategies()}$ or $\pythoninline{ga.assign\_strategies\_initial\_distribution()}$ from the genetic algorithm module is used to assign the values for the strategies for each type of agent ($\pythoninline{row\_agents}$ and $\pythoninline{col\_agents}$) that have been created through the instance of the module environment can be used, the methods are conditioned under an if statement which checks if an initial distribution was introduced or not. After three lists with the names $\pythoninline{row\_accumulated\_strategies}$, $\pythoninline{col\_acummulated\_strategies}$ and $\pythoninline{strategies\_history}$ are created respectively and the purpose for each list is the following:
+
+\begin{itemize}
+	\item$\pythoninline{row\_accumulated\_strategies}$: Creates a list, that within itself contains a certain number of individual lists according to the length of $\pythoninline{row\_strategies}$ which is the number of strategies available for the $\pythoninline{row\_agents}$ obtained from the module environment.
+	\item$\pythoninline{col\_accumulated\_strategies}$: Creates a list, that within itself contains a certain number of individual lists according to the length of $\pythoninline{col\_strategies}$ which is the number of strategies available for the $\pythoninline{col\_agents}$ obtained from the module environment.
+	\item$\pythoninline{strategies\_history}$: Creates a list, that within itself contains a certain number of individual lists according to the length of $\pythoninline{row\_strategies}$ if $\pythoninline{row\_strategies}$ $\geq$ $\pythoninline{col\_strategies}$, else it creates a number of lists according to the number of $\pythoninline{col\_strategies}$. This list will help to create the stack plot, and what it does is it stores the total numbers of each type of strategy (not taking in account the type of agent) in a list that is generated each generation and all these lists created per generation are contained within a list that helps create the stack plot.
+
+\end{itemize}
+
+After the initialization method has created the different instances from the other modules, a method with the name $\pythoninline{run(plot=False, stack=False)}$ is presented. This method is used to start running the whole simulation (all the modules). The method takes an attribute $\pythoninline{plot}$ which is set by default as $\pythoninline{False}$ and an attribute $\pythoninline{stack}$ which is also set by default as $\pythoninline{False}$, if using the method $\pythoninline{run(plot=True, stack=True)}$, the simulation will plot the results from each generation in a graph and at the end of the simulation will produce a stack plot representing how the number of agents for each strategy behaved. The graph and stack plot are produced with the module $\pythoninline{matplotlib}$ from python and the functions used are $\textbf{pyplot and cm(color map)}$. The graph is set in interactive mode by the function $\pythoninline{ion( )}$. The limits for the graph's y axis are set $\pythoninline{ylim(0, 1)}$ and for the stack plot the y axis shows the total number of agents, the limit for the x axis for graph and stack plot are the number of $\pythoninline{generations}$. The x axis for both is labeled $\pythoninline{xlabel(``Generations")}$ and the y axis is labeled $\pythoninline{ylabel(``Probability'')}$ for graphs and $\pythoninline{ylabel(``Agents'')}$ for stack plots. For the coloring the lines representing the different strategies for each type of agents in the graphs color map method from mathplotlib is used, for the $\pythoninline{row\_accumulated\_strategies[ ]}$ the color map copper is used and for the $\pythoninline{col\_accumulated\_strategies[ ]}$ the color map winter is used, how these $\pythoninline{accumulated\_strategies}$ values were obtained for graphs will be explained later, the thing to know about them is that each of them represent the proportion within a type of agent that is using a certain strategy. The graph indicates how the population of the different types of agents with strategies varied through time, the value of interest from this is the strategy the types of agents are using. While the stack plot does not make a distinction between types of agents and it shoes the total number of each type of strategy in the total population through the whole simulation.
+
+After the code for creating the graph a function $\pythoninline{generations\_passing( )}$ is presented, this function takes attributes $\pythoninline{generations}$, $\pythoninline{rounds\_per\_generation}$, $\pythoninline{number\_of\_agents}$, $\pythoninline{row\_agents}$, $\pythoninline{col\_agents}$, and $\pythoninline{plot}$ and takes us to the next method.
+
+After the $\pythoninline{run}$ method, there is a method $\pythoninline{generations\_passing}$ that takes attributes $\pythoninline{generations}$,  $\pythoninline{row\_agents}$, $\pythoninline{col\_agents}$, $\pythoninline{number\_of\_agents}$, $\pythoninline{ plot}$. In this method there is a ``for'' loop that loops until the $\pythoninline{generations}$ value is reached, within this loop exist two other ``for'' loops.
+ he first one loops around the $\pythoninline{row\_agents}$ and  $\pythoninline{col\_agents}$ setting for each agent  the $\pythoninline{utility}$ value to 0. 
+The second ``for'' loop loops according to the $\pythoninline{number\_of\_rounds}$ chosen at the beginning of the simulation. Within this loop we find the function $\pythoninline{interact( )}$ from the module environment, explained before, which in general terms makes the $\pythoninline{row\_agents}$ and $\pythoninline{col\_agents}$ interact with each other and as a result obtains the payoff for each type of agent and an attributed $\pythoninline{utility}$. The loop from the rounds causes this process to repeat several times and when the last round is played all the different agents have an accumulated utility product of the repeated interactions.
+When the second loop concludes a function $\pythoninline{distributions( )}$ follows. This function is for the method $\pythoninline{distributions}$ that takes attributes $\pythoninline{number\_of\_agents}$, $\pythoninline{ row\_agents}$, $\pythoninline{col\_agents}$, $\pythoninline{row\_strategies}$, $\pythoninline{col\_strategies}$, and$\pythoninline{ plot}$.
+
+Before the method $\pythoninline{distributions}$ there are two methods, the first is $\pythoninline{proportion\_classified\_strategies}$ that takes attributes $\pythoninline{agents}$ and $\pythoninline{strategies}$. This method will do some calculations when the code is using the method $\pythoninline{distributions}$.   The method first creates a varibale $\pythoninline{frequency\_per\_strategy\_per\_agent}$ with an empty list. Then it has a ``main'' ``for'' loop that loops around the variable $\pythoninline{strategies}$ (this variable can be $\pythoninline{row\_strategies}$ or $\pythoninline{col\_strategies}$ according to which values are being used) of the $\pythoninline{agent}$ in turn and appends a value of 0 to the list. Then an ``secondary'' loop is contained within the previous loop of $\pythoninline{strategies}$, this loops around the agents in turn (can be $\pythoninline{row\_agents}$ or $\pythoninline{col\_agents}$) and contains an ``if'' statement, which conditions if  the strategy from the $\pythoninline{agent}$ in turn is equal to the counter in the ``main'' loop for ($\pythoninline{strategies}$) the last value of the list $\pythoninline{frequency\_per\_strategy\_per\_agent}$ will increment by 1. When both loops finish the function returns a list with all the values that are contained in the $\pythoninline{frequency\_per\_strategy\_per\_agent}$, each of those values are devided by the number agents. This values are the proportion that strategy represents in the type of agents in turn. It is important to note that the variable $\pythoninline{agents}$ taken by this function can be either $\pythoninline{row\_agents}$ or $\pythoninline{col\_agents}$   and the variable $\pythoninline{strategies}$ can be either $\pythoninline{row\_strategies}$ or $\pythoninline{col\_strategies}$. 
+
+The second method before $\pythoninline{distributions}$ method is $\pythoninline{total\_classified\_strategies}$ that takes attributes $\pythoninline{row\_agents}$, $\pythoninline{row\_strategies}$, $\pythoninline{col\_agents}$ and $\pythoninline{col\_strategies}$. This method will do some calculations when the code is using the method $\pythoninline{distributions}$ for getting the total number of each type of strategy.   The method first creates a varibale $\pythoninline{frequency\_per\_strategy\_for\_sum}$ with an empty list. Then it has a ``main'' ``for'' loop that loops around the variable $\pythoninline{row\_strategies}$ and appends a value of 0 to the list. Then an ``secondary'' loop is contained within the previous loop of $\pythoninline{row\_strategies}$, this loops around the $\pythoninline{row\_agents}$ and contains an ``if'' statement, which conditions if  the strategy from the $\pythoninline{row\_agents}$ is equal to the counter in the ``main'' loop for ($\pythoninline{row\_strategies}$) the last value of the list $\pythoninline{frequency\_per\_strategy\_for\_sum}$ will increment by 1. When both loops finish the function returns a list with all the values that are contained in the $\pythoninline{frequency\_per\_strategy\_for\_sum}$ and repeats the same process for $\pythoninline{col\_agents}$ with their corresponding $\pythoninline{col\_strategies}$. This values are accumulated in strategies, so there is no distinction between the type of agents only between type of strategy regardless if it is from $\pythoninline{row\_agents}$ or $\pythoninline{col\_agents}$. It is important to mention that the loops for both types of agents are conditioned with an `if' statement, where if the $\pythoninline{row\_agents}$ have more or equal types of strategies $\pythoninline{row\_strategies}$ than $\pythoninline{col\_agents}$the first for loop to start producing the list in the variable $\pythoninline{frequency\_per\_strategy\_for\_sum}$ will be the $\pythoninline{row\_agents}$' loop, else if the $\pythoninline{col\_agents}$ have more types of strategies $\pythoninline{col\_strategies}$ than $\pythoninline{row\_agents}$, the $\pythoninline{col\_agents}$ loop will go first. This conditional statement is used in case that there is a non symmetric type of game where $\pythoninline{col\_agents}$ have a higher number of $\pythoninline{col\_strategies}$ than $\pythoninline{row\_agents}$ of its own type of strategies.
+
+When the method $\pythoninline{distributions}$ starts first it creates a variable $\pythoninline{row\_strategies\_distribution}$ this variable contains a function $\pythoninline{proportion\_classified\_strategies( )}$ that takes as attributes $\pythoninline{row\_agents}$ and $\pythoninline{row\_strategies}$. And then has a ``for'' loop which loops around the number of  $\pythoninline{row\_strategies}$ and appends into the list created at the initialization $\pythoninline{row\_accumulated\_strategies}$ the resulting value from the $\pythoninline{row\_strategies\_distribution}$. According to which strategy it belongs, it appends the value to the corresponding list. 
+Then the method creates second variable which has the same process as the previous, but with $\pythoninline{col\_agents}$. The variable it creates is $\pythoninline{col\_strategies\_distribution}$ this variable contains a function $\pythoninline{proportion\_classified\_strategies( )}$ that takes as attributes $\pythoninline{col\_agents}$ and $\pythoninline{col\_strategies}$. Then has a ``for'' loop which loops around the number of  $\pythoninline{col\_strategies}$ and appends into the list created at the initialization $\pythoninline{col\_accumulated\_strategies}$ the resulting value from the $\pythoninline{col\_strategies\_distribution}$. According to which strategy it belongs, it appends the value to the corresponding list.  Then a third variable  $\pythoninline{total\_strategies\_per\_generation}$ is created. This variable contains a function $\pythoninline{total\_classified\_strategies( )}$ that takes as attributes $\pythoninline{row\_agents}$, $\pythoninline{row\_strategies}$, $\pythoninline{col\_agents}$ and $\pythoninline{col\_strategies}$. And then has a ``for'' loop which loops around the number of lists contained in  $\pythoninline{strategies\_history}$ and appends into the list created at the initialization $\pythoninline{strategies\_history}$ the resulting value from the $\pythoninline{total\_strategies\_per\_generation}$. According to which generation it belongs, it appends the value to the corresponding list. After these three variables, and the append of $\pythoninline{row\_strategies\_distribution[  ]}$ to $\pythoninline{row\_accumulated\_strategies[  ]}$ and $\pythoninline{col\_strategies\_distribution[  ]}$ to $\pythoninline{col\_accumulated\_strategies[  ]}$ is finished. The method then $\textbf{prints}$ four lines, the first one contains the following text $\textit{``Row players' strategy distribution:"}$, the second line prints the list $\pythoninline{row\_strategies\_distribution}$, the third line prints the text $\textit{``Column players' strategy distribution:"}$, and the fourth line prints the list $\pythoninline{col\_strategies\_distribution}$. 
+After these lines come two lines, each with the function $\pythoninline{kill\_agents( )}$ from the genetic algorithm module. One of which is for eliminating $\pythoninline{row\_agents}$ and the other for eliminating $\pythoninline{col\_agents}$.  
+Then we have other two lines, each with the function $\pythoninline{reproduce\_agents( )}$ from the genetic algorithm module. One to create the $\pythoninline{row\_agents}$ that were previously eliminated until reaching the required number of $\pythoninline{row\_agents}$ and the other to create $\pythoninline{col\_agents}$ until reaching the required number of $\pythoninline{col\_agents}$. 
+After the last $\pythoninline{reproduce\_agents( )}$ function, a code to update the graph is run (if it was chosen to graph at the beginning of the simulation). 
+The whole cycle is repeated until the simulation reaches the number of $\pythoninline{generations}$ that was established at the beginning. The following diagram shows the general structure of the simulation module:
+
+\begin{figure}[H]
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [simblock, fill=green!80] (sim) {\textbf{Simulation} \\
+	``Create a class to start the simulation with the following values, instances of the classes Agents, Genetic and 					BiMatrixRandomEnv are created. Also random initial strategies are assigned to the created agents (row and column agents)''};
+    \node [simblock, below of=sim, node distance=6cm] (run) {\textbf{run} \\
+	``This method is to start the simulation because it contains a function generations\_passing( ), and in here it is decided if there 		will be a graph representing the strategies or not''};
+    \node [simblock, below of=run, node distance=5cm] (generations) {\textbf{generations\_passing} \\
+	``This method keeps the count of the generations, which is the number of time the simulation will run''};
+    \node [simblock, right of=generations, node distance=6.5cm] (distributions) {\textbf{distributions}\\
+	``This method assigns the calculated distributions to the to the lists of row\_accumulated\_strategies and 						col\_accumulated\_strategies. And at the end it contains the functions to eliminate and create agents, and updates the 			graph''};
+    \node [simblock, right of=distributions, node distance=6.5cm] (proportion) 											{\textbf{proportion\_}\textbf{classified\_} \\ 
+	\textbf{strategies} \\
+	``This method is used to convert the frequency of every strategy per type of agent (row or column agent) into proportions''};
+    \node [simblock, below of=generations, node distance=4.5cm] (end) {\textbf{End} \\
+	After all generations have passed, the final plot is shown and the simulations ends.};
+    % Draw edges
+    \path [line] (sim) -- node[left] {1}  (run);
+    \path [line] (run) -- node[left] {2}  (generations);
+    \draw [->, thick, dotted, black!100] (generations) edge [out=25, in=155] node[above] {3}  (distributions);
+    \draw [->, thick, dotted, black!100] (distributions) edge [out=205, in=335] node[below] {6}  (generations);
+    \draw [->, thick, dotted, black!100] (distributions) edge [out=30, in=150] node[above] {4}  (proportion);
+    \draw [->, thick, dotted, black!100] (proportion) edge [out=210, in=330] node[below] {5}  (distributions);
+    \path [line] (generations) -- node[left] {7} (end);
+\end{tikzpicture}}
+\caption{Diagram of simulation module.}
+\label{fig:diagsim}
+\end{figure}
+
+
+\newpage
+\subsection{Overall interaction view}
+Now we will have a general overview of how an actual simulation runs. Simulation contains the messages for all the other modules and with this it gives the sequence in which the modules work basically following the steps below:
+
+\begin{itemize}
+   \item $\textbf{1. }$ Create agents without a strategy, and with a utility equal to 0 according to the initial number of agents and the given initial distribution. If no initial distribution is entered it will create agents in equal proportions. 
+   \item $\textbf{2. }$Then a random strategy is assigned according to the available strategies from the payoff matrix.
+   \item $\textbf{3. }$Then the different agent strategies interact, and accumulate a utility. Each interaction is equivalent to a round, so the interactions are repeated according to the number of rounds established at the beginning of the simulation.
+   \item $\textbf{4. }$The proportions of the agents present in the population are calculated to be plotted.
+   \item $\textbf{5. }$Agents with low utilities are eliminated according to the death rate, since a constant size of population is desired  the same number of agents that were eliminated are created. The new agents are created according to the mutation rate and exploitation rate established at the beginning of the simulation. With low mutation rate and high exploitation rate the agents with highest utility are more likely to be reproduced, this means the new agents will have the same strategy as the agents with highest utility.
+   \item $\textbf{6. }$Points 2, 3, 4 and 5 describe the sequence of the code for each generation. And will be repeated according to the number of generations established at the beginning of the simulation.
+   \item $\textbf{7. }$After the iteration through the number of generations has finished, the final plot describing the behaviour of the strategies and a stackplot representing the proportions of the strategies in the populations are presented.
+   \item $\textbf{8. }$The simulation ends.
+\end{itemize}
+
+The following diagram represents in a graphic way how the modules interact: 
+
+\begin{figure}[H]
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}
+    \node [simblock] (simulation) at (0,0) [draw, fill=green!70] {\textbf{Simulation} \\
+	``When creating an instance of Simulation, the simulation starts. Taking attributes type of game, number of agents, 				generations, rounds per generation, death rate, mutation rate, exploitation rate and its optional to choose an initial strategy 			distribution. And during the simulation, this module refers to other modules, keeps count of the generations that have passed 			and produces a final plot and stackplot where the strategies are shown.''};
+    \node [simblock, below of=simulation, node distance=8cm](bimatrix)[draw, fill=gray!70] {\textbf{BiMatrixRandomEnv} \\
+	``This creates agents without strategies and zero initial utility from the class Agent from the agents module. And during the 			simulation makes the agents interact, by pairing them and from the payoff matrix assigns the utility to each agent''}; 
+    \node [simblock, right of=bimatrix, node distance=7.5cm] (agents)[draw, fill=blue!70] {\textbf{Agent} \\
+	``This module will be used by BiMatrixRandomEnv class from environment module to create agents''};
+    \node [simblock, below of=bimatrix, node distance=8cm](genetic) [draw, fill=purple!70] {\textbf{Genetic} \\ 
+	``This class from module genetic at the beginning of the simulation will assign the strategies to the different agents by default 		or according to an initial distribution that will be set in the Simulation instance. During the simulation it will eliminate agents with 			the lowest accumulated utility for each generation and will create new agents according to the initial setting (mutation rate and 	exploitation rate.''};
+    \node [geneblock, left of=bimatrix, node distance=9cm](generations) [draw] {\textbf{generations}\\ 
+	``Is only equivalent to the number of times the simulation will be repeated, and the count will be kept by the method 				generations\_passing from the instance Simualtion.''};   
+    \node [geneblock, right of=simulation, node distance=7cm](end) [draw] {\textbf{End of the simulation}\\ 
+	``This does not exist in the module, but it represents the ending of the simulation after having iterated through all the 				generations, and at this stage the final plot is presented as well as the stackplot if it was required at the beginning when 			running the simulation.''};   
+
+    % Draw edges 
+    \path [line] (simulation) --  node[left] {1} (bimatrix);
+    \path [line] (bimatrix) -- node[left] {2}  (genetic);
+    \path [line, dashed] (agents) --  node[above] {(1)}  (bimatrix);
+    \draw [->, thick, dotted, black!100] (genetic) edge [out=30, in=330] node[left] {3}  (bimatrix);
+   \draw [->, thick, dotted, black!100] (bimatrix) edge [out=30, in=330] node[left] {4}  (simulation);
+    \draw [->, thick, dotted, black!100] (simulation) edge [out=210, in=150] node[right] {5}  (genetic);
+    \path [line] (genetic) -| node[left] {6}  (generations);
+    \path [line] (generations) |-  node[left] {6}  (simulation);
+    \path [line, dashed] (simulation) --  node[above] {7}  (end);
+\end{tikzpicture}}
+\caption{Diagram interaction of modules.}
+\label{fig:diagoverall}
+\end{figure}
+
