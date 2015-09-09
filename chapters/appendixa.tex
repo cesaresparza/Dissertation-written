@@ -1,0 +1,67 @@
+\label{app:gitcommands}
+\begin{itemize}
+	\item $\textbf{git status:}$ Used to see the what the status on the working directory. It will display two sections, one with the staged changes that are ready to be committed and another section displaying the changes that have not been staged, along with a small legend on the left side of the name of the file, that indicates what changes have been done to that file (deleted, modified, new file, etc.)
+
+	\item $\textbf{git add:}$ Used to stage the changes we have made in the directory for the local repository clone specific files. Before using this command all changes that have been made in the directory are considered unstaged. This means that any new file added or any already existing file that has been modified has to be staged with this command in order to include them in the next commit, any changes made that have not been staged with $\textbf{git add}$ will not be considered in the next commit.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.5]{imggitadd}
+
+\caption{Example of one file staged with git add.}
+\label{fig:imggitadd}
+\end{center}
+\end{figure}
+
+	\item $\textbf{git commit:}$ Takes a snapshot of the status of the local cloned repository, of course the files that considers are the ones that $textbf{git add}$ was previously used on. Creates a new point in the history of the project. Once this command is run, it commonly opens a text editor where I introduced the changes that were made in the files that are being changed in this commit.
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.4]{gitcommitmsg}
+
+\caption{Example after using git commit asking for message for the commit.}
+\label{fig:imggitcommit}
+\end{center}
+\end{figure}
+
+	\item $\textbf{git diff:}$ Using this command directly displays the content that has been changed in the project since the last   commit and that are not staged for the next commit. If the command is run $\textbf{git diff - - cached}$ it will display the changes that have been staged. If we wish to see staged and unstaged changes together we use $\textbf{git diff HEAD}$ and if there is no interest in watching the specific changes but we want to display more information than just the one presented by $\textbf{git status}$ we add $\textbf{- - stat}$ after the different options we had with $\textbf{git diff [options] - - stat}$ and this displays a summary of the changes.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.5]{gitdiff}
+
+\caption{ Example of general output with git diff and git diff  HEAD - - stat (red color represent the deleted lines and green the added) .}
+\label{fig:imggitdiff}
+\end{center}
+\end{figure}
+
+	\item $\textbf{git fetch [remote-name]:}$ This command pulls all the data from the remote project that is not contained the current copy we hold in our local repository clone. Basically used to update with all the changes other users (contributors) to the project have made, but it does not merge it with the work we have done because this has to be done manually. The name given to the remote repository we created a clone from is usually origin.
+	\item $\textbf{git branch:}$  Without any arguments the command gives a list of the existing branches in the local repository.The command followed with the name of the branch $\textbf{git branch (branchname)}$ will create a branch with that given name out of the main project line (master), in the last commit made before the branch. So if we continue working on the master and then we switch to the branch all the changes made to that point will be reverted to the context where the branch was created.  If we wish to delete a local branch we use $\textbf{git branch -d (branchname)}$. To delete a remote branch we use the command $\textbf{git push (remote-name) :(branchname)}$.
+	\item $\textbf{git checkout (branchname):}$ This command is used to change between the different existing branches. A way of creating a branch and changing to it at the same time is a shortcut provided by Git $\textbf{git checkout -b (branchname)}$. 
+	\item $\textbf{git merge:}$ This command is used to merge the changes that have been made in a branch are complete. And what is usually done is change into the main project line (master) with $\textbf{git checkout (name of the branch we want to merge into)}$ and then use $\textbf{git merge (name of the branch wished to be merged in)}$. This way the changes, if there exists no conflict, will be merged into the main project line (master).
+	\item $\textbf{git pull:}$ Basically does first a $\textbf{git fetch}$ immediately followed by a $\textbf{git merge}$ from the tracked branch into the branch we are currently in. This command basically does the same as those two commands, but it can if there are changes that may cause a problem, it might make the process a bit more complex. 
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.7]{gittreec}
+
+\caption{ Example diagram from Github of a master branch with a branch 1 for being merged.}
+\label{fig:imggitpull}
+\end{center}
+\end{figure}
+
+	\item $\textbf{git push:}$ This command helps to update the local changes we have made to the remote repository. And the way to use it is $\textbf{git push (name given to the remote) (name of the local branch)}$. We just need to be careful to not overwrite changes. 
+	\item $\textbf{git log:}$  This command displays all the commit messages that have been previously used in the state of the project we currently are in. There is an alternative command that displays how the project has been modified up to the point we currently are in and is $\textbf{git log - - oneline  - - decorate - - graph - - all}$
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.5]{gitlog1}
+
+\caption{Basic example of git log oneline.}
+\label{fig:imggitlog}
+\end{center}
+\end{figure}
+
+\end{itemize}
+
+Webpage for Github:
+$\textbf{https://github.com/}$

@@ -1,0 +1,2189 @@
+\label{ch:codeapp}
+In this chapter the runs of the program will be discussed. What was consider when running a simulation. An explanation of what games were simulated, and of the results against the known techniques to indicate how the program outputs our expected results when running it with known classic game theory games. A comparison of the results given by the  library 'Axelrod' from python with results from this code 'Ablearn'.
+
+\section{How the simulation was built.}
+After building the code the objective is to determine if the program gives us the expected results. It is  known that an evolutionary stable strategy is a strategy that survives through time. And as it was mentioned before there are certain conditions that can  be verified in order to identify and evolutionary stable strategy. The following tables represent some of the most well known examples of games in the normal form. 
+
+As said before, when using the code for simulating there are different variables that can be input which will have an impact in the resulting output. The input rates that have a greater impact are death rate, which determines how many agents will be eliminated per generation; mutation rate, which will make the most efficient strategy in accumulating utility in each generation reproduce but with different characteristics (strategy); exploitation rate, which can be modified so that only the agent with highest utility will reproduce or to take a percentage of the population to be considered for reproducing.
+
+Perhaps the most known is the the prisoner's dilemma which was mentioned before and it basically has two Nash equilibria strategies one in which both cooperate and the other in which non cooperate.
+
+\begin{table}[h]
+\begin{center}
+Prisoner 2
+
+Prisoner1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect \\ 
+\hline
+Cooperate & 3, 3 & 0, 5\\
+\hline
+ Defect & 5, 0 & 1, 1\\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma}
+\label{tab:prisdiltag}
+\end{center}
+\end{table}
+
+
+Matching pennies which is a pure conflict zero-sum game in which the winner of the game takes all and the loser ends up losing her share. Tthere is no scenario where both players can agree in a strategy. Player 1 preference of choice is from tossing a coin involves getting 2 heads or 2 tails, whilst player 2 prefers having a mixed combination.  The equilibrium for this game is a mixed Nash equilibrium.
+
+\begin{table}[h]
+\begin{center}
+Player 2
+
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Heads & Tails \\ 
+\hline
+Heads & 1, -1 & -1, 1\\
+\hline
+ Tails & -1, 1 & 1, -1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Matching Pennies}
+\label{tab:matpentag}
+\end{table}
+
+
+The battle of sexes game is a coordination game in which both agents cannot exchange information about what option out of two to choose, they both have a preferred strategy, but if they both choose their preferred strategy they have no payoff from it because they rather choose the same strategy and concur,  even if it has a higher payoff for one of them than the other. In the example from the table there is a representation of preferences, and it should be assumed that it is a couple trying to decide where to go, the female agent prefers going to the opera, whilst the male agent prefers going to watch football. But it can be seen that if they both end up choosing different strategies from each other they get a payoff of 0. 
+
+\begin{table}[h]
+\begin{center}
+Female
+
+
+Male
+\begin{tabular}{|l|c|c|}
+\hline
+ & Opera & Football \\ 
+\hline
+Opera & 1, 2 & 0, 0\\
+\hline
+ Football & 0, 0 & 2, 1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Battle of Sexes}
+\label{tab:bostag}
+\end{table}
+
+And the hawk-dove game. This game is often used in  evolutionary game theory. And it represents the 2 strategies an agent can choose,  and the result of the interaction. There is an aggressive strategy which is the hawk strategy and a passive strategy which is the dove. When both agents choose to play hawk, the payoff they get is 0, the explanation is that since they are both aggressive, the possible payoff they could have had from the resource they are competing for is not greater than the cost they pay for playing this strategy against each other. When they both choose dove, they split in equal parts the resource and the payoff they receive is the same for both. When one plays hawk and the other dove, the agent using hawk strategy gets a higher payoff than the one using the dove strategy.    
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+ & Hawk & Dove \\ 
+\hline
+Hawk & 0, 0 & 3, 1\\
+\hline
+ Dovel & 1, 3 & 2, 2\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Hawk-Dove}
+\label{tab:hdtag}
+\end{table}
+
+\newpage
+\section{Results}
+In this section the python package created (`ablearn') will be used to solve the games described in the previous section. And a brief analysis over the results displayed in the form of graphs and stack plots will be done. In addition the python package `axelrod' will be used to produce a specific output (payoff matrix) and to produce a stack plot. The created package `ablearn'  will use the output (payoff matrix) from 'axelrod' package to produce a stack plot. Both stack plots will be compared and briefly commented on.  
+\subsection{Prisoner's Dilemma}
+The following table indicates how the simulations for prisoner's dilemma were run.
+\begin{table}[H]
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+Num. & Population & Generations& Rounds per Gen. & Death Rate & Mutation Rate & Exploitation Rate\\ 
+\hline
+1& 1000 & 50 & 50 & 0.1 & 0.1 & 1\\
+\hline
+2& 1000 & 50 & 25 & 0.1 & 0.1 & 1\\
+\hline
+3& 1000 & 50 & 5 & 0.1 & 0.1 & 1\\
+\hline
+4& 1000 & 50 & 5 & 0.5 & 0.1 & 1\\
+\hline
+5& 1000 & 50 & 5 & 0.9 & 0.1 & 1\\
+\hline
+6& 1000 & 50 & 5 & 0.9 & 0.5 & 1\\
+\hline
+7& 1000 & 50 & 5 & 0.9 & 0.9 & 1\\
+\hline
+8& 1000 & 50 & 5 & 0.1 & 0.5 & 1\\
+\hline
+9& 1000 & 50 & 5 & 0.1 & 0.9 & 1\\
+\hline
+10& 1000 & 50 & 5 & 0.1 & 0.1 & 0.5\\
+\hline
+11& 1000 & 50 & 5 & 0.5 & 0.1 & 0.5\\
+\hline
+12& 1000 & 50 & 5 & 0.9 & 0.1 & 0.5\\
+\hline
+13& 1000 & 50 & 5 & 0.1 & 0.5 & 0.5\\
+\hline
+14& 1000 & 50 & 5 & 0.5 & 0.5 & 0.5\\
+\hline
+15& 1000 & 50 & 5 & 0.9 & 0.5 & 0.5\\
+\hline
+16& 1000 & 50 & 5 & 0.1 & 0.9 & 0.5\\
+\hline
+17& 1000 & 50 & 5 & 0.5 & 0.9 & 0.5\\
+\hline
+18& 1000 & 50 & 5 & 0.9 & 0.9 & 0.5\\
+\hline
+19& 1000 & 50 & 5 & 0.1 & 0.1 & 0.1\\
+\hline
+20& 1000 & 50 & 5 & 0.5 & 0.1 & 0.1\\
+\hline
+21& 1000 & 50 & 5 & 0.9 & 0.1 & 0.1\\
+\hline
+22& 1000 & 50 & 5 & 0.1 & 0.5 & 0.1\\
+\hline
+23& 1000 & 50 & 5 & 0.5 & 0.5 & 0.1\\
+\hline
+24& 1000 & 50 & 5 & 0.9 & 0.5 & 0.1\\
+\hline
+25& 1000 & 50 & 5 & 0.1 & 0.9& 0.1\\
+\hline
+26& 1000 & 50 & 5 & 0.5 & 0.9 & 0.1\\
+\hline
+27& 1000 & 50 & 5 & 0.9 & 0.9 & 0.1\\
+\hline
+28& 1000 & 50 & 5 & 0.5 & 0.5 & 1\\
+\hline
+29& 1000 & 50 & 5 & 0.5 & 0.9 & 1\\
+\hline
+
+\end{tabular}}
+\end{center}
+\caption{Configuration of simulations for prisoner's dilemma.}
+\label{tab:simpdtag}
+\end{table}
+
+\newpage
+
+For Prisoner's dilemma in this project it is not considered relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. However, it is considered important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of table $\ref{tab:simpdtag}$.
+\\\\The simulations start by assigning the following proportions to row and column agents to the strategies cooperate and defect.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.49 & 0.51\\
+
+\hline
+Column Agents & 0.502 & 0.498\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ Initial Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g1}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.489 & 0.514\\
+\hline
+Column Agents & 0.524 & 0.476\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Initial Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g1}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.512 & 0.488\\
+\hline
+Column Agents & 0.49 & 0.51\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ Initial Prisoner’s Dilemma distribution for simulation 3.}
+\label{tab:pds3g1}
+\end{table}
+
+ The 3 simulations start with very similar proportions for each strategy for agent type. They all start close to 0.5 so there is not a significant difference at this stage.
+
+By generation 5 it can be seen that the strategy `Defect' is dominating.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.348 & 0.652\\
+\hline
+Column Agents & 0.24 & 0.76\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ Generation 5 Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g5}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.25 & 0.75\\
+\hline
+Column Agents & 0.378 & 0.622\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 5 Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g5}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.35 & 0.65\\
+\hline
+Column Agents & 0.314 & 0.686\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 5 Prisoner’s Dilemma distribution for simulation 3.}
+\label{tab:pds3g5}
+\end{table}
+For simulation 2 in generation 5 it can be seen that the proportions are slightly different than first simulation. For row agents the proportion increased and is very close to the proportion of the column agents in generation 5 from the previous simulation 1 and for the column agents decreased and is very close to the proportion for row agents in the simulation 1.
+In simulation 3 for this generation the value for strategy `Defect' for row agents is slightly higher than simulation 1 and slightly smaller than simulation 2. For the same strategy in column agents compared to simulation 1 it decreased slightly and to simulation 2 it increased. The differences presented between simulations do not appear significant for this generation.
+
+By generation 10 it can be seen that the dominance of strategy `Defect'  is almost absolute in the 3 simulations.
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.054 & 0.946\\
+\hline
+Column Agents & 0.074 & 0.926\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g10}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.018 & 0.982\\
+\hline
+Column Agents & 0.094 & 0.906\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g10}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.082 & 0.918\\
+\hline
+Column Agents & 0.07 & 0.93\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 3.}
+\label{tab:pds3g10}
+\end{table}
+
+In simulation 2 for generation 10  with respect to simulation 1, a small increase in the strategy `Defect'  for row agents, and a small decrease in the same strategy for column agents. For simulation 3 strategy `Defect' for row agents is slightly decreased with respect to the value in simulation 1 and 2. For the same strategy in column agents it increased slightly when compared to simulation 1 and 2.
+In this generation for the 3 different simulations, the value for strategy `Defect' are above 0.9, but again there is no obvious pattern so the variations may be given by the effect of the randomized variables for each simulation.
+
+In generation 25 it can be seen that the condition persists and the strategy `Defect' for both types of agents dominates in frequency.
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.068 & 0.932\\
+\hline
+Column Agents & 0.054 & 0.946\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 25 Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g25}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.045 & 0.955\\
+\hline
+Column Agents & 0.047 & 0.953\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 25 Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g25}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.072 & 0.928\\
+\hline
+Column Agents & 0.054 & 0.972\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 25 Prisoner’s Dilemma distribution for this simulation 3.}
+\label{tab:pds3g25}
+\end{table}
+
+
+In simulation 2 for generation 25, the proportions increased slightly for strategy defect for both agents in relation to simulation 1. For simulation 3 the proportions are slightly smaller for the strategy `Defect' for row agents than in simulations 1 and 2. For same strategy in column agents is slightly higher than values from simulations 1 and 2. Still all the values for strategy `Defect' are above 0.9.
+
+For generation 50, the last generation we see that strategy `Defect' dominates the strategy `Cooperate' for all simulations.The graphs from the 3 different simulations are presented.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.01 & 0.99\\
+\hline
+Column Agents & 0.044 & 0.956\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ Generation 50 Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g50}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.024 & 0.976\\
+\hline
+Column Agents & 0.08 & 0.92\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 50 Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g50}
+ \end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.02 & 0.98\\
+\hline
+Column Agents & 0.028 & 0.972\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 50 Prisoner’s Dilemma distribution for simulation 3.}
+\label{tab:pds3g50}
+ \end{table}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{1pd50}}
+	\caption{ Prisoner's dilemma simulation 1, 50 rounds.}
+	\label{fig:pds1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{2pd25}}
+	\caption{ Prisoner's Dilemma simulation 2, 25 rounds.}
+	\label{fig:pds2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{3pd5}}
+	\caption{Prisoner's Dilemma simulation 3, 5 rounds.}
+	\label{fig:pds3}
+    \end{subfigure}
+    \caption{Prisoner's dilemma simulations 1, 2 and 3.}
+    \label{pdsim345r5}
+\end{figure}
+
+In simulation 2 for this generation, both proportions decreased slightly. Since the changes in the proportions are very small for this project it is not consider to be a significant difference between using 50 or 25 rounds. For simulation 3 the value for row agent in strategy `Defect' is slightly higher compared to simulation 2  and smaller from the one in simulation 1. For column agents for the same strategy the value is higher in comparison to the values from simulations 1 and 2.
+After the 3 runs for the simulations, it can be seen in the graphs from each simulation that they all have a similar pattern. And after analysing the different specific points (generations), the variations between them do not appear to be caused by the number of rounds. The strategies through the generation have a similar behaviour, the strategy `Defect' for row and column agents dominate the strategy `Cooperate'. The strategy `Cooperate' in the 3 different simulations starts declining from as early as the second generation, and around generation 10 it reaches the lowest values continuing to oscillate between 0.02 and 0.06 for the rest of the simulation. Again it is important to mention that the length of the simulations in terms of generations do not appear to be very relevant, since we can see that the behaviour for both strategies is very similar from generation 10 to generation 50 (when the simulation ends). For this reason in prisoner's dilemma simulations the configuration with 5 rounds per generation will used.
+When there is a small increment in the `Cooperate' or `Defect' strategy, this is given to the mutation rate, that is allowing more of either to appear, but since it is very low (0.1) it does not change the behaviour significantly. The following graphs in figure $\ref{pdsimmr0r50255}$ show the behaviour of the the proportion of the strategies without mutation rate.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{1pdno}}   
+    	\caption{50 rounds}
+	\label{fig:1pdmr0}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{2pdno}}   
+    	\caption{25 rounds}
+	\label{fig:2pdmr0}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{3pdno}}   
+    	\caption{5 rounds}
+	\label{fig:3pdmr0}
+    \end{subfigure}
+    \caption{Prisoner's dilemma with mutation rate equal to 0}
+    \label{pdsimmr0r50255}
+\end{figure}
+
+From the previous figure $\ref{pdsimmr0r50255}$ it can be seen that no variations occur during the simulations. This is because mutation rate allows the less effective strategy `Cooperate' to be present throughout the generations, and without mutation they will just disappear as early as the 5th generation. 
+\\\\Let us continue to try the different combinations of values that are shown in the table $\ref{tab:simpdtag}$. 
+Simulations 3, 4 and 5 have constant values for mutation rate with 0.1 and exploitation rate of 1. It is important to note that in these first 3 simulations the value that varies is death rate, and that the smaller the death rate, the gap between strategies `Defect' and `Cooperate' is larger as can be seen in the graphs from figure $\ref{pdsim345r5}$:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{3pd5}}   
+    	\caption{Simulation 3}
+	\label{fig:pds3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4pd5}}   
+    	\caption{Simulation 4}
+	\label{fig:pds4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{5pd5}}   
+    	\caption{Simulation 5}
+	\label{fig:pds5}
+    \end{subfigure}
+    \caption{Prisoner's dilemma simulations 3, 4 and 5, with 5 rounds per generation}
+    \label{pdsim345r5}
+\end{figure}
+
+The following graphs from simulations 5, 6 and 7  have a high death rate of 0.9, this means that it allows the creation off 90\% of new agents each generation while eliminating the least efficient. These three graphs have mutation rates of 0.1, 0.5 and 0.9 respectively with an exploitation rate of 1. And the behaviour can be seen  in figure $\ref{pdsim567r5}$:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{5pd5}}   
+    	\caption{Simulation 5}
+	\label{fig:pds5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{6pd5}}   
+    	\caption{Simulation 6}
+	\label{fig:pds6}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{7pd5}}   
+    	\caption{Simulation 7}
+	\label{fig:pds7}
+    \end{subfigure}
+    \caption{Prisoner's dilemma simulations 5, 6 and 7, with 5 rounds per generation}
+    \label{pdsim567r5}
+\end{figure}
+
+It can be seen from the previous figure $\ref{pdsim567r5}$ that when the mutation rate is lower the variation for each strategy is higher, even if the proportions are close to 0.5. There are evident high peaks and low valleys  for both strategies. In the three simulations the strategy `Defect' dominates in general, but in simulation 5  for generations 5, 7, 17, 23, 27, 34, 36 and 48, the strategy `Cooperate' briefly dominates `Defect' in fact it only dominates in this generations in the preceding and next generation the values are lower. This brief dominance from `Cooperate' may be given to a higher interaction between this type of strategy between each other, in consequence they accumulate a higher utility which allows them to reproduce in the following generation. Because of the high death rate they reproduce quickly. But this means that in the following generation there is a higher probability for `Defect' to encounter with `Cooperate', so `Defect' accumulates more utility and  `Cooperate' quickly dies out. In the other 2 simulations we see how as the mutation level increases the proportion of the strategies become more stable. By looking at the graphs 1, 8 and 9 have a similar behaviour where as the mutation rate increases, less peaks and valleys can be seen.
+
+
+
+For the following graphs resulting from simulations 10, 11 and 12 an death rate is increasing in 0.1, 0.5 and 0.9 respectively. For all 3 simulations there are constant values for mutation rate of 0.1 and exploitation rate of 0.5. As the death rate increases, as expected the gap between the number of strategies representing `Defect' and `Cooperate' reduces. But it can also be seen that as the as death rate increases given the value of 0.5 for exploitation rate the peaks and valleys increase, they do not get to the point where `Cooperate' dominates `Defect', but it is important to note that with a low mutation rate and a lower exploitation rate than 1 which in these cases is 0.5 strategies that earn lower utility during the interaction are allowed to reproduce in the same probability as the one with highest utility. 
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{10pd5}}   
+    	\caption{Simulation 10}
+	\label{fig:pds10}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{11pd5}}   
+    	\caption{Simulation 11}
+	\label{fig:pds11}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{12pd5}}   
+    	\caption{Simulation 12}
+	\label{fig:pds12}
+    \end{subfigure}
+    \caption{Prisoner's dilemma simulations 10, 11 and 12, with 5 rounds per generation}
+    \label{pdsim101112r5}
+\end{figure}
+
+When comparing these graphs with the graphs from simulation 3, 4 and 5 which have an increasing value of death rate and a mutation rate of 0.1 they behave in a similar way. But when comparing graphs from simulation 5 and 12 with each other. They both have a death rate of 0.9 and a mutation rate of 0.1, but a different exploitation rate value of 1 and 0.5 respectively. We can see that since a lower exploitation rate makes other strategies reproduce with the same probability as the strategy with the highest accumulated utility from the generation, a larger gap between strategies is present. Meaning that even if `Cooperate' accumulates a high utility, if there is `Defect' strategy within the 50\% of the population that is allowed to reproduce, it has a possibility to reproduce. This `randomization' gives an equilibrium between the presence of strategies in the population. Simulations 19, 20 and 21 have the same values as these other groups of simulations, but an exploitation rate of 0.1, which makes the graph from simulation 21 behave very similar to the graph from simulation 12. 
+
+For the following graphs representing simulations 16, 17 and 18 the value that changes is death rate 0.1, 0.5 and 0.9 respectively. With constant values of mutation rate  0.9 and exploitation rate 0.5. As seen before the effect of the death rate reflects with a reducing gap between the type of strategies as death rate increases. 
+ 
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{16pd5}}   
+    	\caption{Simulation 16}
+	\label{fig:pds16}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{17pd5}}   
+    	\caption{Simulation 17}
+	\label{fig:pds17}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{18pd5}}   
+    	\caption{Simulation 18}
+	\label{fig:pds18}
+    \end{subfigure}
+    \caption{Prisoner's dilemma simulations 16, 17 and 18, with 5 rounds per generation}
+    \label{pdsim161718r5}
+\end{figure}
+
+A particular characteristic can be seen in the graph for simulation 16, it reaches the lowest value for `Cooperate' strategy later than other simulations with the same death rate. Graphs from simulations 3, 8, 9, 10, 13, 19 and 22 they all reach the lowest value for `Cooperate' around generation 10. Simulation 16 reaches it closer to generation 20, we see a similar behaviour for simulation 25. What this two simulations have in common other than death rate value, is their mutation rate is 0.9. Since mutation rate allows any strategy to reproduce except for the agent with strategy with that accumulated the highest utility, this delays the `Cooperate' strategy for reaching its lowest value.		  
+The remaining simulations, behave in a similar way to the one that have been discussed  so far. It can be seen that the variable that acts as an enabler for the other variables to have an effect is the death rate. 
+
+\subsubsection{Nash Equilibrium}
+As calculated before in this project. The Nash Equilibrium for the prisoner's dilemma game can be found by looking at the normal form table and select the best responses for each player. The results from the simulations give the strategy ``Defect'' as stable and this is also a Nash equilibrium as seen in the following normal form table for the game.
+
+\begin{table}[H]
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect\\ 
+\hline
+Cooperate & 3, 3 & 0, 5\\
+\hline
+Defect & 5, 0 & \underline{1}, \underline{1}\\
+\hline
+\end{tabular}
+
+\caption{ Prisoner's dilemma Nash equilibrium with best responses.}
+\label{fig:pdnashbr}	
+\end{center}
+\end{table}
+
+
+\subsubsection{ESS}
+Now its time to find the ESS for the prisoner's dilemma game. Earlier it was explained how to calculate the evolutionarily stable strategy (ESS) when a mutant strategy appears in the population in the proportion $\epsilon$. It will be assumed the strategy  `Cooperate' is the population and the invader is the strategy `Defect'. Thus the payoff for the strategy `Cooperate' is the following:
+\begin{center}
+$(1-{\epsilon})3 + 0{\epsilon} = 3 - 3{\epsilon}$
+\end{center}
+And the payoff for the strategy `Defect' is:
+\begin{center}
+$(1-{\epsilon})5 + 1{\epsilon} = 5 - 4{\epsilon}$
+\end{center}
+The strategy `Defect' appears to be greater than `Cooperate'. Now since the simulation gives almost equal starting proportions to each strategy it be will assumed that the `invading' strategy `Defect' appears in a proportion of $\epsilon$=0.5. And results in  the following:
+\begin{center}
+3 - 3(0.5) = 1.5
+\end{center}
+And for the strategy `Defect' is:
+\begin{center}
+ 5 - 4(0.5) = 3
+\end{center}
+The payoff for `Defect' is greater than the payoff for `Cooperate' thus it can be said that `Cooperate' is not an evolutionarily stable strategy.
+Its time to check if the strategy `Defect' is evolutionarily stable. And therefore it is assumed that `Cooperate is the invader. It  appears that `Defect' might be evolutionarily stable given the previous test. But it will be calculated anyway. First calculating the expected payoff for the strategy `Defect':
+\begin{center}
+$(1-{\epsilon})1 + 5{\epsilon} = 1 + 4{\epsilon}$
+\end{center}
+And the payoff for the strategy `Defect' is:
+\begin{center}
+$(1-{\epsilon})0 + 3{\epsilon} =  3{\epsilon}$
+\end{center}
+Again it appears that the strategy `Defect' has a greater expected payoff than `Cooperate'. it will be assumed that the `invading' strategy `Cooperate' appears in a proportion of $\epsilon$=0.5. And the calculation for the strategy `Defect' is as follows:
+\begin{center}
+1 +  4(0.5) = 3
+\end{center}
+And for the strategy `Cooperate' is:
+\begin{center}
+ 3(0.5) = 1.5
+\end{center}
+Again the strategy`Defect' has a higher expected payoff, so it is an evolutionarily stable strategy (ESS).
+With this it can be noticed that the strategy `Defect' is both a Nash equilibrium and an ESS. And this supports the results from the simulation.
+
+
+\subsection{Matching Pennies}
+
+For the simulations in matching pennies, generations with 5, 25 and 100 rounds per generation were made.  The table for the configurations is similar to the one used in Prisoner's dilemma simulations, and it can be found in appendix $\ref{app:mptable}$ .
+
+For simulations 1, 2 and 3 with 5, 25 and 100 rounds per generation respectively. It can be seen that as the rounds per generation increase the amplitude of the wave grows. This means that with more rounds per generations each strategy has a greater chance of reaching a higher number in population, by reproducing when accumulating a high utility. This is also given to the low death rate, the low mutation rate and high exploitation rate which allows the most efficient strategy in the generation to reproduce almost every change of generation. But also when a population of a certain strategy increases in this kind of game, it is likely that a strategy that is  earns high payoff when interacting with the strategy with high population will grow in population too given that it is more likely to encounter its counterpart and this cycle repeats with all the available strategies and we can see a cycle. 
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{1mp100}}   
+    	\caption{Simulation 1}
+	\label{fig:mpsim1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{2mp25}}   
+    	\caption{Simulation 2}
+	\label{fig:mpsim2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{3mp5}}   
+    	\caption{Simulation 3}
+	\label{fig:mpsim3}
+    \end{subfigure}
+    \caption{Simulation 1, 2 and 3}
+    \label{firstthreesimulations}
+\end{figure}
+
+The behaviour for the graphs for each simulation is similar with an increasing amplitude until simulation 10 for the three different number of rounds. For simulation 10 the amplitude increases when having a lower exploitation rate in combination with low death rate (0.1) and low mutation rate (0.1) in a very similar way for the different number of rounds. This behaviour is because the exploitation rate allows the 50\% of the population to reproduce with the same probability. So almost any strategy can reproduce unless it has the lowest accumulated utility, which means they will be eliminated. And the low death rate allows them to accumulate in a greater number.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{10mp5}}   
+    	\caption{5 rounds}
+	\label{fig:mpsim105}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{10mp25}}   
+    	\caption{25 rounds}
+	\label{fig:mpsim1025}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{10mp100}}   
+    	\caption{100 rounds}
+	\label{fig:mpsim101000}
+    \end{subfigure}
+    \caption{Simulation 10 with 5, 25 and 100 rounds per generation}
+    \label{mpsim10simulations}
+\end{figure}
+
+
+In simulation 12  the death rate of 0.9 increases the frequency in oscillations when combined with the 0.5 exploitation rate, all with a very similar amplitude. Which means that the population of certain strategy increases fast and is eliminated fast given the high death rate, and the broad possibilities of different agents reproducing with the exploitation rate of 0.5.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{12mp5}}   
+    	\caption{5 rounds}
+	\label{fig:mpsim125}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{12mp25}}   
+    	\caption{25 rounds}
+	\label{fig:mpsim1225}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{12mp100}}   
+    	\caption{100 rounds}
+	\label{fig:mpsim12100}
+    \end{subfigure}
+    \caption{Simulation 12}
+    \label{mpsim12simulations}
+\end{figure}
+
+In simulation 13, 14 and 15  there is an interesting behaviour when an increasing death rate of 0.1, 0.5 and 0.9 respectively is combined with the constant values of 0.5 for mutation rate and 0.5 for exploitation rate.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{13mp5}}   
+    	\caption{Simulation 13}
+	\label{fig:mpsim135}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{14mp5}}   
+    	\caption{Simulation 14}
+	\label{fig:mpsim145}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{15mp5}}   
+    	\caption{Simulation 15}
+	\label{fig:mpsim155}
+    \end{subfigure}
+    \caption{Simulation 13, 14 and 15 with 5 rounds per generation}
+    \label{mpsim131415simulations5}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{13mp25}}   
+    	\caption{Simulation 13}
+	\label{fig:mpsim1325}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{14mp25}}   
+    	\caption{Simulation 14}
+	\label{fig:mpsim1425}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{15mp25}}   
+    	\caption{Simulation 15}
+	\label{fig:mpsim1525}
+    \end{subfigure}
+    \caption{Simulation 13, 14 and 15 with 25 rounds per generation}
+    \label{mpsim131415simulations25}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{13mp100}}   
+    	\caption{Simulation 13}
+	\label{fig:mpsim13100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{14mp100}}   
+    	\caption{Simulation 14}
+	\label{fig:mpsim14100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{15mp100}}   
+    	\caption{Simulation 15}
+	\label{fig:mpsim15100}
+    \end{subfigure}
+    \caption{Simulation 13, 14 and 15 with 100 rounds per generation}
+    \label{mpsim131415simulations100}
+\end{figure}
+
+An increasing amplitude with the different increasing number of rounds can be seen. Nevertheless in simulation 15 with death rate of 0.9 the amplitude for all of them decreases. This is given to the mutation rate of 0.5 in combination with 0.5 exploitation rate, these values make the creation of new agents with a high possibility of randomness, so the agent with the highest accumulated utility has same less probability of reproducing than others because the mutation rate gives opportunity to any agent strategy except for that with the highest accumulated payoff. And a similar behaviour is expected when death rate is 0.9 with mutation rate of 0.9, which will practically rule out the possibility of the best agent strategy with the highest accumulated utility to reproduce.
+
+Simulation 16, 17 and 18  have constant values of mutation rate for 0.9 and exploitation rate of 0.5 with increasing death rate of 0.1, 0.5 and 0.9 respectively. For 16 and 17 with increasing death rate it can be see when comparing with 5, 25 and 100 rounds per generation, the amplitude increases. Something interesting with the high value of 0.9 in death rate that they virtually have the same amplitude.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{16mp5}}   
+    	\caption{Simulation 16}
+	\label{fig:mpsim165}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{17mp5}}   
+    	\caption{Simulation 17}
+	\label{fig:mpsim175}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{18mp5}}   
+    	\caption{Simulation 18}
+	\label{fig:mpsim185}
+    \end{subfigure}
+    \caption{Simulation 16, 17 and 18 with 5 rounds per generation}
+    \label{mpsim161718simulations5}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{16mp25}}   
+    	\caption{Simulation 16}
+	\label{fig:mpsim1625}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{17mp25}}   
+    	\caption{Simulation 17}
+	\label{fig:mpsim175}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{18mp25}}   
+    	\caption{Simulation 18}
+	\label{fig:mpsim1825}
+    \end{subfigure}
+    \caption{Simulation 16, 17 and 18 with 25 rounds per generation}
+    \label{mpsim161718simulations25}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{16mp100}}   
+    	\caption{Simulation 16}
+	\label{fig:mpsim16100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{17mp100}}   
+    	\caption{Simulation 17}
+	\label{fig:mpsim17100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{18mp100}}   
+    	\caption{Simulation 18}
+	\label{fig:mpsim18100}
+    \end{subfigure}
+    \caption{Simulation 16, 17 and 18 with 100 rounds per generation}
+    \label{mpsim161718simulations100}
+\end{figure}
+
+As expected with a high mutation rate (0.9) and high death rate (0.9) the amplitude is smaller, as seen in graphs from simulation 15 and in graphs from simulation 18.
+
+For simulations 19, 20 and 21 we have a low constant value of 0.1 mutation rate and 0.1 exploitation rate, and increasing death rate 0.1, 0.5 and 0.9. The amplitude behaves the same with 5, 25 and 100 rounds, and the frequency increases for all the cases with the increasing death rate.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19mp5}}   
+    	\caption{Simulation 19}
+	\label{fig:mpsim195}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{20mp5}}   
+    	\caption{Simulation 20}
+	\label{fig:mpsim205}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{21mp5}}   
+    	\caption{Simulation 21}
+	\label{fig:mpsim215}
+    \end{subfigure}
+    \caption{Simulation 19, 20 and 21 with 5 rounds per generation}
+    \label{mpsim192021simulations5}
+\end{figure}
+
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19mp25}}   
+    	\caption{Simulation 19}
+	\label{fig:mpsim1925}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{20mp25}}   
+    	\caption{Simulation 20}
+	\label{fig:mpsim2025}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{21mp25}}   
+    	\caption{Simulation 21}
+	\label{fig:mpsim2125}
+    \end{subfigure}
+    \caption{Simulation 19, 20 and 21 with 25 rounds per generation}
+    \label{mpsim192021simulations25}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19mp100}}   
+    	\caption{Simulation 19}
+	\label{fig:mpsim19100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{20mp100}}   
+    	\caption{Simulation 20}
+	\label{fig:mpsim20100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{21mp100}}   
+    	\caption{Simulation 21}
+	\label{fig:mpsim21100}
+    \end{subfigure}
+    \caption{Simulation 19, 20 and 21 with 100 rounds per generation}
+    \label{mpsim192021simulations100}
+\end{figure}
+
+This behaviour is given to the fact that the mutation rate is low, and the low exploitation (0.1) rate allows any  strategy to reproduce with the same probability including the agent strategy with the highest accumulated utility, and it makes the selection is not as random than when also having a high mutation rate, but still many agents are candidates to reproduce. So the high frequency in the graphs with high death rate is present because  a high number of agents are allowed to reproduce each generation and also the same number are eliminated. So the brief dominance of an agent strategy is given to the random factor. 
+Only for to see how the strategies look in proportion in the population when the frequency increases, the stack plots from simulations 19, 20 and 21 with 25 rounds per generation are shown in the following figure $\ref{mpsim192021simulations25s}$:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19mp25s}}   
+    	\caption{Simulation 19 with 25 rounds}
+	\label{fig:mpsim19s25}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{20mp25s}}   
+    	\caption{Simulation 20 with 25 rounds}
+	\label{fig:mpsim20s25}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{21mp25s}}   
+    	\caption{Simulation 21 with 25 rounds}
+	\label{fig:mpsim21s25}
+    \end{subfigure}
+    \caption{Stack plots from simulations 19, 20 and 21 with 25 rounds per generation}
+    \label{mpsim192021simulations25s}
+\end{figure}
+It can be seen in figure $\ref{mpsim192021simulations25s}$ how the frequency increases as the death rate increases, reflecting how death rate affects the periods of dominance from a strategy. Also the behaviour from the stack plots reflects the mixed Nash equilibrium. Because it can be seen how when a strategy is dominating the counterpart appears and dominates it.
+\\\\Simulations 22, 23, 24 have an increasing death rate of 0.1, 0.5 and 0.9 respectively, with constant mutation rate of 0.5 and exploitation rate of 0.1. With death rate 0.1 we see an expected increase in the amplitude when increasing number of rounds. With death rate of 0.5 we see an increase in the frequency and a reduced amplitude for the graphs for 5, 25 and 100 rounds. And with death rate 0.9 a much smaller amplitude is perceived and still with a high frequency.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{22mp5}}   
+    	\caption{Simulation 22}
+	\label{fig:mpsim225}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{23mp5}}   
+    	\caption{Simulation 23}
+	\label{fig:mpsim235}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{24mp5}}   
+    	\caption{Simulation 24}
+	\label{fig:mpsim245}
+    \end{subfigure}
+    \caption{Simulation 22, 23 and 24 with 5 rounds per generation}
+    \label{mpsim222324simulations5}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{22mp25}}   
+    	\caption{Simulation 22}
+	\label{fig:mpsim2225}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{23mp25}}   
+    	\caption{Simulation 23}
+	\label{fig:mpsim2325}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{24mp25}}   
+    	\caption{Simulation 24}
+	\label{fig:mpsim2425}
+    \end{subfigure}
+    \caption{Simulation 22, 23 and 24 with 25 rounds per generation}
+    \label{mpsim222324simulations25}
+\end{figure}
+
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{22mp5}}   
+    	\caption{Simulation 22}
+	\label{fig:mpsim225}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{23mp100}}   
+    	\caption{Simulation 23}
+	\label{fig:mpsim23100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{24mp100}}   
+    	\caption{Simulation 24}
+	\label{fig:mpsim24100}
+    \end{subfigure}
+    \caption{Simulation 22, 23 and 24 with 100 rounds per generation}
+    \label{mpsim222324simulations100}
+\end{figure}
+
+As expected the only difference between simulations with 5, 25 and 100 rounds is an increasing amplitude when increasing number of rounds. Also the expected reduced amplitude when death rate is increased since there is a high mutation rate and a relatively low exploitation rate, population is renewed almost disregarding the performance of each agent strategy.
+
+With increasing death rate of 0.1, 0.5 and 0.9 for simulation 25, 26 and 27 respectively; and constant mutation rate of 0.9 and exploitation rate of 0.1 for the three simulations. A similar behaviour as the previous simulations (22, 23 and 24) analised, can be seen in the following graphs and stackplots for simulations 25, 26 and 27.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{25mp5}}   
+    	\caption{Simulation 25}
+	\label{fig:mpsim255}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{26mp5}}   
+    	\caption{Simulation 26}
+	\label{fig:mpsim265}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{27mp5}}   
+    	\caption{Simulation 27}
+	\label{fig:mpsim275}
+    \end{subfigure}
+    \caption{Simulation 25, 26 and 27 with 5 rounds per generation}
+    \label{mpsim252627simulations5}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{25mp25}}   
+    	\caption{Simulation 25}
+	\label{fig:mpsim2525}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{26mp25}}   
+    	\caption{Simulation 26}
+	\label{fig:mpsim2625}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{27mp25}}   
+    	\caption{Simulation 27}
+	\label{fig:mpsim2725}
+    \end{subfigure}
+    \caption{Simulation 25, 26 and 27 with 25 rounds per generation}
+    \label{mpsim252627simulations25}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{25mp100}}   
+    	\caption{Simulation 25}
+	\label{fig:mpsim25100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{26mp100}}   
+    	\caption{Simulation 26}
+	\label{fig:mpsim26100}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{27mp100}}   
+    	\caption{Simulation 27}
+	\label{fig:mpsim27100}
+    \end{subfigure}
+    \caption{Simulation 25, 26 and 27 with 100 rounds per generation}
+    \label{mpsim252627simulations100}
+\end{figure}
+
+The amplitude increases as the number of rounds per generation are increased in 5, 25 and 100. For these simulations the increasing amplitude is smaller, because of the random factor that the mutation rate introduces (and how it excludes the agent strategy with highest accumulated utility). It should also be noted the incrementing frequency when using 0.5 and 0.9 death rate. And for simulation 27, it can be seen that for the different number of rounds the amplitude and frequency are similar for all, these  can be attributed to the high mutation rate and high death rate. It is also important to mention that the low exploitation rate in combination with high mutation rate will have an effect on the simulation, and therefore all the agent strategies will be present in very similar proportions in the population. The following stack plots in figure $\ref{mpsim252627simulationssp525100}$  can be observed to have a better visual understanding:  
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{mpstacksim27r5}}   
+    	\caption{5 rounds}
+	\label{fig:mpsim27sr5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{mpstacksim27r25}}   
+    	\caption{25 rounds}
+	\label{fig:mpsim27sr25}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{mpstacksim27r100}}   
+    	\caption{100 rounds}
+	\label{fig:mpsim27sr100}
+    \end{subfigure}
+    \caption{Stack plots for simulation 27 with 5, 25 and 100 rounds per generation}
+    \label{mpsim252627simulationssp525100}
+\end{figure}
+
+Strategy 1 represents `Heads' and strategy 2 represents `Tails'. It can be seen that each strategy during the whole simulation is present in the total population in a proportion very close to 0.5. 
+
+\subsubsection{Nash Equilibrium}
+The Nash Equilibrium for the matching pennies game will be calculated next, since it cannot be determined just by looking at the normal form table and selecting the best responses since this game has a mixed Nash equilibrium.
+
+\begin{table}[H]
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Heads & Tails\\ 
+\hline
+Heads & 1, -1 & -1, 1\\
+\hline
+Tails & -1, 1 & 1, -1\\
+\hline
+\end{tabular}
+
+\caption{ Matching pennies bimatrix payoff.}
+\label{fig:mpnashmx}	
+\end{center}
+\end{table}
+
+The mixed Nash equilibrium is calculated by making equal the expected payoff  when playing `heads' to the expected payoff of playing `tails'. It will be assumed that the probability for player 1 of playing `heads' is $\sigma$ and for playing tails 1 - $\sigma$, resulting in the following:
+\begin{center}
+$(-1)(\sigma) + (1 - \sigma) = (1)(\sigma) + (-1)(1 - \sigma)$
+\end{center}
+\begin{center}
+$-4 \sigma = -2$
+\end{center}
+\begin{center}
+$\sigma = 1/2$
+\end{center}
+This means that player 1 will play `heads' with a probability of 1/2 , and also means she will be playing tails with 1/2. And now it is time to calculate the probability of playing 'heads; for player 2 with probability $\sigma$ and `tails' with probability 1 - $\sigma$.
+
+\begin{center}
+$(1)(\sigma) + (1 - \sigma)(-1) = (-1)(\sigma) + (1)(1 - \sigma)$
+\end{center}
+\begin{center}
+$4 \sigma = 2$
+\end{center}
+\begin{center}
+$\sigma = 1/2$
+\end{center}
+
+This means that player 2 when playing against player 1 will play` heads'  1/2  of the times and in consequence play `tails' in the other 1/2 of the times. 
+This means that the Nash equilibria is when:
+\begin{center}
+((1/2, 1/2), (1/2, 1/2))
+\end{center}
+
+\subsubsection{ESS}
+Now let us find the ESS for the matching pennies game. In the same way the prisoner's dilemma ESS was calculated. It will be assumed the strategy  `Heads' is the population and the invader is the strategy `Tails'. Thus the payoff for the strategy `Heads' is the following:
+\begin{center}
+$(1-{\epsilon})(1) + (-1){\epsilon} = 1 - 2{\epsilon}$
+\end{center}
+And the payoff for the strategy `Tails' is:
+\begin{center}
+$(1-{\epsilon})(-1) + (1){\epsilon} = 2{\epsilon} - 1$
+\end{center}
+Both strategies appear to be equivalent unless there is a very small value of $\epsilon$.But since the simulation gives almost equal starting proportions to each strategy it will be assumed that the `invading' strategy `Tails' appears in a proportion of $\epsilon$=0.5. Resulting in the following:
+\begin{center}
+$1- 2(0.5) = 0$
+\end{center}
+And for the strategy `Defect' is:
+\begin{center}
+ 2(0.5)- 1 = 0
+\end{center}
+So the resulting expected payoff for both is 0 thus it can be said that `Heads' is not an evolutionarily stable strategy, Given that it does not dominate `Tails'.
+Next step is to check if the strategy `Tails' is evolutionarily stable. And therefore it is assumed that `Heads' is the invader. The expected payoff of the strategy `Tails' is:
+\begin{center}
+$(1-{\epsilon})(-1) + (1)({\epsilon}) = 2{\epsilon} -1$
+\end{center}
+And the payoff for the strategy `Heads' is:
+\begin{center}
+$(1-{\epsilon})(1) + (-1)({\epsilon}) =  1 - 2{\epsilon}$
+\end{center}
+Again it appears that they are equal. So `Tails' is not an ESS either. But it will be calculated it anyway assuming that the `invading' strategy `Heads' appears in a proportion of $\epsilon$=0.5. For the strategy `Tails' the following is the expected payoff for this proportions :
+\begin{center}
+1 -  2(0.5) = 0
+\end{center}
+And for the strategy `Heads' is:
+\begin{center}
+ 2(0.5) - 1 = 0
+\end{center}
+The strategy `Tails' is not an ESS either. And this explains the behaviour in the graphs, how through time both strategies appear to interact and oscilate in the middle (0.5)
+
+
+
+\subsection{Battle of sexes}
+For battle of sexes the Nash equilibrium will be calculated in the next section and it will be seen that there are 2 non symmetric Nash equilibria and a mixed Nash equilibrium. To see how these 3 equilibria behave the stack plots and graphs from 2 simulations will be shown. No other characteristics for this simulation will be analyzed, only the behaviour derived from Nash equilibria which will be explained. In this section the name of the strategy `Opera' will be `strategy 1' since the output of our python code shows it like this and for `Football' the name `strategy 2' will be used. They will be used interchangeably along this section. The table for simulations can be found in the appendix $\ref{app:bostable}$, and it is similar to prisoner's dilemma and matching pennies tables.
+We will use the configuration for simulations 4 and 19, with 5 and 25 rounds per generation. First we will see the behaviour of these simulations without inputing an initial distribution, which means a random intial distribution will be set by python. It will usually be close to 0.5 for each strategy, and the resulting graphs for this test are the following:
+For simulation 4:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4bos5}}   
+    	\caption{5 rounds}
+	\label{fig:bossim4r5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4bos5s}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim4rs5}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 4 with no inputed initial strategy, with 5 rounds per generation}
+    \label{bossim4simulationgsp5}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4bos25}}   
+    	\caption{25 rounds}
+	\label{fig:bossim4r25}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4bos25s}}   
+    	\caption{25 rounds stackplot}
+	\label{fig:bossim4rs25}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 4 with no inputed initial strategy, with 25 rounds per generation}
+    \label{bossim4simulationgsp25}
+\end{figure}
+
+From the previous figures $\ref{bossim4simulationgsp5}$ and $\ref{bossim4simulationgsp25}$ it can be seen that rounds per generation that rounds per generation appears to allow strategies to have a more clear dominance with the configuration of simulation 4. But the important observation comes with the set of graphs and stack plots shown in figures $\ref{bossim19simulationgsp5}$ and $\ref{bossim19simulationgsp25}$ for simulation 19 without setting an initial distribution.
+For simulation 19 these are the resulting graphs and plots for 5 and 25 rounds per generation:
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19bos5}}   
+    	\caption{5 rounds}
+	\label{fig:bossim19r5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19bos5s}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim19rs5}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 19 with no inputed initial strategy, with 5 rounds per generation}
+    \label{bossim19simulationgsp5}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19bos25}}   
+    	\caption{25 rounds}
+	\label{fig:bossim19r25}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19bos25s}}   
+    	\caption{25 rounds stack plot}
+	\label{fig:bossim19rs25}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 19 with no inputed initial strategy, with 25 rounds per generation}
+    \label{bossim19simulationgsp25}
+\end{figure}
+For the previous graphs and stack plots in figures $\ref{bossim19simulationgsp5}$ and $\ref{bossim19simulationgsp25}$  it appears that the number of rounds per generation has an impact on which strategies will dominate through time. Even if  in simulation 4 this was not true. The number of rounds per generation do not influence in which strategy will be dominating. What happened in simulation 19 was that python does not assign exactly 0.5 for each strategy the tables $\ref{tab:bossim19r5}$ and $\ref{tab:bossim19r25}$  will show what was the initial distribution for simulation 19 with 5 and 25 rounds per generation.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+ & Strategy 1 & Strategy 2\\ 
+\hline
+Row agents & 0.476 & 0.524 \\
+\hline
+Col agents & 0.514 & 0.486\\
+\hline
+\end{tabular}
+\caption{ Table of initial values distribution for simulation 19, 5 rounds.}
+\label{tab:bossim19r5}	
+\end{center}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+ & Strategy 1 & Strategy 2\\ 
+\hline
+Row agents &  0.5 & 0.5\\
+\hline
+Col agents &  0.494 & 0.506\\
+\hline
+\end{tabular}
+\caption{ Table of initial values distribution for simulation 19, 25 rounds.}
+\label{tab:bossim19r25}	
+\end{center}
+\end{table}
+
+From the previous tables it can be seen that there does not appear to be a pattern determining which strategy will be dominating. This may suggest that when there is no significant difference between the distributions, the dominating strategy will be determined by random factors which can work in favour of either strategy. To prove this initial strategies distribution will be set 0.5 for each strategy for simulation 4 and simulation 19 will be used.
+
+The following figures $\ref{bossim45simulationgsp5initial}$ and $\ref{bossim45simulationgsp5rainitial}$ graphs can be found where the behaviour when using an initial distribution of 0.5 for each strategy for simulation 4 can be seen:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{45bos}}   
+    	\caption{5 rounds}
+	\label{fig:bossim45bos}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{45sbos}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim45sbos}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 4 with initial strategy, with 5 rounds per generation}
+    \label{bossim45simulationgsp5initial}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{45ra}}   
+    	\caption{5 rounds}
+	\label{fig:bossim45ra}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{45ras}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim45ras}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 4 with initial strategy, with 5 rounds per generation}
+    \label{bossim45simulationgsp5rainitial}
+\end{figure}
+
+By looking at the previous stack plots and graphs in figures $\ref{bossim45simulationgsp5initial}$ and $\ref{bossim45simulationgsp5rainitial}$ for simulation 4 with 5 rounds per generation, it can be seen that for each run a different strategy was dominating. It is important to remember that an initial strategy distribution of 0.5 for each has been set.
+Now simulation 4 with 25 rounds per generation with 0.5 as initial proportion for each strategy is run and the following graphs and stackplots show the behaviour after running it twice with the same parameters:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{425bos}}   
+    	\caption{25 rounds}
+	\label{fig:bossim425bos}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{425sbos}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim425sbos}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 4 with initial strategy, with 25 rounds per generation}
+    \label{bossim425simulationgsp5initial}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{425rabos}}   
+    	\caption{25 rounds}
+	\label{fig:bossim425rabos}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{425rasbos}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim425rasbos}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 4 with initial strategy, with 25 rounds per generation}
+    \label{bossim425simulationgsp25rainitial}
+\end{figure}
+From the previous stackplots and graphs in figures $\ref{bossim425simulationgsp5initial}$ and $\ref{bossim425simulationgsp25rainitial}$ it can be seen that the behaviour for simulation 4 with 25 rounds per generation is also random. So it  can be said that with equal initial proportions for each strategy the behaviour of which will dominate is random. Now we check to  see if this behaviour is true for simulation 19. 
+
+Simulation 19 with 5 rounds per generation and 0.5 initial proportion for each strategy, run twice with the same parameters gives the following graphs and stack plots from figures $\ref{bossim195simulationgsp5initial}$ and $\ref{bossim195simulationgsp5rainitial}$:
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{195bos}}   
+    	\caption{5 rounds}
+	\label{fig:bossim195r5}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{195sbos}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim195rs5}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 19 with initial strategy, with 5 rounds per generation}
+    \label{bossim195simulationgsp5initial}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{195rabos}}   
+    	\caption{5 rounds}
+	\label{fig:bossim195ra}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{195rasbos}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim195ras}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 19 with initial strategy, with 5 rounds per generation}
+    \label{bossim195simulationgsp5rainitial}
+\end{figure}
+
+For simulation 19 with 25 rounds per generation and 0.5 initial proportion for each strategy can be found in the following graphs and stack plots from figure $\ref{bossim1925simulationgsp25initial}$ and $\ref{bossim1925simulationgsp25rainitial}$:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{1925bos}}   
+    	\caption{5 rounds}
+	\label{fig:bossim1925r25}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{1925sbos}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim1925rs25}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 19 with initial strategy, with 25 rounds per generation}
+    \label{bossim1925simulationgsp25initial}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{1925rabos}}   
+    	\caption{25 rounds}
+	\label{fig:bossim1925ra}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{1925rasbos}}   
+    	\caption{25 rounds stackplot}
+	\label{fig:bossim1925ras}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 19 with initial strategy, with 25 rounds per generation}
+    \label{bossim1925simulationgsp25rainitial}
+\end{figure}
+
+These reinforces the idea that with equal initial distribution, any of the strategies which are equilibrium can dominate in time. Given its mixed strategy equilibrium. Next we will see how when using a more favourable initial distribution for one of the strategies will help that strategy to dominate the other through time.
+\\\\It can be noted that the number of rounds per generation does not influence. Now simulation 4 and simulation 19  with 5 rounds per generation will be run, and each with an initial strategy distribution of 0.7 for strategy 1 and 0.3 for strategy 2.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4bos73}}   
+    	\caption{5 rounds}
+	\label{fig:bossim473}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4bos73s}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim473s}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 4 with initial strategy (0.7, 0.3), with 5 rounds per generation}
+    \label{bossim473simulationgsp473initial}
+\end{figure}
+
+And for simulation 19 with the same distribution:
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19bos73}}   
+    	\caption{5 rounds}
+	\label{fig:bossim1973}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19bos73s}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim1973s}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 19 with initial strategy (0.7, 0.3), with 5 rounds per generation}
+    \label{bossim1973simulationgsp1973initial}
+\end{figure}
+From the previous stack plots from figures $\ref{bossim473simulationgsp473initial}$ and $\ref{bossim1973simulationgsp1973initial}$ it can be seen that the strategy that dominates is strategy 1, which had the highest proportion in the initial distribution. Now we will change the proportions to favour strategy 2.
+Now it will be calculated for simulation 4 and simulation 19, each with an initial strategy distribution of 0.3 for strategy 1 and 0.7 for strategy 2:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4bos37}}   
+    	\caption{5 rounds}
+	\label{fig:bossim437}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4bos37s}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim437s}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 4 with initial strategy (0.3, 0.7), with 5 rounds per generation}
+    \label{bossim437simulationgsp437initial}
+\end{figure}
+
+And for simulation 19 with the same distribution:
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19bos37}}   
+    	\caption{5 rounds}
+	\label{fig:bossim1937}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{19bos37s}}   
+    	\caption{5 rounds stackplot}
+	\label{fig:bossim1937s}
+    \end{subfigure}
+    \caption{Graph and stack plot for simulation 19 with initial strategy (0.3, 0.7), with 5 rounds per generation}
+    \label{bossim1937simulationgsp1937initial}
+\end{figure}
+Strategy 2 appears to be the dominating strategy by looking at the previous stack plots in figures $\ref{bossim437simulationgsp437initial} and $\ref{bossim1937simulationgsp1937initial}. This behaviour can be seen with any configuration of simulations from the table, when choosing a higher initial proportion for one of the two strategies in the `Battle of sexes' game. And for the this game is the most relevant behaviour to analyze. The next step is to calculate the Nash equilibria and ESS.
+
+
+\subsubsection{Nash Equilibrium}
+ Nash equilibrium for the battle of sexes game is calculated by looking at the normal form table and it can be noticed that there are 2 non symmetric Nash equilibria, this means that they do not play the same strategy; and there can also be found a mixed Nash equilibrium.
+
+\begin{table}[H]
+\begin{center}
+Female
+
+Male
+\begin{tabular}{|l|c|c|}
+\hline
+ & Opera & Football\\ 
+\hline
+Opera & \underline{2}, \underline{1} & 0, 0\\
+\hline
+Football & 0, 0 & \underline{1}, \underline{2}\\
+\hline
+\end{tabular}
+
+\caption{ Battle of sexes bimatrix payoff.}
+\label{fig:mpnashbos}	
+\end{center}
+\end{table}
+
+Now the mixed Nash equilibrium is calculated by making equal the expected payoff  when going to the Opera with the expected payoff of watching Football. It will be assumed that the probability for the Male player of going to the Opera is $\sigma$ and for watching Football 1 - $\sigma$, resulting in the following:
+\begin{center}
+$(2)(\sigma) + (1 - \sigma)(0) = (0)(\sigma) + (1)(1 - \sigma)$
+\end{center}
+\begin{center}
+$3\sigma = 1$
+\end{center}
+\begin{center}
+$\sigma = 1/3$
+\end{center}
+This means that the Male player chooses to go to the opera with the probability of 1/3 , and also means he will prefer watching football 2/3. And now we calculate the probability of going to the Opera for the Female player with probability $\sigma$ and for watching Football with probability 1 - $\sigma$.
+
+\begin{center}
+$(1)(\sigma) + (1 - \sigma)(0) = (0)(\sigma) + (2)(1 - \sigma)$
+\end{center}
+\begin{center}
+$3\sigma = 2$
+\end{center}
+\begin{center}
+$\sigma = 2/3$
+\end{center}
+
+This means that the Female player will choose to go to the Opera with a probability of 2/3 and in consequence only chooses to watch football the other 1/3. 
+This means that the Nash equilibria is when:
+\begin{center}
+((1/3, 2/3), (2/3, 1/3))
+\end{center}
+
+\subsubsection{ESS}
+Now to find the ESS for this game. It will be assumed that going to the 'Opera' is the population and the invader is the strategy to watch `Football'. Thus the payoff for the strategy `Opera' is the following:
+\begin{center}
+$(1-{\epsilon})(2) + (0){\epsilon} = 1 - 2{\epsilon}$
+\end{center}
+And the payoff for the strategy watching `Football' is:
+\begin{center}
+$(1-{\epsilon})(0) + (1){\epsilon} = {\epsilon}$
+\end{center}
+With a value of $\epsilon$ $\leq$ 0.3 `Opera' is an ESS. But since the simulation runs every time with almost equal starting proportions to each strategy it will be assumed that the `invading' strategy `Football' appears in a proportion of $\epsilon$=0.5. And the calculation is as follows:
+\begin{center}
+1- 2(0.5) = 0
+\end{center}
+And for the strategy `Football' is:
+\begin{center}
+ (0.5) = 0.5
+\end{center}
+The expected payoff for `Football' is greater thus it can be said that `Opera' is not an evolutionarily stable strategy, given that it does not dominate  `Football'.
+Now a check to see if the strategy `Football' is evolutionarily stable. And therefore it is assumed that `Opera' is the invader. The expected payoff of the strategy `Football' is:
+\begin{center}
+$(1-{\epsilon})(1) + (0)({\epsilon}) = 1 - {\epsilon} $
+\end{center}
+And the payoff for the strategy `Opera' is:
+\begin{center}
+$(1-{\epsilon})(0) + (2)({\epsilon}) =  2{\epsilon}$
+\end{center}
+So it can be seen that `Football' is not an ESS either, given that under certain values of $\epsilon$ it will not be dominant. Now it is calculated assuming that the `invading' strategy `Opera' appears in a proportion of $\epsilon$=0.5. For the strategy `Football':
+\begin{center}
+1 -  (0.5) = 0.5
+\end{center}
+And for the strategy `Opera' is:
+\begin{center}
+ 2(0.5)  = 1
+\end{center}
+The strategy `Football' is not an ESS either. Each strategy will appear to be evolutionarily stable according to their probability of appearance in the population. But with the default settings for our simulation which give a proportion of 0.5 to each there is not a clear evolutionarily stable strategy at the beginning of each simulation.
+
+
+\subsection{Hawk-dove}
+For the hawk-dove game 5 rounds per generation were used for the different combinations of the table of simulations. The most interesting behaviours from the combinations will be analyzed briefly. The simulation table is similar to those of the previous games but it is only ran with 5 rounds per generation and can be found in appendix $\ref{app:hdtable}$
+For simulations 3, 4 and 5 the resulting graphs are the following:
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{3hd}}   
+    	\caption{Simulation 3}
+	\label{fig:hd3}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4hd}}   
+    	\caption{Simulation 4}
+	\label{fig:hd4}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{5hd}}   
+    	\caption{Simulation 5}
+	\label{fig:hd5}
+    \end{subfigure}
+    \caption{Graphs for simulations 3, 4 and 5}
+    \label{hdsim345}
+\end{figure}
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{3hds}}   
+    	\caption{Simulation 3}
+	\label{fig:hd3s}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{4hds}}   
+    	\caption{Simulation 4}
+	\label{fig:hd4s}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{5hds}}   
+    	\caption{Simulation 5}
+	\label{fig:hd5s}
+    \end{subfigure}
+    \caption{Stackplots for simulations 3, 4 and 5}
+    \label{hdsim345s}
+\end{figure}
+
+From the previous figures $\ref{hdsim345}$ and $\ref{hdsim345s}$  it can be said the dominating strategies are strategy 1 for row agents and strategy 2 for column players. With an ascending death rate of 0.1, 0.5 and 0.9 for simulation 3 , 4 and 5 respectively. The gap between the dominating and dominated strategies reduces as the death rate increases. As in prisoner's dilemma this happens because as more agents are allowed to be eliminated the dominance they do not have possibility of accumulating a high population. In the stack plots $\ref{hdsim345s}$ for these 3 games it can be seen that strategy 1 and 2 are close to having an equal distribution throughout the simulations. 
+
+
+Now simulations 8, 9, 12 and 14 will be run. Where it can be seen that the strategies that dominate are strategy 2 for row agents and strategy 1 for column agents. These four simulations have a varied combination of factors, as presented in the following table $\ref{tab:hdsmallmatrix}$.
+
+\begin{table}[H]
+\begin{center}
+
+\begin{tabular}{|l|c|c|c|}
+\hline
+ & Death Rate & Mutation Rate & Exploitation rate\\ 
+\hline
+Simulation 8 & 0.1 & 0.5 & 1\\
+\hline
+Simulation 9 &  0.1 & 0.9 & 1\\
+\hline
+Simulation 12 & 0.9 & 0.1 & 0.5\\
+\hline
+Simulation 14 & 0.5 & 0.5 & 0.5\\
+\hline
+\end{tabular}
+\caption{ Hawk-Dove combinations for simulations 8, 9, 12 and 14.}
+\label{tab:hdsmallmatrix}	
+\end{center}
+\end{table}
+A pattern does not appear to exist, only that randomness is higher because of the increasing mutation rate, decreasing exploitation rate or combination of both situations. The graphs for the simulations can be found in figures $\ref{hdsim89}$ and $\ref{hdsim1214}$ are the following:
+
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{8hd}}   
+    	\caption{Simulation 8}
+	\label{fig:hd8}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{9hd}}   
+    	\caption{Simulation 9}
+	\label{fig:hd9}
+    \end{subfigure}
+   \caption{Graphs for simulations 8 and 9}
+    \label{hdsim89}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{12hd}}   
+    	\caption{Simulation 12}
+	\label{fig:hd12}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{14hd}}   
+    	\caption{Simulation 14}
+	\label{fig:hd14}
+    \end{subfigure}
+   \caption{Graphs for simulations 12 and 14}
+    \label{hdsim1214}
+\end{figure}
+
+The stack plots from figures $\ref{hdsim89s}$ and $\ref{hdsim1214s}$ it can be seen how the behaviour from the simulations 3, 4 and 5 prevails also despite of which combination of strategies are played in agents. Also it can be noted that strategy 1 and strategy 2 (hawk and dove strategies) tend to be close to equally distributed along the whole simulation. An interesting initial behaviour for simulation 8 and 9 can be seen but when running it for 100 simulations it eventually stabilizes and behaves as equally distributed. In the case of simulation 12 there are obvious changes and it does not appear to be as stable as the others, but this is given to the high death rate, and the 0.5 exploitation rate. This gives an expected behaviour where the population will look for stability, but it the high death rate and the randomness of reproducing that gives the relatively low exploitation rate, will generate some irregular patterns but it can be seen that it is close to an equal distribution for strategies.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{8hds}}   
+    	\caption{Simulation 8}
+	\label{fig:hd8s}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{9hds}}   
+    	\caption{Simulation 9}
+	\label{fig:hd9s}
+    \end{subfigure}
+   \caption{Stack plots for simulations 8 and 9}
+    \label{hdsim89s}
+\end{figure}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{12hds}}   
+    	\caption{Simulation 12}
+	\label{fig:hd12s}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{14hds}}   
+    	\caption{Simulation 14}
+	\label{fig:hd14s}
+    \end{subfigure}
+   \caption{Stack plots for simulations 12 and 14}
+    \label{hdsim1214s}
+\end{figure}
+
+With these a conclusion can be made that, as will be see when calculating Nash equilibria, randomness determines which of the 2 existing Nash equilibria will be the result for this game. Now the Nash equilibria and the ESS for this game will be determined.  Unlike prisoner's dilemma, in hawk and dove game if an `agressive' strategy is present in the population, the agents playing against that strategy do better by using `dove' strategy than retaliating.
+
+\subsubsection{Nash Equilibrium}
+The Nash equilibrium for the hawk-dove game will now be found. The Nash equilibrium for the this game,  can be found by looking at the normal form table and select the best responses for each player. There are 2 Nash equilibria in this game.
+
+\begin{table}[H]
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Hawk & Dove\\ 
+\hline
+Hawk & 0, 0 & \underline{3}, \underline{1}\\
+\hline
+Dove & \underline{1},\underline{3} & 2, 2\\
+\hline
+\end{tabular}
+
+\caption{ Hawk-Dove bimatrix payoff.}
+\label{fig:mpnashhd}	
+\end{center}
+\end{table}
+
+The mixed Nash equilibrium is calculated by making equal the expected payoff  when playing `Hawk' to the expected payoff of playing `Dove'. It will be assumed that the probability for player 1 of playing `Hawk' is $\sigma$ and for playing `Dove' is 1 - $\sigma$, resulting in the following:
+\begin{center}
+$(0)(\sigma) + (1 - \sigma)(3) = (1)(\sigma) + (2)(1 - \sigma)$
+\end{center}
+\begin{center}
+$-2 \sigma = -1$
+\end{center}
+\begin{center}
+$\sigma = 1/2$
+\end{center}
+This means that player 1 will play `Hawk' 1/2 of the times, and also means she will be playing `Dove' with a probability of 1/2. And now to calculate the probability of playing `Hawk' for player 2 with probability $\sigma$ and playing `Dove' with probability 1 - $\sigma$.
+\begin{center}
+$(0)(\sigma) + (1 - \sigma)(3) = (1)(\sigma) + (2)(1 - \sigma)$
+\end{center}
+\begin{center}
+$4 \sigma = 2$
+\end{center}
+\begin{center}
+$\sigma = 1/2$
+\end{center}
+
+This means that player 2 when playing against player 1 will play `Hawk' with a probability of  1/2  and in consequence play `Dove' with the remaining probability of 1/2. 
+This means that the Nash equilibria is when:
+\begin{center}
+((1/2, 1/2), (1/2, 1/2))
+\end{center}
+Therefore it can be seen that there exist 2 non symmetric Nash equilibria and a mixed Nash equilibrium.
+
+\subsubsection{ESS}
+Now it will be found the ESS for this game. It is assumed the strategy  `Hawk' is the population and the invader is the strategy `Dove'. Thus the payoff for the strategy `Hawk' is the following:
+\begin{center}
+$(1-{\epsilon})(0) + (3){\epsilon} = 3{\epsilon}$
+\end{center}
+And the payoff for the strategy `Dove' is:
+\begin{center}
+$(1-{\epsilon})(1) + (2){\epsilon} = 1 + {\epsilon}$
+\end{center}
+It can be seen that with certain values of $\epsilon$ $>$ 5 Hawk is an ESS. Since the simulation every time gives almost equal starting proportions to each strategy it will  be assumed that the `invading' strategy `Dove' appears in a proportion of $\epsilon$=0.5. And calculates as follows:
+\begin{center}
+3(0.5) = 1.5
+\end{center}
+And for the strategy `Dove' is:
+\begin{center}
+ 1 + (0.5) = 1.5
+\end{center}
+So the expected payoff for both are equal thus we can say that `Hawk' is not an evolutionarily stable strategy with an initial distribution of 0.5, given that it does not dominate `Dove'.
+Now it is checked if the strategy `Dove' is evolutionarily stable. And therefore `Hawk' is assumed to be the invader. First the expected payoff for the strategy `Dove' is:
+\begin{center}
+$(1-{\epsilon})(0) + (3)({\epsilon}) = 3{\epsilon} $
+\end{center}
+And the payoff for the strategy `Hawk' is:
+\begin{center}
+$(1-{\epsilon})(1) + (2)({\epsilon}) =  1 + {\epsilon}$
+\end{center}
+It can be seen a similar situation as the previous. So it can be assumed that `Dove' is not an ESS either. But it will be calculated anyway assuming that the `invading' strategy `Hawk' appears in a proportion of $\epsilon$=0.5. And the following is the result for the strategy `Dove':
+\begin{center}
+3(0.5) = 1.5
+\end{center}
+And for the strategy `Hawk' is:
+\begin{center}
+ 1 + (0.5) = 1.5
+\end{center}
+The strategy `Dove' is not an ESS either under this distribution.
+
+\subsection{Axelrod python package}
+\subsubsection{Axelrod's tournament}
+Now a python package called `axelrod' will be used. This package was originated from the concept of Robert Axelrod's tournaments. Robert Axelrod is a doctor in political science which as briefly mentioned before, who was interested in how cooperative strategies can persist in a population through time in an environment where hostile strategies exist.
+Axelrod’s first tournament had originally 14 strategies, which were submitted by known game theorists at the time the tournament was played. From `axelrod's' package in python a simulation with 8 strategies was run only for observation purposes. A description for the characteristics of each strategy used can be found in appendix $\ref{app:axelrod2015library}$.
+From the `axelrod' library there can be run an ecological variant, this produces a stack plot which we was compared to the stack plot produced by the code `ablearn' from this project. In `axelrod's' python library, the ecological shows how a strategy performs in the population through time giving how likely it is for a strategy to reproduce $\cite{axelrod2015library}$. Instructions of how to use `Axelrod's' python library can be found in the package documentation page, a link to it can be found in appendix $\ref{app:axelrod2015library}$ and in the references section.
+
+The strategies used were mentioned in the library's description, as a reminder they will be listed again:
+Tit for Tat, Grofman, Shubik, Grudger, Davis, Feld, Joss and Tullock.
+With the ‘axelrod’  library we get a payoff matrix from playing, which was transformed into the following bimatrix:
+\begin{table}[H]
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+& $\textbf{Tit for Tat}$ & $\textbf{Grofman}$ & $\textbf{Shubik}$ & $\textbf{Grudger}$ & $\textbf{Davis}$ & $\textbf{Feld}$ & $\textbf{Joss}$ & $\textbf{Tullock}$\\ 
+\hline
+$\textbf{Tit for Tat}$ & 3 ,3 & 1.7414 , 1.759 & 3 , 3 & 3 , 3 & 3 , 3 & 1.392 , 1.417 & 1.2814 , 1.3065 & 1.626 , 1.648\\
+\hline
+$\textbf{Grofman}$ & 1.759 , 1.7414 & 1.775 , 1.775 & 1.143 , 1.975 & 0.750 , 2.143 & 0.881 , 2.148 & 1.549 , 1.861 & 1.662 , 1.777 &	1.592 , 1.849\\
+\hline
+$\textbf{Shubik}$ & 3 , 3 & 1.975 , 1.143 & 3 , 3 & 3 , 3 & 3 , 3 & 1.338 , 1.338 & 1.079 , 1.086 & 1.348 , 1.302 \\
+\hline
+$\textbf{Grudger}$ & 3 , 3 & 2.143 , 0.7505 & 3 , 3 & 3 , 3 & 3 , 3 & 1.2479 , 1.2479 & 1.083 , 1.085 & 1.293 , 1.2\\
+\hline
+$\textbf{Davis}$ & 3 , 3 & 2.148 , 0.881 & 3 , 3 & 3 , 3 & 3 , 3 & 1.236 , 1.238 & 1.104 , 1.119 & 1.32 , 1.23\\
+\hline
+$\textbf{Feld}$ & 1.417 , 1.392 & 1.861 , 1.549 & 1.338 , 1.338 & 1.247 , 1.247 & 1.238 , 1.236 & 1.315 , 1.315 & 1.159 , 1.171 & 1.375 , 1.36\\
+\hline
+$\textbf{Joss}$ & 1.306 , 1.281 & 1.777 , 1.662 & 1.086 , 1.079 & 1.085 , 1.083 & 1.119 , 1.104 & 1.171 , 1.159 & 1.115 , 1.115 & 1.444 , 1.38 \\
+\hline
+$\textbf{Tullock}$ & 1.648 , 1.626 & 1.849 , 1.592 & 1.302 , 1.348 & 1.2 , 1.293 & 1.23 , 1.32 & 1.36 , 1.375 & 1.38 , 1.444 & 1.484 , 1.484 \\
+\hline
+\end{tabular}}
+\end{center}
+\caption{`Axelrod' package transformed payoff bimatrix for 8 strategies from Axelrod's tournament.}
+\label{tab:axelrodmatrix}
+\end{table}
+The `axelrod' package plays 10 repetitions of 200 turns each. And the resulting ranking for the strategies was in the following order: 'Tit For Tat', 'Shubik', 'Davis', 'Grudger', 'Tullock', 'Feld', 'Grofman', 'Joss'.  The stack plot from `axelrod' package was produced, this stack plot uses a probabilistic method to estimate how the strategies will evolve in time periods. The following stack plot shown in figure $\ref{fig:axelrodstack100}$ from `axelrod' package is estimated with 100 time units.
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.7]{axelrodstack100}
+
+\caption{Stack plot with 100 time units produced with `axelrod' package.}
+\label{fig:axelrodstack100}
+\end{center}
+\end{figure}
+The stack plots in figure $\ref{fig:ablearnaxelrodstack}$ were produced with the `ablearn' package, with the values that considered standard for this project which are 0.1 death rate, 0.1 mutation rate and 1 exploitation rate.
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{axelrod100g100rpgs}}   
+    	\caption{Stackplot 100 rounds}
+	\label{fig:axl100rpgs}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{axelrod100g25rpgs}}   
+    	\caption{Stackplot 25 rounds}
+	\label{fig:axl25rpgs}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{axelrod100g5rpgs}}   
+    	\caption{Stackplot 5 rounds}
+	\label{fig:axl5rpgs}
+    \end{subfigure}
+    \caption{Stackplots for simulations from `ablearn' package.}
+    \label{fig:ablearnaxelrodstack}
+\end{figure}
+It can be seen that they have a different result from the predicted behaviour of the stack plot produced from `axelrod' package in figure $\ref{fig:axelrodstack100}$. This is because the agents from `ablearn' do not change their strategies, they only reproduce and the resulting agent may posses the same strategy as the agent that was considered for its creation or it may posses any other according to the mutation and exploitation rate, this gives the observed resulting interaction. In `axelrod' package each type of strategy takes in consideration previous interactions with agents and can shift to a convenient action according to their individual criteria, while `ablearn' is pure interaction of agents which have a defined static behaviour with agents in this same condition.
+
+
+\subsubsection{Basic strategies}
+With the 'axelrod' package also a variable called `basic\_strategies' was run, which automatically generates the following set of strategies: Alternator, Cooperator, Defector, Random and Tit For Tat. The description in this strategies can be found in the documentation webpage for `axelrod' package which can be found in appendix $\ref{app:axelrodstrategies}$ also a brief description will be added in the appendix $\ref{app:axelrod2015library}$.
+
+\begin{table}[H]
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+& $\textbf{Alternator}$ & $\textbf{Cooperator}$ & $\textbf{Defector}$ & $\textbf{Random}$ & $\textbf{Tit For Tat}$\\ 
+\hline
+$\textbf{Alternator}$ & 2 , 2 & 4 , 1.5 & 0.5 , 3 & 2.302 , 2.217 & 2.515 , 2.49\\
+\hline
+$\textbf{Cooperator}$ & 1.5 , 4 & 3 , 3	 &  0 , 5 & 1.495 , 4.002 & 3 , 3\\
+\hline
+$\textbf{Defector}$ & 3 , 0.5 & 5 , 0 &	1 , 1 & 3.07 , 0.482 & 1.019 , 0.994 \\
+\hline
+$\textbf{Random}$ & 2.217 , 2.302 & 4.002 , 1.495 & 0.482 , 3.07 & 2.245 , 2.245 & 2.275 , 2.264\\
+\hline
+$\textbf{Tit For Tat}$ & 2.49 , 2.515 & 3 , 3 & 0.994 , 1.019 & 2.264 , 2.275 & 3 , 3\\
+\hline
+\end{tabular}}
+\end{center}
+\caption{`Axelrod' package payoff bimatrix for basic strategies.}
+\label{tab:axelrodbasicmatrix}
+\end{table}
+
+The following environmental stack plot shown in figure $\ref{fig:axelrodstackbasic1000}$ was the result from the `axelrod' package for the basic strategies:
+
+\begin{figure}[H]
+\begin{center}
+	\includegraphics[scale=0.7]{fromaxelrodpackbasic}
+
+\caption{Stack plot with 1000 time units produced with `axelrod' package for basic strategies.}
+\label{fig:axelrodstackbasic1000}
+\end{center}
+\end{figure}
+It can be seen that the strategy`Tit for Tat' will eventually dominate all the other strategies, 
+
+With the payoff matrix that `axelrod' package outputs, the simulation with 100 generations with values for death rate of 0.1, mutation rate of 0.1 and exploitation rate of 1 was run with 100, 25 and 5 rounds per generation, the resulting stack plots can be found in the following figure $\ref{fig:ablearnaxelrodstackbasic}$.
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{axelrodbasic1s}}   
+    	\caption{Stackplot 100 rounds}
+	\label{fig:axlbasic100rpgs}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{axelrodbasic2s}}   
+    	\caption{Stackplot 25 rounds}
+	\label{fig:axlbasic25rpgs}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{axelrodbasic3s}}   
+    	\caption{Stackplot 5 rounds}
+	\label{fig:axlbasic5rpgs}
+    \end{subfigure}
+    \caption{Stackplots for simulations from `ablearn' package.}
+    \label{fig:ablearnaxelrodstackbasic}
+\end{figure}
+
+To be able to compare the stack plots from `ablearn' with the stack plot from `axelrod' package, it is important to remember the order the strategies were input for `ablearn' since the program does not give us the name of the strategy (this will be one of the future improvements to be introduced into `ablearn' package). The following table $\ref{tab:axltoabl}$ will clarify what each strategy in `ablearn' is related to.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+$\textbf{Axelrod}$& $\textbf{Ablearn}$\\ 
+\hline
+Alternator & Strategy 1\\
+\hline
+Cooperator & Strategy 2 \\
+\hline
+Defector & Strategy 3\\
+\hline
+Random & Strategy 4\\
+\hline
+Tit For Tat & Strategy 5\\
+\hline
+\end{tabular}
+\end{center}
+\caption{`Axelrod' package and `ablearn' name equivalence.}
+\label{tab:axltoabl}
+\end{table}
+
+By comparing the stack plots in figure $\ref{fig:ablearnaxelrodstackbasic}$ produced by `ablearn' with the stack plot produced by `axelrod' in figure $\ref{fig:axelrodstackbasic1000}$, it can be seen that stack plot $\ref{fig:axlbasic5rpgs}$ shows results more similar to `axelrod' stack plot. Where strategy `Random' has a brief increase during the initial generations, `Tit for Tat' increases and dominates the other strategies, and all strategies except for `Tit for Tat' are reduced in time. What makes `ablearn' stack plots behave slightly different is that the concept of mutation rate allows strategies that could disappear in a long run to remain, since it gives the same possibility to any strategy to have a copy of itself. 
+
+By analyzing strategies from Axelrod's tournament and the basic strategies from the package `axelrod' it can be seen that the package `ablearn' produces similar behaviours to the expected  under the parameters of 0.1 death rate, 0.1 mutation rate and 1 exploitation rate, when using the payoff matrix produced by `axelrod' package.

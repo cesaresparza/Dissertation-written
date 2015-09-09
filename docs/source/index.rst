@@ -18,3 +18,5 @@ Contents:
    howtouse
    help
    license
+   Library
+   Modules
