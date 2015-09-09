@@ -1,0 +1,287 @@
+\label{app:pdanalysisrounds}
+
+The prisoner's dilemma simulation in Python starts by assigning the following proportions to row and column agents to the strategies cooperate and defect the combination of parameters can be seen in the table in appendix $\ref{app:pdsimtable}$.
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.49 & 0.51\\
+
+\hline
+Column Agents & 0.502 & 0.498\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ Initial Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g1}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.489 & 0.514\\
+\hline
+Column Agents & 0.524 & 0.476\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Initial Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g1}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.512 & 0.488\\
+\hline
+Column Agents & 0.49 & 0.51\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ Initial Prisoner’s Dilemma distribution for simulation 3.}
+\label{tab:pds3g1}
+\end{table}
+
+ The 3 simulations start with very similar proportions for each strategy for agent type. They all start close to 0.5 so there is not a significant difference at this stage.
+
+By generation 5 it can be seen that the strategy `Defect' is dominating.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.348 & 0.652\\
+\hline
+Column Agents & 0.24 & 0.76\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ Generation 5 Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g5}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.25 & 0.75\\
+\hline
+Column Agents & 0.378 & 0.622\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 5 Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g5}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.35 & 0.65\\
+\hline
+Column Agents & 0.314 & 0.686\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 5 Prisoner’s Dilemma distribution for simulation 3.}
+\label{tab:pds3g5}
+\end{table}
+For simulation 2 in generation 5 it can be seen that the proportions are slightly different than first simulation. For row agents the proportion increased and is very close to the proportion of the column agents in generation 5 from the previous simulation 1 and for the column agents decreased and is very close to the proportion for row agents in the simulation 1.
+In simulation 3 for this generation the value for strategy `Defect' for row agents is slightly higher than simulation 1 and slightly smaller than simulation 2. For the same strategy in column agents compared to simulation 1 it decreased slightly and to simulation 2 it increased. The differences presented between simulations do not appear significant for this generation.
+
+By generation 10 it can be seen that the dominance of strategy `Defect'  is almost absolute in the 3 simulations.
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.054 & 0.946\\
+\hline
+Column Agents & 0.074 & 0.926\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g10}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.018 & 0.982\\
+\hline
+Column Agents & 0.094 & 0.906\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g10}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.082 & 0.918\\
+\hline
+Column Agents & 0.07 & 0.93\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 3.}
+\label{tab:pds3g10}
+\end{table}
+
+In simulation 2 for generation 10  with respect to simulation 1, a small increase in the strategy `Defect'  for row agents, and a small decrease in the same strategy for column agents. For simulation 3 strategy `Defect' for row agents is slightly decreased with respect to the value in simulation 1 and 2. For the same strategy in column agents it increased slightly when compared to simulation 1 and 2.
+In this generation for the 3 different simulations, the value for strategy `Defect' are above 0.9, but again there is no obvious pattern so the variations may be given by the effect of the randomized variables for each simulation.
+
+In generation 25 it can be seen that the condition persists and the strategy `Defect' for both types of agents dominates in frequency.
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.068 & 0.932\\
+\hline
+Column Agents & 0.054 & 0.946\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 25 Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g25}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.045 & 0.955\\
+\hline
+Column Agents & 0.047 & 0.953\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 25 Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g25}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.072 & 0.928\\
+\hline
+Column Agents & 0.054 & 0.972\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 25 Prisoner’s Dilemma distribution for this simulation 3.}
+\label{tab:pds3g25}
+\end{table}
+
+
+In simulation 2 for generation 25, the proportions increased slightly for strategy defect for both agents in relation to simulation 1. For simulation 3 the proportions are slightly smaller for the strategy `Defect' for row agents than in simulations 1 and 2. For same strategy in column agents is slightly higher than values from simulations 1 and 2. Still all the values for strategy `Defect' are above 0.9.
+
+For generation 50, the last generation we see that strategy `Defect' dominates the strategy `Cooperate' for all simulations.The graphs from the 3 different simulations are presented.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.01 & 0.99\\
+\hline
+Column Agents & 0.044 & 0.956\\
+\hline
+\end{tabular}
+\end{center}
+\caption{ Generation 50 Prisoner’s Dilemma distribution for simulation 1.}
+\label{tab:pds1g50}
+\end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.024 & 0.976\\
+\hline
+Column Agents & 0.08 & 0.92\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 50 Prisoner’s Dilemma distribution for simulation 2.}
+\label{tab:pds2g50}
+ \end{table}
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+& Cooperate & Defect \\ 
+\hline
+Row Agents & 0.02 & 0.98\\
+\hline
+Column Agents & 0.028 & 0.972\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Generation 50 Prisoner’s Dilemma distribution for simulation 3.}
+\label{tab:pds3g50}
+ \end{table}
+
+\begin{figure}[H]       
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{1pd50}}
+	\caption{ Prisoner's dilemma simulation 1, 50 rounds.}
+	\label{fig:pds1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{2pd25}}
+	\caption{ Prisoner's Dilemma simulation 2, 25 rounds.}
+	\label{fig:pds2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{3pd5}}
+	\caption{Prisoner's Dilemma simulation 3, 5 rounds.}
+	\label{fig:pds3}
+    \end{subfigure}
+    \caption{Prisoner's dilemma simulations 1, 2 and 3.}
+    \label{pdsim345r5}
+\end{figure}
+
+In simulation 2 for this generation, both proportions decreased slightly. Since the changes in the proportions are very small for this project it is not consider to be a significant difference between using 50 or 25 rounds. For simulation 3 the value for row agent in strategy `Defect' is slightly higher compared to simulation 2  and smaller from the one in simulation 1. For column agents for the same strategy the value is higher in comparison to the values from simulations 1 and 2.

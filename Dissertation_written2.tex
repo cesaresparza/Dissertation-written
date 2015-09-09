@@ -1,16 +1,17 @@
 \documentclass[12pt]{report} 
-\usepackage
-[
-       a4paper,
-        left=1.5in,
-        right=1.0in,
-        top=1.0in,
-        bottom=1.0in,
-]
-{geometry}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={210mm,297mm},
+ left=40mm,
+ right=20mm,
+ top=20mm,
+ bottom=20mm,
+ }
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage{hyperref}
 
 % Default fixed font does not support bold face
 \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{10} % for bold
@@ -74,7 +75,7 @@ showstringspaces=false
 \graphicspath{ {images/} }
 \usepackage{float}
 
-\usepackage{fullpage}
+%\usepackage{fullpage}
 \usepackage[parfill]{parskip}
 
 
@@ -139,6 +140,12 @@ I want to thank..
 \appendix
 \chapter{Git commands}
 \input{chapters/appendixa}
+c
+\chapter{Prisoner's dilemma simulation table}
+\input{chapters/appendixf}
+
+\chapter{Rounds per generation analysis}
+\input{chapters/appendixg}
 
 \chapter{Matching pennies simulation table}
 \input{chapters/appendixb}
@@ -153,7 +160,7 @@ I want to thank..
 \input{chapters/appendixe}
 
 \chapter{Code}
-\input{chapters/appendixz}
+\input{chapters/appendixlinktocode}
 
 \newpage
 \bibliographystyle{unsrt}

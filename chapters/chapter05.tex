@@ -94,371 +94,12 @@ Hawk & 0, 0 & 3, 1\\
 \newpage
 \section{Results}
 In this section the python package created (`ablearn') will be used to solve the games described in the previous section. And a brief analysis over the results displayed in the form of graphs and stack plots will be done. In addition the python package `axelrod' will be used to produce a specific output (payoff matrix) and to produce a stack plot. The created package `ablearn'  will use the output (payoff matrix) from 'axelrod' package to produce a stack plot. Both stack plots will be compared and briefly commented on.  
+
 \subsection{Prisoner's Dilemma}
-The following table indicates how the simulations for prisoner's dilemma were run.
-\begin{table}[H]
-\begin{center}
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-Num. & Population & Generations& Rounds per Gen. & Death Rate & Mutation Rate & Exploitation Rate\\ 
-\hline
-1& 1000 & 50 & 50 & 0.1 & 0.1 & 1\\
-\hline
-2& 1000 & 50 & 25 & 0.1 & 0.1 & 1\\
-\hline
-3& 1000 & 50 & 5 & 0.1 & 0.1 & 1\\
-\hline
-4& 1000 & 50 & 5 & 0.5 & 0.1 & 1\\
-\hline
-5& 1000 & 50 & 5 & 0.9 & 0.1 & 1\\
-\hline
-6& 1000 & 50 & 5 & 0.9 & 0.5 & 1\\
-\hline
-7& 1000 & 50 & 5 & 0.9 & 0.9 & 1\\
-\hline
-8& 1000 & 50 & 5 & 0.1 & 0.5 & 1\\
-\hline
-9& 1000 & 50 & 5 & 0.1 & 0.9 & 1\\
-\hline
-10& 1000 & 50 & 5 & 0.1 & 0.1 & 0.5\\
-\hline
-11& 1000 & 50 & 5 & 0.5 & 0.1 & 0.5\\
-\hline
-12& 1000 & 50 & 5 & 0.9 & 0.1 & 0.5\\
-\hline
-13& 1000 & 50 & 5 & 0.1 & 0.5 & 0.5\\
-\hline
-14& 1000 & 50 & 5 & 0.5 & 0.5 & 0.5\\
-\hline
-15& 1000 & 50 & 5 & 0.9 & 0.5 & 0.5\\
-\hline
-16& 1000 & 50 & 5 & 0.1 & 0.9 & 0.5\\
-\hline
-17& 1000 & 50 & 5 & 0.5 & 0.9 & 0.5\\
-\hline
-18& 1000 & 50 & 5 & 0.9 & 0.9 & 0.5\\
-\hline
-19& 1000 & 50 & 5 & 0.1 & 0.1 & 0.1\\
-\hline
-20& 1000 & 50 & 5 & 0.5 & 0.1 & 0.1\\
-\hline
-21& 1000 & 50 & 5 & 0.9 & 0.1 & 0.1\\
-\hline
-22& 1000 & 50 & 5 & 0.1 & 0.5 & 0.1\\
-\hline
-23& 1000 & 50 & 5 & 0.5 & 0.5 & 0.1\\
-\hline
-24& 1000 & 50 & 5 & 0.9 & 0.5 & 0.1\\
-\hline
-25& 1000 & 50 & 5 & 0.1 & 0.9& 0.1\\
-\hline
-26& 1000 & 50 & 5 & 0.5 & 0.9 & 0.1\\
-\hline
-27& 1000 & 50 & 5 & 0.9 & 0.9 & 0.1\\
-\hline
-28& 1000 & 50 & 5 & 0.5 & 0.5 & 1\\
-\hline
-29& 1000 & 50 & 5 & 0.5 & 0.9 & 1\\
-\hline
-
-\end{tabular}}
-\end{center}
-\caption{Configuration of simulations for prisoner's dilemma.}
-\label{tab:simpdtag}
-\end{table}
-
-\newpage
-
-For Prisoner's dilemma in this project it is not considered relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. However, it is considered important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of table $\ref{tab:simpdtag}$.
-\\\\The simulations start by assigning the following proportions to row and column agents to the strategies cooperate and defect.
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.49 & 0.51\\
-
-\hline
-Column Agents & 0.502 & 0.498\\
-\hline
-\end{tabular}
-\end{center}
-\caption{ Initial Prisoner’s Dilemma distribution for simulation 1.}
-\label{tab:pds1g1}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.489 & 0.514\\
-\hline
-Column Agents & 0.524 & 0.476\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Initial Prisoner’s Dilemma distribution for simulation 2.}
-\label{tab:pds2g1}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.512 & 0.488\\
-\hline
-Column Agents & 0.49 & 0.51\\
-\hline
-\end{tabular}
-\end{center}
-\caption{ Initial Prisoner’s Dilemma distribution for simulation 3.}
-\label{tab:pds3g1}
-\end{table}
-
- The 3 simulations start with very similar proportions for each strategy for agent type. They all start close to 0.5 so there is not a significant difference at this stage.
-
-By generation 5 it can be seen that the strategy `Defect' is dominating.
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.348 & 0.652\\
-\hline
-Column Agents & 0.24 & 0.76\\
-\hline
-\end{tabular}
-\end{center}
-\caption{ Generation 5 Prisoner’s Dilemma distribution for simulation 1.}
-\label{tab:pds1g5}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.25 & 0.75\\
-\hline
-Column Agents & 0.378 & 0.622\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 5 Prisoner’s Dilemma distribution for simulation 2.}
-\label{tab:pds2g5}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.35 & 0.65\\
-\hline
-Column Agents & 0.314 & 0.686\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 5 Prisoner’s Dilemma distribution for simulation 3.}
-\label{tab:pds3g5}
-\end{table}
-For simulation 2 in generation 5 it can be seen that the proportions are slightly different than first simulation. For row agents the proportion increased and is very close to the proportion of the column agents in generation 5 from the previous simulation 1 and for the column agents decreased and is very close to the proportion for row agents in the simulation 1.
-In simulation 3 for this generation the value for strategy `Defect' for row agents is slightly higher than simulation 1 and slightly smaller than simulation 2. For the same strategy in column agents compared to simulation 1 it decreased slightly and to simulation 2 it increased. The differences presented between simulations do not appear significant for this generation.
-
-By generation 10 it can be seen that the dominance of strategy `Defect'  is almost absolute in the 3 simulations.
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.054 & 0.946\\
-\hline
-Column Agents & 0.074 & 0.926\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 1.}
-\label{tab:pds1g10}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.018 & 0.982\\
-\hline
-Column Agents & 0.094 & 0.906\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 2.}
-\label{tab:pds2g10}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.082 & 0.918\\
-\hline
-Column Agents & 0.07 & 0.93\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 10 Prisoner’s Dilemma distribution for simulation 3.}
-\label{tab:pds3g10}
-\end{table}
-
-In simulation 2 for generation 10  with respect to simulation 1, a small increase in the strategy `Defect'  for row agents, and a small decrease in the same strategy for column agents. For simulation 3 strategy `Defect' for row agents is slightly decreased with respect to the value in simulation 1 and 2. For the same strategy in column agents it increased slightly when compared to simulation 1 and 2.
-In this generation for the 3 different simulations, the value for strategy `Defect' are above 0.9, but again there is no obvious pattern so the variations may be given by the effect of the randomized variables for each simulation.
-
-In generation 25 it can be seen that the condition persists and the strategy `Defect' for both types of agents dominates in frequency.
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.068 & 0.932\\
-\hline
-Column Agents & 0.054 & 0.946\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 25 Prisoner’s Dilemma distribution for simulation 1.}
-\label{tab:pds1g25}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.045 & 0.955\\
-\hline
-Column Agents & 0.047 & 0.953\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 25 Prisoner’s Dilemma distribution for simulation 2.}
-\label{tab:pds2g25}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.072 & 0.928\\
-\hline
-Column Agents & 0.054 & 0.972\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 25 Prisoner’s Dilemma distribution for this simulation 3.}
-\label{tab:pds3g25}
-\end{table}
-
-
-In simulation 2 for generation 25, the proportions increased slightly for strategy defect for both agents in relation to simulation 1. For simulation 3 the proportions are slightly smaller for the strategy `Defect' for row agents than in simulations 1 and 2. For same strategy in column agents is slightly higher than values from simulations 1 and 2. Still all the values for strategy `Defect' are above 0.9.
-
-For generation 50, the last generation we see that strategy `Defect' dominates the strategy `Cooperate' for all simulations.The graphs from the 3 different simulations are presented.
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.01 & 0.99\\
-\hline
-Column Agents & 0.044 & 0.956\\
-\hline
-\end{tabular}
-\end{center}
-\caption{ Generation 50 Prisoner’s Dilemma distribution for simulation 1.}
-\label{tab:pds1g50}
-\end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.024 & 0.976\\
-\hline
-Column Agents & 0.08 & 0.92\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 50 Prisoner’s Dilemma distribution for simulation 2.}
-\label{tab:pds2g50}
- \end{table}
-
-\begin{table}[H]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
-& Cooperate & Defect \\ 
-\hline
-Row Agents & 0.02 & 0.98\\
-\hline
-Column Agents & 0.028 & 0.972\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Generation 50 Prisoner’s Dilemma distribution for simulation 3.}
-\label{tab:pds3g50}
- \end{table}
-
-\begin{figure}[H]       
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-	\centering
-	{\includegraphics[width=\textwidth]{1pd50}}
-	\caption{ Prisoner's dilemma simulation 1, 50 rounds.}
-	\label{fig:pds1}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
-	\centering
-	{\includegraphics[width=\textwidth]{2pd25}}
-	\caption{ Prisoner's Dilemma simulation 2, 25 rounds.}
-	\label{fig:pds2}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.3\textwidth}
-	\centering
-	{\includegraphics[width=\textwidth]{3pd5}}
-	\caption{Prisoner's Dilemma simulation 3, 5 rounds.}
-	\label{fig:pds3}
-    \end{subfigure}
-    \caption{Prisoner's dilemma simulations 1, 2 and 3.}
-    \label{pdsim345r5}
-\end{figure}
-
-In simulation 2 for this generation, both proportions decreased slightly. Since the changes in the proportions are very small for this project it is not consider to be a significant difference between using 50 or 25 rounds. For simulation 3 the value for row agent in strategy `Defect' is slightly higher compared to simulation 2  and smaller from the one in simulation 1. For column agents for the same strategy the value is higher in comparison to the values from simulations 1 and 2.
-After the 3 runs for the simulations, it can be seen in the graphs from each simulation that they all have a similar pattern. And after analysing the different specific points (generations), the variations between them do not appear to be caused by the number of rounds. The strategies through the generation have a similar behaviour, the strategy `Defect' for row and column agents dominate the strategy `Cooperate'. The strategy `Cooperate' in the 3 different simulations starts declining from as early as the second generation, and around generation 10 it reaches the lowest values continuing to oscillate between 0.02 and 0.06 for the rest of the simulation. Again it is important to mention that the length of the simulations in terms of generations do not appear to be very relevant, since we can see that the behaviour for both strategies is very similar from generation 10 to generation 50 (when the simulation ends). For this reason in prisoner's dilemma simulations the configuration with 5 rounds per generation will used.
-When there is a small increment in the `Cooperate' or `Defect' strategy, this is given to the mutation rate, that is allowing more of either to appear, but since it is very low (0.1) it does not change the behaviour significantly. The following graphs in figure $\ref{pdsimmr0r50255}$ show the behaviour of the the proportion of the strategies without mutation rate.
+For Prisoner's dilemma in this project it is not considered relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. However, it is considered important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of table $\ref{tab:simpdtag}$ from appendix $\ref{app:pdsimtable}$ . The analysis can be found in appendix $\ref{app:pdanalysisrounds}$.
+\\\\After the 3 runs for the simulations, determined by the graphs from each simulation that they all have a similar pattern. And after analysing the different specific points (generations), the variations between them do not appear to be caused by the number of rounds. The strategies through the generation have a similar behaviour, the strategy `Defect' for row and column agents dominate the strategy `Cooperate'. The strategy `Cooperate' in the 3 different simulations starts declining from as early as the second generation, and around generation 10 it reaches the lowest values continuing to oscillate between 0.02 and 0.06 for the rest of the simulation. Again it is important to mention that the length of the simulations in terms of generations do not appear to be very relevant, since we can see that the behaviour for both strategies is very similar from generation 10 to generation 50 (when the simulation ends). For this reason in prisoner's dilemma simulations the configuration with 5 rounds per generation will used.
+When there is a small increment in the `Cooperate' or `Defect' strategy, this is given to the mutation rate, that is allowing more of either to appear, but since it is very low (0.1) it does not change the behaviour significantly.
+\\\\The following graphs in figure $\ref{pdsimmr0r50255}$ show the behaviour of the the proportion of the strategies without mutation rate.
 
 \begin{figure}[H]       
     \centering
@@ -488,7 +129,7 @@ When there is a small increment in the `Cooperate' or `Defect' strategy, this is
 
 From the previous figure $\ref{pdsimmr0r50255}$ it can be seen that no variations occur during the simulations. This is because mutation rate allows the less effective strategy `Cooperate' to be present throughout the generations, and without mutation they will just disappear as early as the 5th generation. 
 \\\\Let us continue to try the different combinations of values that are shown in the table $\ref{tab:simpdtag}$. 
-Simulations 3, 4 and 5 have constant values for mutation rate with 0.1 and exploitation rate of 1. It is important to note that in these first 3 simulations the value that varies is death rate, and that the smaller the death rate, the gap between strategies `Defect' and `Cooperate' is larger as can be seen in the graphs from figure $\ref{pdsim345r5}$:
+Simulations 3, 4 and 5 have constant values for mutation rate with 0.1 and exploitation rate of 1,. It is important to note that in these first 3 simulations the value that varies is death rate in 0.1, 0.5 and 0.9. It can be seen that the smaller the death rate, the gap between strategies `Defect' and `Cooperate' is larger as can be seen in the graphs from figure $\ref{pdsim345r5}$:
 
 \begin{figure}[H]       
     \centering
@@ -516,7 +157,7 @@ Simulations 3, 4 and 5 have constant values for mutation rate with 0.1 and explo
     \label{pdsim345r5}
 \end{figure}
 
-The following graphs from simulations 5, 6 and 7  have a high death rate of 0.9, this means that it allows the creation off 90\% of new agents each generation while eliminating the least efficient. These three graphs have mutation rates of 0.1, 0.5 and 0.9 respectively with an exploitation rate of 1. And the behaviour can be seen  in figure $\ref{pdsim567r5}$:
+The graphs from simulations 5, 6 and 7  have a high death rate of 0.9, this means that it allows the creation off 90\% of new agents each generation while eliminating the least efficient. These three graphs have mutation rates of 0.1, 0.5 and 0.9 respectively with an exploitation rate of 1. And the behaviour can be seen  in figure $\ref{pdsim567r5}$:
 
 \begin{figure}[H]       
     \centering
@@ -544,11 +185,11 @@ The following graphs from simulations 5, 6 and 7  have a high death rate of 0.9,
     \label{pdsim567r5}
 \end{figure}
 
-It can be seen from the previous figure $\ref{pdsim567r5}$ that when the mutation rate is lower the variation for each strategy is higher, even if the proportions are close to 0.5. There are evident high peaks and low valleys  for both strategies. In the three simulations the strategy `Defect' dominates in general, but in simulation 5  for generations 5, 7, 17, 23, 27, 34, 36 and 48, the strategy `Cooperate' briefly dominates `Defect' in fact it only dominates in this generations in the preceding and next generation the values are lower. This brief dominance from `Cooperate' may be given to a higher interaction between this type of strategy between each other, in consequence they accumulate a higher utility which allows them to reproduce in the following generation. Because of the high death rate they reproduce quickly. But this means that in the following generation there is a higher probability for `Defect' to encounter with `Cooperate', so `Defect' accumulates more utility and  `Cooperate' quickly dies out. In the other 2 simulations we see how as the mutation level increases the proportion of the strategies become more stable. By looking at the graphs 1, 8 and 9 have a similar behaviour where as the mutation rate increases, less peaks and valleys can be seen.
+It can be seen from the previous figure $\ref{pdsim567r5}$ that when the mutation rate is lower the variation for each strategy is higher, even if the proportions are close to 0.5. The brief dominance of `Cooperate' may be given to a higher interaction between this type of strategy between each other, in consequence they accumulate a higher utility which allows them to reproduce in the following generation. High death rate allows to  reproduce faster.  In the other 2 simulations we see how as the mutation level increases the proportion of the strategies become more stable. By looking at the graphs 1, 8 and 9 have a similar behaviour where as the mutation rate increases, less peaks and valleys can be seen.
 
 
 
-For the following graphs resulting from simulations 10, 11 and 12 an death rate is increasing in 0.1, 0.5 and 0.9 respectively. For all 3 simulations there are constant values for mutation rate of 0.1 and exploitation rate of 0.5. As the death rate increases, as expected the gap between the number of strategies representing `Defect' and `Cooperate' reduces. But it can also be seen that as the as death rate increases given the value of 0.5 for exploitation rate the peaks and valleys increase, they do not get to the point where `Cooperate' dominates `Defect', but it is important to note that with a low mutation rate and a lower exploitation rate than 1 which in these cases is 0.5 strategies that earn lower utility during the interaction are allowed to reproduce in the same probability as the one with highest utility. 
+For the following graphs resulting from simulations 10, 11 and 12 an death rate is increasing in 0.1, 0.5 and 0.9 respectively in figure $\ref{pdsim101112r5}$. For all 3 simulations there are constant values for mutation rate of 0.1 and exploitation rate of 0.5. As the death rate increases, as expected the gap between the number of strategies representing `Defect' and `Cooperate' reduces. But it can also be seen that as the as death rate increases given the value of 0.5 for exploitation rate the peaks and valleys increase, they do not get to the point where `Cooperate' dominates `Defect', but it is important to note that with a low mutation rate and a lower exploitation rate than 1 which in these cases is 0.5 strategies that earn lower utility during the interaction are allowed to reproduce in the same probability as the one with highest utility. 
 
 \begin{figure}[H]       
     \centering
@@ -576,9 +217,9 @@ For the following graphs resulting from simulations 10, 11 and 12 an death rate 
     \label{pdsim101112r5}
 \end{figure}
 
-When comparing these graphs with the graphs from simulation 3, 4 and 5 which have an increasing value of death rate and a mutation rate of 0.1 they behave in a similar way. But when comparing graphs from simulation 5 and 12 with each other. They both have a death rate of 0.9 and a mutation rate of 0.1, but a different exploitation rate value of 1 and 0.5 respectively. We can see that since a lower exploitation rate makes other strategies reproduce with the same probability as the strategy with the highest accumulated utility from the generation, a larger gap between strategies is present. Meaning that even if `Cooperate' accumulates a high utility, if there is `Defect' strategy within the 50\% of the population that is allowed to reproduce, it has a possibility to reproduce. This `randomization' gives an equilibrium between the presence of strategies in the population. Simulations 19, 20 and 21 have the same values as these other groups of simulations, but an exploitation rate of 0.1, which makes the graph from simulation 21 behave very similar to the graph from simulation 12. 
+When comparing the graphs in figure $\ref{pdsim101112r5}$ with the graphs from simulation 3, 4 and 5 from figure $\ref{pdsim345r5}$ which have an increasing value of death rate and a mutation rate of 0.1 behave in a similar way. But when comparing graphs from simulation 5 and 12 with each other. They both have a death rate of 0.9 and a mutation rate of 0.1, but a different exploitation rate value of 1 and 0.5 respectively. We can see that since a lower exploitation rate makes other strategies reproduce with the same probability as the strategy with the highest accumulated utility from the generation, a larger gap between strategies is present. Meaning that even if `Cooperate' accumulates a high utility, if there is `Defect' strategy within the 50\% of the population that is allowed to reproduce, it has a possibility to reproduce. This `randomization' gives an equilibrium between the presence of strategies in the population. Simulations 19, 20 and 21 have the same values as these other groups of simulations, but an exploitation rate of 0.1, which makes the graph from simulation 21 behave very similar to the graph from simulation 12. 
 
-For the following graphs representing simulations 16, 17 and 18 the value that changes is death rate 0.1, 0.5 and 0.9 respectively. With constant values of mutation rate  0.9 and exploitation rate 0.5. As seen before the effect of the death rate reflects with a reducing gap between the type of strategies as death rate increases. 
+For the following graphs representing simulations 16, 17 and 18 the value that changes is death rate 0.1, 0.5 and 0.9 respectively in figure $\ref{pdsim161718r5}$. With constant values of mutation rate  0.9 and exploitation rate 0.5. As seen before the effect of the death rate reflects with a reducing gap between the type of strategies as death rate increases. 
  
 \begin{figure}[H]       
     \centering
@@ -606,8 +247,9 @@ For the following graphs representing simulations 16, 17 and 18 the value that c
     \label{pdsim161718r5}
 \end{figure}
 
-A particular characteristic can be seen in the graph for simulation 16, it reaches the lowest value for `Cooperate' strategy later than other simulations with the same death rate. Graphs from simulations 3, 8, 9, 10, 13, 19 and 22 they all reach the lowest value for `Cooperate' around generation 10. Simulation 16 reaches it closer to generation 20, we see a similar behaviour for simulation 25. What this two simulations have in common other than death rate value, is their mutation rate is 0.9. Since mutation rate allows any strategy to reproduce except for the agent with strategy with that accumulated the highest utility, this delays the `Cooperate' strategy for reaching its lowest value.		  
+A particular characteristic can be seen in the graph for simulation 16. It reaches the lowest value for `Cooperate' strategy later than other simulations with the same death rate. Graphs from simulations 3, 8, 9, 10, 13, 19 and 22 they all reach the lowest value for `Cooperate' around generation 10. Simulation 16 reaches it closer to generation 20, we see a similar behaviour for simulation 25. What this two simulations have in common other than death rate value, is their mutation rate is 0.9. Since mutation rate allows any strategy to reproduce except for the agent with strategy with that accumulated the highest utility, this delays the `Cooperate' strategy for reaching its lowest value.		  
 The remaining simulations, behave in a similar way to the one that have been discussed  so far. It can be seen that the variable that acts as an enabler for the other variables to have an effect is the death rate. 
+From the analysis of all the previous graphs for prisoner's dilemma it can be concluded that death rate is the parameter that has a major influence in how the population behaves, without it the dominance of a strategy will be absolute in this project. Death rate in combination with mutation rate makes the dominance of a strategy more significant if the death rate is low and less significant if death rate is higher.
 
 \subsubsection{Nash Equilibrium}
 As calculated before in this project. The Nash Equilibrium for the prisoner's dilemma game can be found by looking at the normal form table and select the best responses for each player. The results from the simulations give the strategy ``Defect'' as stable and this is also a Nash equilibrium as seen in the following normal form table for the game.
@@ -675,7 +317,7 @@ With this it can be noticed that the strategy `Defect' is both a Nash equilibriu
 
 For the simulations in matching pennies, generations with 5, 25 and 100 rounds per generation were made.  The table for the configurations is similar to the one used in Prisoner's dilemma simulations, and it can be found in appendix $\ref{app:mptable}$ .
 
-For simulations 1, 2 and 3 with 5, 25 and 100 rounds per generation respectively. It can be seen that as the rounds per generation increase the amplitude of the wave grows. This means that with more rounds per generations each strategy has a greater chance of reaching a higher number in population, by reproducing when accumulating a high utility. This is also given to the low death rate, the low mutation rate and high exploitation rate which allows the most efficient strategy in the generation to reproduce almost every change of generation. But also when a population of a certain strategy increases in this kind of game, it is likely that a strategy that is  earns high payoff when interacting with the strategy with high population will grow in population too given that it is more likely to encounter its counterpart and this cycle repeats with all the available strategies and we can see a cycle. 
+For simulations 1, 2 and 3 with 5, 25 and 100 rounds per generation respectively. It can be seen that as the rounds per generation increase the amplitude of the wave grows. This means that with more rounds per generations each strategy has a greater chance of reaching a higher number in population, by reproducing when accumulating a high utility. This is also given to the low death rate, the low mutation rate and high exploitation rate which allows the most efficient strategy in the generation to reproduce almost every change of generation.
 
 \begin{figure}[H]       
     \centering
@@ -1225,7 +867,7 @@ The amplitude increases as the number of rounds per generation are increased in 
     \label{mpsim252627simulationssp525100}
 \end{figure}
 
-Strategy 1 represents `Heads' and strategy 2 represents `Tails'. It can be seen that each strategy during the whole simulation is present in the total population in a proportion very close to 0.5. 
+Strategy 1 represents `Heads' and strategy 2 represents `Tails'. It can be seen that each strategy during the whole simulation is present in the total population in a proportion very close to 0.5. The desirable behaviour to be observed in `matching pennies' game, is how when an agent with a strategy starts growing in population, the counterpart that can dominate it will have a higher probability of encountering it, and will start growing in population. This behaviour is cyclical, since every possible strategy can be dominated.
 
 \subsubsection{Nash Equilibrium}
 The Nash Equilibrium for the matching pennies game will be calculated next, since it cannot be determined just by looking at the normal form table and selecting the best responses since this game has a mixed Nash equilibrium.
@@ -1677,7 +1319,7 @@ And for simulation 19 with the same distribution:
     \caption{Graph and stack plot for simulation 19 with initial strategy (0.3, 0.7), with 5 rounds per generation}
     \label{bossim1937simulationgsp1937initial}
 \end{figure}
-Strategy 2 appears to be the dominating strategy by looking at the previous stack plots in figures $\ref{bossim437simulationgsp437initial} and $\ref{bossim1937simulationgsp1937initial}. This behaviour can be seen with any configuration of simulations from the table, when choosing a higher initial proportion for one of the two strategies in the `Battle of sexes' game. And for the this game is the most relevant behaviour to analyze. The next step is to calculate the Nash equilibria and ESS.
+Strategy 2 appears to be the dominating strategy by looking at the previous stack plots in figures $\ref{bossim437simulationgsp437initial} and $\ref{bossim1937simulationgsp1937initial}. The inestability of the mixed strategy, makes this game behave differently from `matching pennies'. This inestability is produced by the other 2 existing pure Nash equilibria. And as mentioned before it will only make a strategy dominant over the other when one of the available strategies has a higher presence in the population than the other. The next step is to calculate the Nash equilibria and ESS.
 
 
 \subsubsection{Nash Equilibrium}
@@ -1766,6 +1408,7 @@ And for the strategy `Opera' is:
  2(0.5)  = 1
 \end{center}
 The strategy `Football' is not an ESS either. Each strategy will appear to be evolutionarily stable according to their probability of appearance in the population. But with the default settings for our simulation which give a proportion of 0.5 to each there is not a clear evolutionarily stable strategy at the beginning of each simulation.
+
 
 
 \subsection{Hawk-dove}
@@ -2021,8 +1664,8 @@ The strategy `Dove' is not an ESS either under this distribution.
 \subsection{Axelrod python package}
 \subsubsection{Axelrod's tournament}
 Now a python package called `axelrod' will be used. This package was originated from the concept of Robert Axelrod's tournaments. Robert Axelrod is a doctor in political science which as briefly mentioned before, who was interested in how cooperative strategies can persist in a population through time in an environment where hostile strategies exist.
-Axelrod’s first tournament had originally 14 strategies, which were submitted by known game theorists at the time the tournament was played. From `axelrod's' package in python a simulation with 8 strategies was run only for observation purposes. A description for the characteristics of each strategy used can be found in appendix $\ref{app:axelrod2015library}$.
-From the `axelrod' library there can be run an ecological variant, this produces a stack plot which we was compared to the stack plot produced by the code `ablearn' from this project. In `axelrod's' python library, the ecological shows how a strategy performs in the population through time giving how likely it is for a strategy to reproduce $\cite{axelrod2015library}$. Instructions of how to use `Axelrod's' python library can be found in the package documentation page, a link to it can be found in appendix $\ref{app:axelrod2015library}$ and in the references section.
+Axelrod’s first tournament had originally 14 strategies, which were submitted by known game theorists at the time the tournament was played. From `axelrod's' package in python a simulation with 8 strategies was run only for observation purposes. The web page link to the description for the characteristics of each strategy used can be found in appendix $\ref{app:axelrod2015library}$.
+From the `axelrod' library there can be run an ecological variant, this produces a stack plot which we was compared to the stack plot produced by the code `ablearn' from this project. In the `axelrod' python library, the ecological shows how a strategy performs in the population through time giving how likely it is for a strategy to reproduce $\cite{Axelrod-Pythonprojectteam2015}$. Instructions of how to use `Axelrod's' python library can be found in the package documentation page, a link to it can be found in appendix $\ref{app:axelrod2015library}$ and in the references section.
 
 The strategies used were mentioned in the library's description, as a reminder they will be listed again:
 Tit for Tat, Grofman, Shubik, Grudger, Davis, Feld, Joss and Tullock.
