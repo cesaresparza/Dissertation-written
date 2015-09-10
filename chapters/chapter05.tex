@@ -250,68 +250,7 @@ For the following graphs representing simulations 16, 17 and 18 the value that c
 A particular characteristic can be seen in the graph for simulation 16. It reaches the lowest value for `Cooperate' strategy later than other simulations with the same death rate. Graphs from simulations 3, 8, 9, 10, 13, 19 and 22 they all reach the lowest value for `Cooperate' around generation 10. Simulation 16 reaches it closer to generation 20, we see a similar behaviour for simulation 25. What this two simulations have in common other than death rate value, is their mutation rate is 0.9. Since mutation rate allows any strategy to reproduce except for the agent with strategy with that accumulated the highest utility, this delays the `Cooperate' strategy for reaching its lowest value.		  
 The remaining simulations, behave in a similar way to the one that have been discussed  so far. It can be seen that the variable that acts as an enabler for the other variables to have an effect is the death rate. 
 From the analysis of all the previous graphs for prisoner's dilemma it can be concluded that death rate is the parameter that has a major influence in how the population behaves, without it the dominance of a strategy will be absolute in this project. Death rate in combination with mutation rate makes the dominance of a strategy more significant if the death rate is low and less significant if death rate is higher.
-
-\subsubsection{Nash Equilibrium}
-As calculated before in this project. The Nash Equilibrium for the prisoner's dilemma game can be found by looking at the normal form table and select the best responses for each player. The results from the simulations give the strategy ``Defect'' as stable and this is also a Nash equilibrium as seen in the following normal form table for the game.
-
-\begin{table}[H]
-\begin{center}
-Player 2
-
-Player 1
-\begin{tabular}{|l|c|c|}
-\hline
- & Cooperate & Defect\\ 
-\hline
-Cooperate & 3, 3 & 0, 5\\
-\hline
-Defect & 5, 0 & \underline{1}, \underline{1}\\
-\hline
-\end{tabular}
-
-\caption{ Prisoner's dilemma Nash equilibrium with best responses.}
-\label{fig:pdnashbr}	
-\end{center}
-\end{table}
-
-
-\subsubsection{ESS}
-Now its time to find the ESS for the prisoner's dilemma game. Earlier it was explained how to calculate the evolutionarily stable strategy (ESS) when a mutant strategy appears in the population in the proportion $\epsilon$. It will be assumed the strategy  `Cooperate' is the population and the invader is the strategy `Defect'. Thus the payoff for the strategy `Cooperate' is the following:
-\begin{center}
-$(1-{\epsilon})3 + 0{\epsilon} = 3 - 3{\epsilon}$
-\end{center}
-And the payoff for the strategy `Defect' is:
-\begin{center}
-$(1-{\epsilon})5 + 1{\epsilon} = 5 - 4{\epsilon}$
-\end{center}
-The strategy `Defect' appears to be greater than `Cooperate'. Now since the simulation gives almost equal starting proportions to each strategy it be will assumed that the `invading' strategy `Defect' appears in a proportion of $\epsilon$=0.5. And results in  the following:
-\begin{center}
-3 - 3(0.5) = 1.5
-\end{center}
-And for the strategy `Defect' is:
-\begin{center}
- 5 - 4(0.5) = 3
-\end{center}
-The payoff for `Defect' is greater than the payoff for `Cooperate' thus it can be said that `Cooperate' is not an evolutionarily stable strategy.
-Its time to check if the strategy `Defect' is evolutionarily stable. And therefore it is assumed that `Cooperate is the invader. It  appears that `Defect' might be evolutionarily stable given the previous test. But it will be calculated anyway. First calculating the expected payoff for the strategy `Defect':
-\begin{center}
-$(1-{\epsilon})1 + 5{\epsilon} = 1 + 4{\epsilon}$
-\end{center}
-And the payoff for the strategy `Defect' is:
-\begin{center}
-$(1-{\epsilon})0 + 3{\epsilon} =  3{\epsilon}$
-\end{center}
-Again it appears that the strategy `Defect' has a greater expected payoff than `Cooperate'. it will be assumed that the `invading' strategy `Cooperate' appears in a proportion of $\epsilon$=0.5. And the calculation for the strategy `Defect' is as follows:
-\begin{center}
-1 +  4(0.5) = 3
-\end{center}
-And for the strategy `Cooperate' is:
-\begin{center}
- 3(0.5) = 1.5
-\end{center}
-Again the strategy`Defect' has a higher expected payoff, so it is an evolutionarily stable strategy (ESS).
-With this it can be noticed that the strategy `Defect' is both a Nash equilibrium and an ESS. And this supports the results from the simulation.
-
+The calculations for Nash equilibrium and evolutionary stable strategy for this game can be found in appendix $\ref{app:pdnashess}$.
 
 \subsection{Matching Pennies}
 
@@ -868,93 +807,8 @@ The amplitude increases as the number of rounds per generation are increased in 
 \end{figure}
 
 Strategy 1 represents `Heads' and strategy 2 represents `Tails'. It can be seen that each strategy during the whole simulation is present in the total population in a proportion very close to 0.5. The desirable behaviour to be observed in `matching pennies' game, is how when an agent with a strategy starts growing in population, the counterpart that can dominate it will have a higher probability of encountering it, and will start growing in population. This behaviour is cyclical, since every possible strategy can be dominated.
+The calculations for Nash equilibrium and evolutionary stable strategy for this game can be found in appendix $\ref{app:mpnashess}$.
 
-\subsubsection{Nash Equilibrium}
-The Nash Equilibrium for the matching pennies game will be calculated next, since it cannot be determined just by looking at the normal form table and selecting the best responses since this game has a mixed Nash equilibrium.
-
-\begin{table}[H]
-\begin{center}
-Player 2
-
-Player 1
-\begin{tabular}{|l|c|c|}
-\hline
- & Heads & Tails\\ 
-\hline
-Heads & 1, -1 & -1, 1\\
-\hline
-Tails & -1, 1 & 1, -1\\
-\hline
-\end{tabular}
-
-\caption{ Matching pennies bimatrix payoff.}
-\label{fig:mpnashmx}	
-\end{center}
-\end{table}
-
-The mixed Nash equilibrium is calculated by making equal the expected payoff  when playing `heads' to the expected payoff of playing `tails'. It will be assumed that the probability for player 1 of playing `heads' is $\sigma$ and for playing tails 1 - $\sigma$, resulting in the following:
-\begin{center}
-$(-1)(\sigma) + (1 - \sigma) = (1)(\sigma) + (-1)(1 - \sigma)$
-\end{center}
-\begin{center}
-$-4 \sigma = -2$
-\end{center}
-\begin{center}
-$\sigma = 1/2$
-\end{center}
-This means that player 1 will play `heads' with a probability of 1/2 , and also means she will be playing tails with 1/2. And now it is time to calculate the probability of playing 'heads; for player 2 with probability $\sigma$ and `tails' with probability 1 - $\sigma$.
-
-\begin{center}
-$(1)(\sigma) + (1 - \sigma)(-1) = (-1)(\sigma) + (1)(1 - \sigma)$
-\end{center}
-\begin{center}
-$4 \sigma = 2$
-\end{center}
-\begin{center}
-$\sigma = 1/2$
-\end{center}
-
-This means that player 2 when playing against player 1 will play` heads'  1/2  of the times and in consequence play `tails' in the other 1/2 of the times. 
-This means that the Nash equilibria is when:
-\begin{center}
-((1/2, 1/2), (1/2, 1/2))
-\end{center}
-
-\subsubsection{ESS}
-Now let us find the ESS for the matching pennies game. In the same way the prisoner's dilemma ESS was calculated. It will be assumed the strategy  `Heads' is the population and the invader is the strategy `Tails'. Thus the payoff for the strategy `Heads' is the following:
-\begin{center}
-$(1-{\epsilon})(1) + (-1){\epsilon} = 1 - 2{\epsilon}$
-\end{center}
-And the payoff for the strategy `Tails' is:
-\begin{center}
-$(1-{\epsilon})(-1) + (1){\epsilon} = 2{\epsilon} - 1$
-\end{center}
-Both strategies appear to be equivalent unless there is a very small value of $\epsilon$.But since the simulation gives almost equal starting proportions to each strategy it will be assumed that the `invading' strategy `Tails' appears in a proportion of $\epsilon$=0.5. Resulting in the following:
-\begin{center}
-$1- 2(0.5) = 0$
-\end{center}
-And for the strategy `Defect' is:
-\begin{center}
- 2(0.5)- 1 = 0
-\end{center}
-So the resulting expected payoff for both is 0 thus it can be said that `Heads' is not an evolutionarily stable strategy, Given that it does not dominate `Tails'.
-Next step is to check if the strategy `Tails' is evolutionarily stable. And therefore it is assumed that `Heads' is the invader. The expected payoff of the strategy `Tails' is:
-\begin{center}
-$(1-{\epsilon})(-1) + (1)({\epsilon}) = 2{\epsilon} -1$
-\end{center}
-And the payoff for the strategy `Heads' is:
-\begin{center}
-$(1-{\epsilon})(1) + (-1)({\epsilon}) =  1 - 2{\epsilon}$
-\end{center}
-Again it appears that they are equal. So `Tails' is not an ESS either. But it will be calculated it anyway assuming that the `invading' strategy `Heads' appears in a proportion of $\epsilon$=0.5. For the strategy `Tails' the following is the expected payoff for this proportions :
-\begin{center}
-1 -  2(0.5) = 0
-\end{center}
-And for the strategy `Heads' is:
-\begin{center}
- 2(0.5) - 1 = 0
-\end{center}
-The strategy `Tails' is not an ESS either. And this explains the behaviour in the graphs, how through time both strategies appear to interact and oscilate in the middle (0.5)
 
 
 
@@ -1319,95 +1173,11 @@ And for simulation 19 with the same distribution:
     \caption{Graph and stack plot for simulation 19 with initial strategy (0.3, 0.7), with 5 rounds per generation}
     \label{bossim1937simulationgsp1937initial}
 \end{figure}
-Strategy 2 appears to be the dominating strategy by looking at the previous stack plots in figures $\ref{bossim437simulationgsp437initial} and $\ref{bossim1937simulationgsp1937initial}. The inestability of the mixed strategy, makes this game behave differently from `matching pennies'. This inestability is produced by the other 2 existing pure Nash equilibria. And as mentioned before it will only make a strategy dominant over the other when one of the available strategies has a higher presence in the population than the other. The next step is to calculate the Nash equilibria and ESS.
+Strategy 2 appears to be the dominating strategy by looking at the previous stack plots in figures $\ref{bossim437simulationgsp437initial} and $\ref{bossim1937simulationgsp1937initial}. The inestability of the mixed strategy, makes this game behave differently from `matching pennies'. This inestability is produced by the other 2 existing pure Nash equilibria. And as mentioned before it will only make a strategy dominant over the other when one of the available strategies has a higher presence in the population than the other. 
+The calculations for Nash equilibrium and evolutionary stable strategy for this game can be found in appendix $\ref{app:bosnashess}$.
 
 
-\subsubsection{Nash Equilibrium}
- Nash equilibrium for the battle of sexes game is calculated by looking at the normal form table and it can be noticed that there are 2 non symmetric Nash equilibria, this means that they do not play the same strategy; and there can also be found a mixed Nash equilibrium.
 
-\begin{table}[H]
-\begin{center}
-Female
-
-Male
-\begin{tabular}{|l|c|c|}
-\hline
- & Opera & Football\\ 
-\hline
-Opera & \underline{2}, \underline{1} & 0, 0\\
-\hline
-Football & 0, 0 & \underline{1}, \underline{2}\\
-\hline
-\end{tabular}
-
-\caption{ Battle of sexes bimatrix payoff.}
-\label{fig:mpnashbos}	
-\end{center}
-\end{table}
-
-Now the mixed Nash equilibrium is calculated by making equal the expected payoff  when going to the Opera with the expected payoff of watching Football. It will be assumed that the probability for the Male player of going to the Opera is $\sigma$ and for watching Football 1 - $\sigma$, resulting in the following:
-\begin{center}
-$(2)(\sigma) + (1 - \sigma)(0) = (0)(\sigma) + (1)(1 - \sigma)$
-\end{center}
-\begin{center}
-$3\sigma = 1$
-\end{center}
-\begin{center}
-$\sigma = 1/3$
-\end{center}
-This means that the Male player chooses to go to the opera with the probability of 1/3 , and also means he will prefer watching football 2/3. And now we calculate the probability of going to the Opera for the Female player with probability $\sigma$ and for watching Football with probability 1 - $\sigma$.
-
-\begin{center}
-$(1)(\sigma) + (1 - \sigma)(0) = (0)(\sigma) + (2)(1 - \sigma)$
-\end{center}
-\begin{center}
-$3\sigma = 2$
-\end{center}
-\begin{center}
-$\sigma = 2/3$
-\end{center}
-
-This means that the Female player will choose to go to the Opera with a probability of 2/3 and in consequence only chooses to watch football the other 1/3. 
-This means that the Nash equilibria is when:
-\begin{center}
-((1/3, 2/3), (2/3, 1/3))
-\end{center}
-
-\subsubsection{ESS}
-Now to find the ESS for this game. It will be assumed that going to the 'Opera' is the population and the invader is the strategy to watch `Football'. Thus the payoff for the strategy `Opera' is the following:
-\begin{center}
-$(1-{\epsilon})(2) + (0){\epsilon} = 1 - 2{\epsilon}$
-\end{center}
-And the payoff for the strategy watching `Football' is:
-\begin{center}
-$(1-{\epsilon})(0) + (1){\epsilon} = {\epsilon}$
-\end{center}
-With a value of $\epsilon$ $\leq$ 0.3 `Opera' is an ESS. But since the simulation runs every time with almost equal starting proportions to each strategy it will be assumed that the `invading' strategy `Football' appears in a proportion of $\epsilon$=0.5. And the calculation is as follows:
-\begin{center}
-1- 2(0.5) = 0
-\end{center}
-And for the strategy `Football' is:
-\begin{center}
- (0.5) = 0.5
-\end{center}
-The expected payoff for `Football' is greater thus it can be said that `Opera' is not an evolutionarily stable strategy, given that it does not dominate  `Football'.
-Now a check to see if the strategy `Football' is evolutionarily stable. And therefore it is assumed that `Opera' is the invader. The expected payoff of the strategy `Football' is:
-\begin{center}
-$(1-{\epsilon})(1) + (0)({\epsilon}) = 1 - {\epsilon} $
-\end{center}
-And the payoff for the strategy `Opera' is:
-\begin{center}
-$(1-{\epsilon})(0) + (2)({\epsilon}) =  2{\epsilon}$
-\end{center}
-So it can be seen that `Football' is not an ESS either, given that under certain values of $\epsilon$ it will not be dominant. Now it is calculated assuming that the `invading' strategy `Opera' appears in a proportion of $\epsilon$=0.5. For the strategy `Football':
-\begin{center}
-1 -  (0.5) = 0.5
-\end{center}
-And for the strategy `Opera' is:
-\begin{center}
- 2(0.5)  = 1
-\end{center}
-The strategy `Football' is not an ESS either. Each strategy will appear to be evolutionarily stable according to their probability of appearance in the population. But with the default settings for our simulation which give a proportion of 0.5 to each there is not a clear evolutionarily stable strategy at the beginning of each simulation.
 
 
 
@@ -1572,100 +1342,15 @@ The stack plots from figures $\ref{hdsim89s}$ and $\ref{hdsim1214s}$ it can be s
     \label{hdsim1214s}
 \end{figure}
 
-With these a conclusion can be made that, as will be see when calculating Nash equilibria, randomness determines which of the 2 existing Nash equilibria will be the result for this game. Now the Nash equilibria and the ESS for this game will be determined.  Unlike prisoner's dilemma, in hawk and dove game if an `agressive' strategy is present in the population, the agents playing against that strategy do better by using `dove' strategy than retaliating.
+With these the conclusion that, as it can be seen in appendix $\ref{app:hdnashess}$ when calculating Nash equilibria, randomness determines which of the 2 existing Nash equilibria will be the result for this game. Now the Nash equilibria and the ESS for this game will be determined.  Unlike prisoner's dilemma, in hawk and dove game if an `agressive' strategy is present in the population, the agents playing against that strategy do better by using `dove' strategy than retaliating.
+The calculations for Nash equilibrium and evolutionary stable strategy for this game can be found in appendix $\ref{app:hdnashess}$.
 
-\subsubsection{Nash Equilibrium}
-The Nash equilibrium for the hawk-dove game will now be found. The Nash equilibrium for the this game,  can be found by looking at the normal form table and select the best responses for each player. There are 2 Nash equilibria in this game.
-
-\begin{table}[H]
-\begin{center}
-Player 2
-
-Player 1
-\begin{tabular}{|l|c|c|}
-\hline
- & Hawk & Dove\\ 
-\hline
-Hawk & 0, 0 & \underline{3}, \underline{1}\\
-\hline
-Dove & \underline{1},\underline{3} & 2, 2\\
-\hline
-\end{tabular}
-
-\caption{ Hawk-Dove bimatrix payoff.}
-\label{fig:mpnashhd}	
-\end{center}
-\end{table}
-
-The mixed Nash equilibrium is calculated by making equal the expected payoff  when playing `Hawk' to the expected payoff of playing `Dove'. It will be assumed that the probability for player 1 of playing `Hawk' is $\sigma$ and for playing `Dove' is 1 - $\sigma$, resulting in the following:
-\begin{center}
-$(0)(\sigma) + (1 - \sigma)(3) = (1)(\sigma) + (2)(1 - \sigma)$
-\end{center}
-\begin{center}
-$-2 \sigma = -1$
-\end{center}
-\begin{center}
-$\sigma = 1/2$
-\end{center}
-This means that player 1 will play `Hawk' 1/2 of the times, and also means she will be playing `Dove' with a probability of 1/2. And now to calculate the probability of playing `Hawk' for player 2 with probability $\sigma$ and playing `Dove' with probability 1 - $\sigma$.
-\begin{center}
-$(0)(\sigma) + (1 - \sigma)(3) = (1)(\sigma) + (2)(1 - \sigma)$
-\end{center}
-\begin{center}
-$4 \sigma = 2$
-\end{center}
-\begin{center}
-$\sigma = 1/2$
-\end{center}
-
-This means that player 2 when playing against player 1 will play `Hawk' with a probability of  1/2  and in consequence play `Dove' with the remaining probability of 1/2. 
-This means that the Nash equilibria is when:
-\begin{center}
-((1/2, 1/2), (1/2, 1/2))
-\end{center}
-Therefore it can be seen that there exist 2 non symmetric Nash equilibria and a mixed Nash equilibrium.
-
-\subsubsection{ESS}
-Now it will be found the ESS for this game. It is assumed the strategy  `Hawk' is the population and the invader is the strategy `Dove'. Thus the payoff for the strategy `Hawk' is the following:
-\begin{center}
-$(1-{\epsilon})(0) + (3){\epsilon} = 3{\epsilon}$
-\end{center}
-And the payoff for the strategy `Dove' is:
-\begin{center}
-$(1-{\epsilon})(1) + (2){\epsilon} = 1 + {\epsilon}$
-\end{center}
-It can be seen that with certain values of $\epsilon$ $>$ 5 Hawk is an ESS. Since the simulation every time gives almost equal starting proportions to each strategy it will  be assumed that the `invading' strategy `Dove' appears in a proportion of $\epsilon$=0.5. And calculates as follows:
-\begin{center}
-3(0.5) = 1.5
-\end{center}
-And for the strategy `Dove' is:
-\begin{center}
- 1 + (0.5) = 1.5
-\end{center}
-So the expected payoff for both are equal thus we can say that `Hawk' is not an evolutionarily stable strategy with an initial distribution of 0.5, given that it does not dominate `Dove'.
-Now it is checked if the strategy `Dove' is evolutionarily stable. And therefore `Hawk' is assumed to be the invader. First the expected payoff for the strategy `Dove' is:
-\begin{center}
-$(1-{\epsilon})(0) + (3)({\epsilon}) = 3{\epsilon} $
-\end{center}
-And the payoff for the strategy `Hawk' is:
-\begin{center}
-$(1-{\epsilon})(1) + (2)({\epsilon}) =  1 + {\epsilon}$
-\end{center}
-It can be seen a similar situation as the previous. So it can be assumed that `Dove' is not an ESS either. But it will be calculated anyway assuming that the `invading' strategy `Hawk' appears in a proportion of $\epsilon$=0.5. And the following is the result for the strategy `Dove':
-\begin{center}
-3(0.5) = 1.5
-\end{center}
-And for the strategy `Hawk' is:
-\begin{center}
- 1 + (0.5) = 1.5
-\end{center}
-The strategy `Dove' is not an ESS either under this distribution.
 
 \subsection{Axelrod python package}
 \subsubsection{Axelrod's tournament}
-Now a python package called `axelrod' will be used. This package was originated from the concept of Robert Axelrod's tournaments. Robert Axelrod is a doctor in political science which as briefly mentioned before, who was interested in how cooperative strategies can persist in a population through time in an environment where hostile strategies exist.
-Axelrod’s first tournament had originally 14 strategies, which were submitted by known game theorists at the time the tournament was played. From `axelrod's' package in python a simulation with 8 strategies was run only for observation purposes. The web page link to the description for the characteristics of each strategy used can be found in appendix $\ref{app:axelrod2015library}$.
-From the `axelrod' library there can be run an ecological variant, this produces a stack plot which we was compared to the stack plot produced by the code `ablearn' from this project. In the `axelrod' python library, the ecological shows how a strategy performs in the population through time giving how likely it is for a strategy to reproduce $\cite{Axelrod-Pythonprojectteam2015}$. Instructions of how to use `Axelrod's' python library can be found in the package documentation page, a link to it can be found in appendix $\ref{app:axelrod2015library}$ and in the references section.
+Now the Python package `axelrod' will be used. This package was originated from the concept of Robert Axelrod's tournaments. Robert Axelrod is a doctor in political science which as briefly mentioned before, who was interested in how cooperative strategies can persist in a population through time in an environment where hostile strategies exist.
+Axelrod’s first tournament had originally 14 strategies, which were submitted by known game theorists at the time the tournament was played. From the `axelrod' package in python, a simulation with 8 strategies was run. The web page link to the description of each strategy used can be found in appendix $\ref{app:axelrod2015library}$.
+From the `axelrod' library there can be run an ecological variant, which produces a stack plot which we was compared to the stack plot produced by the code `ablearn' from this project. In the `axelrod' python library, the ecological shows how a strategy performs in the population through time giving how likely it is for a strategy to reproduce $\cite{Axelrod-Pythonprojectteam2015}$. Instructions of how to use the `axelrod' python library can be found in the package documentation page, a link to it can be found in appendix $\ref{app:axelrod2015library}$ and in the references section.
 
 The strategies used were mentioned in the library's description, as a reminder they will be listed again:
 Tit for Tat, Grofman, Shubik, Grudger, Davis, Feld, Joss and Tullock.
@@ -1698,43 +1383,41 @@ $\textbf{Tullock}$ & 1.648 , 1.626 & 1.849 , 1.592 & 1.302 , 1.348 & 1.2 , 1.293
 \caption{`Axelrod' package transformed payoff bimatrix for 8 strategies from Axelrod's tournament.}
 \label{tab:axelrodmatrix}
 \end{table}
-The `axelrod' package plays 10 repetitions of 200 turns each. And the resulting ranking for the strategies was in the following order: 'Tit For Tat', 'Shubik', 'Davis', 'Grudger', 'Tullock', 'Feld', 'Grofman', 'Joss'.  The stack plot from `axelrod' package was produced, this stack plot uses a probabilistic method to estimate how the strategies will evolve in time periods. The following stack plot shown in figure $\ref{fig:axelrodstack100}$ from `axelrod' package is estimated with 100 time units.
-
-\begin{figure}[H]
-\begin{center}
-	\includegraphics[scale=0.7]{axelrodstack100}
-
-\caption{Stack plot with 100 time units produced with `axelrod' package.}
-\label{fig:axelrodstack100}
-\end{center}
-\end{figure}
-The stack plots in figure $\ref{fig:ablearnaxelrodstack}$ were produced with the `ablearn' package, with the values that considered standard for this project which are 0.1 death rate, 0.1 mutation rate and 1 exploitation rate.
+The `axelrod' package plays 10 repetitions of 200 turns each. And the resulting ranking for the strategies was in the following order: 'Tit For Tat', 'Shubik', 'Davis', 'Grudger', 'Tullock', 'Feld', 'Grofman', 'Joss'.  The stack plot from `axelrod' package was produced, this stack plot uses a probabilistic method to estimate how the strategies will evolve in time periods. The stack plots in figure $\ref{fig:ablearnaxelrodstack}$ were produced with the `axelrod' package and the `ablearn' package using values that are considered standard for this project which are 0.1 death rate, 0.1 mutation rate and 1 exploitation rate.
 \begin{figure}[H]       
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
 	\centering
 	{\includegraphics[width=\textwidth]{axelrod100g100rpgs}}   
-    	\caption{Stackplot 100 rounds}
+    	\caption{`Ablearn' stackplot 100 rounds}
 	\label{fig:axl100rpgs}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.4\textwidth}
 	\centering
 	{\includegraphics[width=\textwidth]{axelrod100g25rpgs}}   
-    	\caption{Stackplot 25 rounds}
+    	\caption{`Ablearn' stackplot 25 rounds}
 	\label{fig:axl25rpgs}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.4\textwidth}
 	\centering
 	{\includegraphics[width=\textwidth]{axelrod100g5rpgs}}   
-    	\caption{Stackplot 5 rounds}
+    	\caption{`Ablearn' stackplot 5 rounds}
 	\label{fig:axl5rpgs}
     \end{subfigure}
-    \caption{Stackplots for simulations from `ablearn' package.}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{axelrodstack100}}   
+	\caption{Stack plot with 100 time units produced with `axelrod' package.}
+	\label{fig:axelrodstack100}
+    \end{subfigure}
+    \caption{Stackplots for simulations from the `ablearn' package and `axelrod' package.}
     \label{fig:ablearnaxelrodstack}
 \end{figure}
-It can be seen that they have a different result from the predicted behaviour of the stack plot produced from `axelrod' package in figure $\ref{fig:axelrodstack100}$. This is because the agents from `ablearn' do not change their strategies, they only reproduce and the resulting agent may posses the same strategy as the agent that was considered for its creation or it may posses any other according to the mutation and exploitation rate, this gives the observed resulting interaction. In `axelrod' package each type of strategy takes in consideration previous interactions with agents and can shift to a convenient action according to their individual criteria, while `ablearn' is pure interaction of agents which have a defined static behaviour with agents in this same condition.
+
+It can be seen that the behaviour of stack plots produced by 'ablearn' seem different from the predicted behaviour of the stack plot produced from `axelrod' package in figure $\ref{fig:axelrodstack100}$. This is because the agents from `ablearn' do not change their strategies, they only reproduce and the resulting agent may posses the same strategy as the agent that was considered for its creation or it may posses any other according to the mutation and exploitation rate, this gives the observed resulting interaction. In `axelrod' package each type of strategy takes in consideration previous interactions with agents and can shift to a convenient action according to their individual criteria, while `ablearn' is pure interaction of agents which have a defined static behaviour with agents in this same condition. The important fact to outline is that in both, the cooperative strategies like `Tit For Tat', `Davis', `Grudger' and `Tullock', prevail along the simulation.
 
 
 \subsubsection{Basic strategies}
@@ -1763,47 +1446,43 @@ $\textbf{Tit For Tat}$ & 2.49 , 2.515 & 3 , 3 & 0.994 , 1.019 & 2.264 , 2.275 & 
 \label{tab:axelrodbasicmatrix}
 \end{table}
 
-The following environmental stack plot shown in figure $\ref{fig:axelrodstackbasic1000}$ was the result from the `axelrod' package for the basic strategies:
-
-\begin{figure}[H]
-\begin{center}
-	\includegraphics[scale=0.7]{fromaxelrodpackbasic}
-
-\caption{Stack plot with 1000 time units produced with `axelrod' package for basic strategies.}
-\label{fig:axelrodstackbasic1000}
-\end{center}
-\end{figure}
-It can be seen that the strategy`Tit for Tat' will eventually dominate all the other strategies, 
-
-With the payoff matrix that `axelrod' package outputs, the simulation with 100 generations with values for death rate of 0.1, mutation rate of 0.1 and exploitation rate of 1 was run with 100, 25 and 5 rounds per generation, the resulting stack plots can be found in the following figure $\ref{fig:ablearnaxelrodstackbasic}$.
+The following environmental stack plots shown in figure $\ref{fig:ablearnaxelrodstackbasic}$ was the result from the `axelrod' package for the basic strategies and the stack plots from `ablearn' library with 100 generations with values for death rate of 0.1, mutation rate of 0.1 and exploitation rate of 1 was run with 100, 25 and 5 rounds per generation:
 
 \begin{figure}[H]       
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
 	\centering
 	{\includegraphics[width=\textwidth]{axelrodbasic1s}}   
-    	\caption{Stackplot 100 rounds}
+    	\caption{`Ablearn' stackplot 100 rounds}
 	\label{fig:axlbasic100rpgs}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.4\textwidth}
 	\centering
 	{\includegraphics[width=\textwidth]{axelrodbasic2s}}   
-    	\caption{Stackplot 25 rounds}
+    	\caption{`Ablearn' stackplot 25 rounds}
 	\label{fig:axlbasic25rpgs}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.4\textwidth}
 	\centering
 	{\includegraphics[width=\textwidth]{axelrodbasic3s}}   
-    	\caption{Stackplot 5 rounds}
+    	\caption{`Ablearn' stackplot 5 rounds}
 	\label{fig:axlbasic5rpgs}
     \end{subfigure}
-    \caption{Stackplots for simulations from `ablearn' package.}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+	\centering
+	{\includegraphics[width=\textwidth]{fromaxelrodpackbasic}}   
+	\caption{Stack plot with 100 time units produced with `axelrod' package.}
+	\label{fig:axelrodbasicstack100}
+    \end{subfigure}
+    \caption{Stackplots for simulations from `ablearn' package and `axelrod' package.}
     \label{fig:ablearnaxelrodstackbasic}
 \end{figure}
 
-To be able to compare the stack plots from `ablearn' with the stack plot from `axelrod' package, it is important to remember the order the strategies were input for `ablearn' since the program does not give us the name of the strategy (this will be one of the future improvements to be introduced into `ablearn' package). The following table $\ref{tab:axltoabl}$ will clarify what each strategy in `ablearn' is related to.
+
+With `axelrod' package it can be seen that the strategy`Tit for Tat' will eventually dominate all the other strategies. To be able to compare the stack plots from `ablearn' with the stack plot from `axelrod' package, it is important to remember the order the strategies were input for `ablearn' since the program does not give us the name of the strategy (this will be one of the future improvements to be introduced into `ablearn' package). The following table $\ref{tab:axltoabl}$ will clarify what each strategy in `ablearn' is related to.
 
 \begin{table}[H]
 \begin{center}
@@ -1827,6 +1506,6 @@ Tit For Tat & Strategy 5\\
 \label{tab:axltoabl}
 \end{table}
 
-By comparing the stack plots in figure $\ref{fig:ablearnaxelrodstackbasic}$ produced by `ablearn' with the stack plot produced by `axelrod' in figure $\ref{fig:axelrodstackbasic1000}$, it can be seen that stack plot $\ref{fig:axlbasic5rpgs}$ shows results more similar to `axelrod' stack plot. Where strategy `Random' has a brief increase during the initial generations, `Tit for Tat' increases and dominates the other strategies, and all strategies except for `Tit for Tat' are reduced in time. What makes `ablearn' stack plots behave slightly different is that the concept of mutation rate allows strategies that could disappear in a long run to remain, since it gives the same possibility to any strategy to have a copy of itself. 
+By comparing the stack plots in figure $\ref{fig:ablearnaxelrodstackbasic}$ produced by `ablearn' with the stack plot produced by `axelrod' in figure $\ref{fig:axelrodstackbasic1000}$, it can be seen that stack plot $\ref{fig:axlbasic5rpgs}$ shows results more similar to `axelrod' stack plot. Where `Tit for Tat' increases and dominates the other strategies, and all strategies except for `Tit for Tat' are reduced in time, and `Cooperator' also prevails and increases in population at some point in time as in the stack plot `axelrod' package. So it can be seen here also that cooperative strategies dominate throught time.  What makes `ablearn' stack plots behave slightly different is that the concept of mutation rate allows strategies that could disappear in a long run to remain, since it gives the same possibility to any strategy to have a copy of itself. 
 
 By analyzing strategies from Axelrod's tournament and the basic strategies from the package `axelrod' it can be seen that the package `ablearn' produces similar behaviours to the expected  under the parameters of 0.1 death rate, 0.1 mutation rate and 1 exploitation rate, when using the payoff matrix produced by `axelrod' package.

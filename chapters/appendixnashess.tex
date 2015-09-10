@@ -1,0 +1,340 @@
+\label{app:nashess}
+\section{Prisoner's dilemma game}
+\label{app:pdnashess}
+
+\subsection{Nash Equilibrium}
+As calculated before in this project. The Nash Equilibrium for the prisoner's dilemma game can be found by looking at the normal form table and select the best responses for each player. The results from the simulations give the strategy ``Defect'' as stable and this is also a Nash equilibrium as seen in the following normal form table for the game.
+
+\begin{table}[H]
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect\\ 
+\hline
+Cooperate & 3, 3 & 0, 5\\
+\hline
+Defect & 5, 0 & \underline{1}, \underline{1}\\
+\hline
+\end{tabular}
+
+\caption{ Prisoner's dilemma Nash equilibrium with best responses.}
+\label{fig:pdnashbr}	
+\end{center}
+\end{table}
+
+
+\subsection{ESS}
+Now its time to find the ESS for the prisoner's dilemma game. Earlier it was explained how to calculate the evolutionarily stable strategy (ESS) when a mutant strategy appears in the population in the proportion $\epsilon$. It will be assumed the strategy  `Cooperate' is the population and the invader is the strategy `Defect'. Thus the payoff for the strategy `Cooperate' is the following:
+\begin{center}
+$(1-{\epsilon})3 + 0{\epsilon} = 3 - 3{\epsilon}$
+\end{center}
+And the payoff for the strategy `Defect' is:
+\begin{center}
+$(1-{\epsilon})5 + 1{\epsilon} = 5 - 4{\epsilon}$
+\end{center}
+The strategy `Defect' appears to be greater than `Cooperate'. Now since the simulation gives almost equal starting proportions to each strategy it be will assumed that the `invading' strategy `Defect' appears in a proportion of $\epsilon$=0.5. And results in  the following:
+\begin{center}
+3 - 3(0.5) = 1.5
+\end{center}
+And for the strategy `Defect' is:
+\begin{center}
+ 5 - 4(0.5) = 3
+\end{center}
+The payoff for `Defect' is greater than the payoff for `Cooperate' thus it can be said that `Cooperate' is not an evolutionarily stable strategy.
+Its time to check if the strategy `Defect' is evolutionarily stable. And therefore it is assumed that `Cooperate is the invader. It  appears that `Defect' might be evolutionarily stable given the previous test. But it will be calculated anyway. First calculating the expected payoff for the strategy `Defect':
+\begin{center}
+$(1-{\epsilon})1 + 5{\epsilon} = 1 + 4{\epsilon}$
+\end{center}
+And the payoff for the strategy `Defect' is:
+\begin{center}
+$(1-{\epsilon})0 + 3{\epsilon} =  3{\epsilon}$
+\end{center}
+Again it appears that the strategy `Defect' has a greater expected payoff than `Cooperate'. it will be assumed that the `invading' strategy `Cooperate' appears in a proportion of $\epsilon$=0.5. And the calculation for the strategy `Defect' is as follows:
+\begin{center}
+1 +  4(0.5) = 3
+\end{center}
+And for the strategy `Cooperate' is:
+\begin{center}
+ 3(0.5) = 1.5
+\end{center}
+Again the strategy`Defect' has a higher expected payoff, so it is an evolutionarily stable strategy (ESS).
+With this it can be noticed that the strategy `Defect' is both a Nash equilibrium and an ESS. And this supports the results from the simulation.
+
+
+\section{Matching pennies game}
+\label{app:mpnashess}
+
+\subsection{Nash Equilibrium}
+The Nash Equilibrium for the matching pennies game will be calculated next, since it cannot be determined just by looking at the normal form table and selecting the best responses since this game has a mixed Nash equilibrium.
+
+\begin{table}[H]
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Heads & Tails\\ 
+\hline
+Heads & 1, -1 & -1, 1\\
+\hline
+Tails & -1, 1 & 1, -1\\
+\hline
+\end{tabular}
+
+\caption{ Matching pennies bimatrix payoff.}
+\label{fig:mpnashmx}	
+\end{center}
+\end{table}
+
+The mixed Nash equilibrium is calculated by making equal the expected payoff  when playing `heads' to the expected payoff of playing `tails'. It will be assumed that the probability for player 1 of playing `heads' is $\sigma$ and for playing tails 1 - $\sigma$, resulting in the following:
+\begin{center}
+$(-1)(\sigma) + (1 - \sigma) = (1)(\sigma) + (-1)(1 - \sigma)$
+\end{center}
+\begin{center}
+$-4 \sigma = -2$
+\end{center}
+\begin{center}
+$\sigma = 1/2$
+\end{center}
+This means that player 1 will play `heads' with a probability of 1/2 , and also means she will be playing tails with 1/2. And now it is time to calculate the probability of playing 'heads; for player 2 with probability $\sigma$ and `tails' with probability 1 - $\sigma$.
+
+\begin{center}
+$(1)(\sigma) + (1 - \sigma)(-1) = (-1)(\sigma) + (1)(1 - \sigma)$
+\end{center}
+\begin{center}
+$4 \sigma = 2$
+\end{center}
+\begin{center}
+$\sigma = 1/2$
+\end{center}
+
+This means that player 2 when playing against player 1 will play` heads'  1/2  of the times and in consequence play `tails' in the other 1/2 of the times. 
+This means that the Nash equilibria is when:
+\begin{center}
+((1/2, 1/2), (1/2, 1/2))
+\end{center}
+
+\subsection{ESS}
+Now let us find the ESS for the matching pennies game. In the same way the prisoner's dilemma ESS was calculated. It will be assumed the strategy  `Heads' is the population and the invader is the strategy `Tails'. Thus the payoff for the strategy `Heads' is the following:
+\begin{center}
+$(1-{\epsilon})(1) + (-1){\epsilon} = 1 - 2{\epsilon}$
+\end{center}
+And the payoff for the strategy `Tails' is:
+\begin{center}
+$(1-{\epsilon})(-1) + (1){\epsilon} = 2{\epsilon} - 1$
+\end{center}
+Both strategies appear to be equivalent unless there is a very small value of $\epsilon$.But since the simulation gives almost equal starting proportions to each strategy it will be assumed that the `invading' strategy `Tails' appears in a proportion of $\epsilon$=0.5. Resulting in the following:
+\begin{center}
+$1- 2(0.5) = 0$
+\end{center}
+And for the strategy `Defect' is:
+\begin{center}
+ 2(0.5)- 1 = 0
+\end{center}
+So the resulting expected payoff for both is 0 thus it can be said that `Heads' is not an evolutionarily stable strategy, Given that it does not dominate `Tails'.
+Next step is to check if the strategy `Tails' is evolutionarily stable. And therefore it is assumed that `Heads' is the invader. The expected payoff of the strategy `Tails' is:
+\begin{center}
+$(1-{\epsilon})(-1) + (1)({\epsilon}) = 2{\epsilon} -1$
+\end{center}
+And the payoff for the strategy `Heads' is:
+\begin{center}
+$(1-{\epsilon})(1) + (-1)({\epsilon}) =  1 - 2{\epsilon}$
+\end{center}
+Again it appears that they are equal. So `Tails' is not an ESS either. But it will be calculated it anyway assuming that the `invading' strategy `Heads' appears in a proportion of $\epsilon$=0.5. For the strategy `Tails' the following is the expected payoff for this proportions :
+\begin{center}
+1 -  2(0.5) = 0
+\end{center}
+And for the strategy `Heads' is:
+\begin{center}
+ 2(0.5) - 1 = 0
+\end{center}
+The strategy `Tails' is not an ESS either. And this explains the behaviour in the graphs, how through time both strategies appear to interact and oscilate in the middle (0.5)
+
+
+
+\section{Battle of sexes game}
+\label{app:bosnashess}
+
+\subsection{Nash Equilibrium}
+ Nash equilibrium for the battle of sexes game is calculated by looking at the normal form table and it can be noticed that there are 2 non symmetric Nash equilibria, this means that they do not play the same strategy; and there can also be found a mixed Nash equilibrium.
+
+\begin{table}[H]
+\begin{center}
+Female
+
+Male
+\begin{tabular}{|l|c|c|}
+\hline
+ & Opera & Football\\ 
+\hline
+Opera & \underline{2}, \underline{1} & 0, 0\\
+\hline
+Football & 0, 0 & \underline{1}, \underline{2}\\
+\hline
+\end{tabular}
+
+\caption{ Battle of sexes bimatrix payoff.}
+\label{fig:mpnashbos}	
+\end{center}
+\end{table}
+
+Now the mixed Nash equilibrium is calculated by making equal the expected payoff  when going to the Opera with the expected payoff of watching Football. It will be assumed that the probability for the Male player of going to the Opera is $\sigma$ and for watching Football 1 - $\sigma$, resulting in the following:
+\begin{center}
+$(2)(\sigma) + (1 - \sigma)(0) = (0)(\sigma) + (1)(1 - \sigma)$
+\end{center}
+\begin{center}
+$3\sigma = 1$
+\end{center}
+\begin{center}
+$\sigma = 1/3$
+\end{center}
+This means that the Male player chooses to go to the opera with the probability of 1/3 , and also means he will prefer watching football 2/3. And now we calculate the probability of going to the Opera for the Female player with probability $\sigma$ and for watching Football with probability 1 - $\sigma$.
+
+\begin{center}
+$(1)(\sigma) + (1 - \sigma)(0) = (0)(\sigma) + (2)(1 - \sigma)$
+\end{center}
+\begin{center}
+$3\sigma = 2$
+\end{center}
+\begin{center}
+$\sigma = 2/3$
+\end{center}
+
+This means that the Female player will choose to go to the Opera with a probability of 2/3 and in consequence only chooses to watch football the other 1/3. 
+This means that the Nash equilibria is when:
+\begin{center}
+((1/3, 2/3), (2/3, 1/3))
+\end{center}
+
+\subsection{ESS}
+Now to find the ESS for this game. It will be assumed that going to the 'Opera' is the population and the invader is the strategy to watch `Football'. Thus the payoff for the strategy `Opera' is the following:
+\begin{center}
+$(1-{\epsilon})(2) + (0){\epsilon} = 1 - 2{\epsilon}$
+\end{center}
+And the payoff for the strategy watching `Football' is:
+\begin{center}
+$(1-{\epsilon})(0) + (1){\epsilon} = {\epsilon}$
+\end{center}
+With a value of $\epsilon$ $\leq$ 0.3 `Opera' is an ESS. But since the simulation runs every time with almost equal starting proportions to each strategy it will be assumed that the `invading' strategy `Football' appears in a proportion of $\epsilon$=0.5. And the calculation is as follows:
+\begin{center}
+1- 2(0.5) = 0
+\end{center}
+And for the strategy `Football' is:
+\begin{center}
+ (0.5) = 0.5
+\end{center}
+The expected payoff for `Football' is greater thus it can be said that `Opera' is not an evolutionarily stable strategy, given that it does not dominate  `Football'.
+Now a check to see if the strategy `Football' is evolutionarily stable. And therefore it is assumed that `Opera' is the invader. The expected payoff of the strategy `Football' is:
+\begin{center}
+$(1-{\epsilon})(1) + (0)({\epsilon}) = 1 - {\epsilon} $
+\end{center}
+And the payoff for the strategy `Opera' is:
+\begin{center}
+$(1-{\epsilon})(0) + (2)({\epsilon}) =  2{\epsilon}$
+\end{center}
+So it can be seen that `Football' is not an ESS either, given that under certain values of $\epsilon$ it will not be dominant. Now it is calculated assuming that the `invading' strategy `Opera' appears in a proportion of $\epsilon$=0.5. For the strategy `Football':
+\begin{center}
+1 -  (0.5) = 0.5
+\end{center}
+And for the strategy `Opera' is:
+\begin{center}
+ 2(0.5)  = 1
+\end{center}
+The strategy `Football' is not an ESS either. Each strategy will appear to be evolutionarily stable according to their probability of appearance in the population. But with the default settings for our simulation which give a proportion of 0.5 to each there is not a clear evolutionarily stable strategy at the beginning of each simulation.
+
+
+
+\section{Hawk-dove game}
+\label{app:hdnashess}
+
+\subsection{Nash Equilibrium}
+The Nash equilibrium for the hawk-dove game will now be found. The Nash equilibrium for the this game,  can be found by looking at the normal form table and select the best responses for each player. There are 2 Nash equilibria in this game.
+
+\begin{table}[H]
+\begin{center}
+Player 2
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Hawk & Dove\\ 
+\hline
+Hawk & 0, 0 & \underline{3}, \underline{1}\\
+\hline
+Dove & \underline{1},\underline{3} & 2, 2\\
+\hline
+\end{tabular}
+
+\caption{ Hawk-Dove bimatrix payoff.}
+\label{fig:mpnashhd}	
+\end{center}
+\end{table}
+
+The mixed Nash equilibrium is calculated by making equal the expected payoff  when playing `Hawk' to the expected payoff of playing `Dove'. It will be assumed that the probability for player 1 of playing `Hawk' is $\sigma$ and for playing `Dove' is 1 - $\sigma$, resulting in the following:
+\begin{center}
+$(0)(\sigma) + (1 - \sigma)(3) = (1)(\sigma) + (2)(1 - \sigma)$
+\end{center}
+\begin{center}
+$-2 \sigma = -1$
+\end{center}
+\begin{center}
+$\sigma = 1/2$
+\end{center}
+This means that player 1 will play `Hawk' 1/2 of the times, and also means she will be playing `Dove' with a probability of 1/2. And now to calculate the probability of playing `Hawk' for player 2 with probability $\sigma$ and playing `Dove' with probability 1 - $\sigma$.
+\begin{center}
+$(0)(\sigma) + (1 - \sigma)(3) = (1)(\sigma) + (2)(1 - \sigma)$
+\end{center}
+\begin{center}
+$4 \sigma = 2$
+\end{center}
+\begin{center}
+$\sigma = 1/2$
+\end{center}
+
+This means that player 2 when playing against player 1 will play `Hawk' with a probability of  1/2  and in consequence play `Dove' with the remaining probability of 1/2. 
+This means that the Nash equilibria is when:
+\begin{center}
+((1/2, 1/2), (1/2, 1/2))
+\end{center}
+Therefore it can be seen that there exist 2 non symmetric Nash equilibria and a mixed Nash equilibrium.
+
+\subsection{ESS}
+Now it will be found the ESS for this game. It is assumed the strategy  `Hawk' is the population and the invader is the strategy `Dove'. Thus the payoff for the strategy `Hawk' is the following:
+\begin{center}
+$(1-{\epsilon})(0) + (3){\epsilon} = 3{\epsilon}$
+\end{center}
+And the payoff for the strategy `Dove' is:
+\begin{center}
+$(1-{\epsilon})(1) + (2){\epsilon} = 1 + {\epsilon}$
+\end{center}
+It can be seen that with certain values of $\epsilon$ $>$ 5 Hawk is an ESS. Since the simulation every time gives almost equal starting proportions to each strategy it will  be assumed that the `invading' strategy `Dove' appears in a proportion of $\epsilon$=0.5. And calculates as follows:
+\begin{center}
+3(0.5) = 1.5
+\end{center}
+And for the strategy `Dove' is:
+\begin{center}
+ 1 + (0.5) = 1.5
+\end{center}
+So the expected payoff for both are equal thus we can say that `Hawk' is not an evolutionarily stable strategy with an initial distribution of 0.5, given that it does not dominate `Dove'.
+Now it is checked if the strategy `Dove' is evolutionarily stable. And therefore `Hawk' is assumed to be the invader. First the expected payoff for the strategy `Dove' is:
+\begin{center}
+$(1-{\epsilon})(0) + (3)({\epsilon}) = 3{\epsilon} $
+\end{center}
+And the payoff for the strategy `Hawk' is:
+\begin{center}
+$(1-{\epsilon})(1) + (2)({\epsilon}) =  1 + {\epsilon}$
+\end{center}
+It can be seen a similar situation as the previous. So it can be assumed that `Dove' is not an ESS either. But it will be calculated anyway assuming that the `invading' strategy `Hawk' appears in a proportion of $\epsilon$=0.5. And the following is the result for the strategy `Dove':
+\begin{center}
+3(0.5) = 1.5
+\end{center}
+And for the strategy `Hawk' is:
+\begin{center}
+ 1 + (0.5) = 1.5
+\end{center}
+The strategy `Dove' is not an ESS either under this distribution.
+
