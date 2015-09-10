@@ -1,0 +1,86 @@
+\label{app:gamesused}
+This appendix contains a brief description of the well known games simulated with the `ablearn' package, and their corresponding payoff matrices.
+Perhaps the most known is the the prisoner's dilemma which was mentioned before and it basically has two Nash equilibria strategies one in which both cooperate and the other in which non cooperate.
+
+\begin{table}[h]
+\begin{center}
+Prisoner 2
+
+Prisoner1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Cooperate & Defect \\ 
+\hline
+Cooperate & 3, 3 & 0, 5\\
+\hline
+ Defect & 5, 0 & 1, 1\\
+\hline
+\end{tabular}
+\caption{Prisoner's Dilemma}
+\label{tab:prisdiltag}
+\end{center}
+\end{table}
+
+
+Matching pennies which is a pure conflict zero-sum game in which the winner of the game takes all and the loser ends up losing her share. Tthere is no scenario where both players can agree in a strategy. Player 1 preference of choice is from tossing a coin involves getting 2 heads or 2 tails, whilst player 2 prefers having a mixed combination.  The equilibrium for this game is a mixed Nash equilibrium.
+
+\begin{table}[h]
+\begin{center}
+Player 2
+
+
+Player 1
+\begin{tabular}{|l|c|c|}
+\hline
+ & Heads & Tails \\ 
+\hline
+Heads & 1, -1 & -1, 1\\
+\hline
+ Tails & -1, 1 & 1, -1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Matching Pennies}
+\label{tab:matpentag}
+\end{table}
+
+
+The battle of sexes game is a coordination game in which both agents cannot exchange information about what option out of two to choose, they both have a preferred strategy, but if they both choose their preferred strategy they have no payoff from it because they rather choose the same strategy and concur,  even if it has a higher payoff for one of them than the other. In the example from the table there is a representation of preferences, and it should be assumed that it is a couple trying to decide where to go, the female agent prefers going to the opera, whilst the male agent prefers going to watch football. But it can be seen that if they both end up choosing different strategies from each other they get a payoff of 0. 
+
+\begin{table}[h]
+\begin{center}
+Female
+
+
+Male
+\begin{tabular}{|l|c|c|}
+\hline
+ & Opera & Football \\ 
+\hline
+Opera & 1, 2 & 0, 0\\
+\hline
+ Football & 0, 0 & 2, 1\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Battle of Sexes}
+\label{tab:bostag}
+\end{table}
+
+And the hawk-dove game. This game is often used in  evolutionary game theory. And it represents the 2 strategies an agent can choose,  and the result of the interaction. There is an aggressive strategy which is the hawk strategy and a passive strategy which is the dove. When both agents choose to play hawk, the payoff they get is 0, the explanation is that since they are both aggressive, the possible payoff they could have had from the resource they are competing for is not greater than the cost they pay for playing this strategy against each other. When they both choose dove, they split in equal parts the resource and the payoff they receive is the same for both. When one plays hawk and the other dove, the agent using hawk strategy gets a higher payoff than the one using the dove strategy.    
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|}
+\hline
+ & Hawk & Dove \\ 
+\hline
+Hawk & 0, 0 & 3, 1\\
+\hline
+ Dovel & 1, 3 & 2, 2\\
+\hline
+\end{tabular}
+\end{center}
+\caption{Hawk-Dove}
+\label{tab:hdtag}
+\end{table}

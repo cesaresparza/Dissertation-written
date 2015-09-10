@@ -1,99 +1,22 @@
 \label{ch:codeapp}
-In this chapter the runs of the program will be discussed. What was consider when running a simulation. An explanation of what games were simulated, and of the results against the known techniques to indicate how the program outputs our expected results when running it with known classic game theory games. A comparison of the results given by the  library 'Axelrod' from python with results from this code 'Ablearn'.
+In this chapter the runs of the program will be discussed. What was consider when running a simulation. An explanation of what games were simulated will be found in appendix $\ref{app:gamesused}$, and of the results against the known techniques to indicate how the program outputs our expected results when running it with known classic game theory games. A comparison of the results given by the  library 'Axelrod' from python with results from this code 'Ablearn'.
 
-\section{How the simulation was built.}
-After building the code the objective is to determine if the program gives us the expected results. It is  known that an evolutionary stable strategy is a strategy that survives through time. And as it was mentioned before there are certain conditions that can  be verified in order to identify and evolutionary stable strategy. The following tables represent some of the most well known examples of games in the normal form. 
+After building the code the objective is to determine if the program gives us the expected results. It is  known that an evolutionary stable strategy is a strategy that survives through time. And as it was mentioned before there are certain conditions that can  be verified in order to identify and evolutionary stable strategy.  The `ablearn' package will be run on the following well known games, from game theory:
 
-As said before, when using the code for simulating there are different variables that can be input which will have an impact in the resulting output. The input rates that have a greater impact are death rate, which determines how many agents will be eliminated per generation; mutation rate, which will make the most efficient strategy in accumulating utility in each generation reproduce but with different characteristics (strategy); exploitation rate, which can be modified so that only the agent with highest utility will reproduce or to take a percentage of the population to be considered for reproducing.
+\begin{itemize}
+	\item $\textbf{Prisoner's dilemma}$
+	\item $\textbf{Matching pennies}$ 
+	\item $\textbf{Battle of sexes}$ 
+	\item $\textbf{Hawk-dove}$ 
+\end{itemize}
 
-Perhaps the most known is the the prisoner's dilemma which was mentioned before and it basically has two Nash equilibria strategies one in which both cooperate and the other in which non cooperate.
+A brief description for each game and corresponding payoff matrix used in the simulation can be found in appendix $\ref{app:gamesused}$.
 
-\begin{table}[h]
-\begin{center}
-Prisoner 2
-
-Prisoner1
-\begin{tabular}{|l|c|c|}
-\hline
- & Cooperate & Defect \\ 
-\hline
-Cooperate & 3, 3 & 0, 5\\
-\hline
- Defect & 5, 0 & 1, 1\\
-\hline
-\end{tabular}
-\caption{Prisoner's Dilemma}
-\label{tab:prisdiltag}
-\end{center}
-\end{table}
-
-
-Matching pennies which is a pure conflict zero-sum game in which the winner of the game takes all and the loser ends up losing her share. Tthere is no scenario where both players can agree in a strategy. Player 1 preference of choice is from tossing a coin involves getting 2 heads or 2 tails, whilst player 2 prefers having a mixed combination.  The equilibrium for this game is a mixed Nash equilibrium.
-
-\begin{table}[h]
-\begin{center}
-Player 2
-
-
-Player 1
-\begin{tabular}{|l|c|c|}
-\hline
- & Heads & Tails \\ 
-\hline
-Heads & 1, -1 & -1, 1\\
-\hline
- Tails & -1, 1 & 1, -1\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Matching Pennies}
-\label{tab:matpentag}
-\end{table}
-
-
-The battle of sexes game is a coordination game in which both agents cannot exchange information about what option out of two to choose, they both have a preferred strategy, but if they both choose their preferred strategy they have no payoff from it because they rather choose the same strategy and concur,  even if it has a higher payoff for one of them than the other. In the example from the table there is a representation of preferences, and it should be assumed that it is a couple trying to decide where to go, the female agent prefers going to the opera, whilst the male agent prefers going to watch football. But it can be seen that if they both end up choosing different strategies from each other they get a payoff of 0. 
-
-\begin{table}[h]
-\begin{center}
-Female
-
-
-Male
-\begin{tabular}{|l|c|c|}
-\hline
- & Opera & Football \\ 
-\hline
-Opera & 1, 2 & 0, 0\\
-\hline
- Football & 0, 0 & 2, 1\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Battle of Sexes}
-\label{tab:bostag}
-\end{table}
-
-And the hawk-dove game. This game is often used in  evolutionary game theory. And it represents the 2 strategies an agent can choose,  and the result of the interaction. There is an aggressive strategy which is the hawk strategy and a passive strategy which is the dove. When both agents choose to play hawk, the payoff they get is 0, the explanation is that since they are both aggressive, the possible payoff they could have had from the resource they are competing for is not greater than the cost they pay for playing this strategy against each other. When they both choose dove, they split in equal parts the resource and the payoff they receive is the same for both. When one plays hawk and the other dove, the agent using hawk strategy gets a higher payoff than the one using the dove strategy.    
-
-\begin{table}[h]
-\begin{center}
-\begin{tabular}{|l|c|c|}
-\hline
- & Hawk & Dove \\ 
-\hline
-Hawk & 0, 0 & 3, 1\\
-\hline
- Dovel & 1, 3 & 2, 2\\
-\hline
-\end{tabular}
-\end{center}
-\caption{Hawk-Dove}
-\label{tab:hdtag}
-\end{table}
+As said before in the project, when using the `ablearn' library for simulating there are different variables that can be input which will have an impact in the resulting output. The input rates that have a greater impact are death rate, which determines how many agents will be eliminated per generation; mutation rate, which will make the most efficient strategy in accumulating utility in each generation reproduce but with different characteristics (strategy); exploitation rate, which can be modified so that only the agent with highest utility will reproduce or to take a percentage of the population to be considered for reproducing.
 
 \newpage
 \section{Results}
-In this section the python package created (`ablearn') will be used to solve the games described in the previous section. And a brief analysis over the results displayed in the form of graphs and stack plots will be done. In addition the python package `axelrod' will be used to produce a specific output (payoff matrix) and to produce a stack plot. The created package `ablearn'  will use the output (payoff matrix) from 'axelrod' package to produce a stack plot. Both stack plots will be compared and briefly commented on.  
+In this section the python package created (`ablearn') will be used to solve the games mentioned in the previous before. And a brief analysis over the results displayed in the form of graphs and stack plots will be done. In addition the python package `axelrod' will be used to produce a specific output (payoff matrix) and to produce a stack plot. The created package `ablearn'  will use the output (payoff matrix) from 'axelrod' package to produce a stack plot. Both stack plots will be compared and briefly commented on.  
 
 \subsection{Prisoner's Dilemma}
 For Prisoner's dilemma in this project it is not considered relevant to vary the number of generations to test for any changes. This is because the interaction of the agents and their strategies is given in the level of rounds. In other words, the rounds give the proportion of strategies for each generation. A variation in the number of generations may be considered when a clear pattern in the data is not easy to identify. However, it is considered important to determine if the number of rounds make a difference in the results. Hence the simulation will be tested  with different number of rounds. It will be done under the conditions 1, 2 and 3 of table $\ref{tab:simpdtag}$ from appendix $\ref{app:pdsimtable}$ . The analysis can be found in appendix $\ref{app:pdanalysisrounds}$.
@@ -185,12 +108,8 @@ The graphs from simulations 5, 6 and 7  have a high death rate of 0.9, this mean
     \label{pdsim567r5}
 \end{figure}
 
-It can be seen from the previous figure $\ref{pdsim567r5}$ that when the mutation rate is lower the variation for each strategy is higher, even if the proportions are close to 0.5. The brief dominance of `Cooperate' may be given to a higher interaction between this type of strategy between each other, in consequence they accumulate a higher utility which allows them to reproduce in the following generation. High death rate allows to  reproduce faster.  In the other 2 simulations we see how as the mutation level increases the proportion of the strategies become more stable. By looking at the graphs 1, 8 and 9 have a similar behaviour where as the mutation rate increases, less peaks and valleys can be seen.
-
-
-
-For the following graphs resulting from simulations 10, 11 and 12 an death rate is increasing in 0.1, 0.5 and 0.9 respectively in figure $\ref{pdsim101112r5}$. For all 3 simulations there are constant values for mutation rate of 0.1 and exploitation rate of 0.5. As the death rate increases, as expected the gap between the number of strategies representing `Defect' and `Cooperate' reduces. But it can also be seen that as the as death rate increases given the value of 0.5 for exploitation rate the peaks and valleys increase, they do not get to the point where `Cooperate' dominates `Defect', but it is important to note that with a low mutation rate and a lower exploitation rate than 1 which in these cases is 0.5 strategies that earn lower utility during the interaction are allowed to reproduce in the same probability as the one with highest utility. 
-
+It can be seen from the previous figure $\ref{pdsim567r5}$ that when the mutation rate is lower the variation for each strategy is higher, even if the proportions are close to 0.5. The brief dominance of `Cooperate' may be given to a higher interaction between this type of strategy between each other, in consequence they accumulate a higher utility which allows them to reproduce in the following generation. High death rate allows to  reproduce faster.  In the other 2 simulations we see how as the mutation level increases the proportion of the strategies become more stable. 
+\\\\For the following graphs resulting from simulations 10, 11 and 12 an death rate is increasing in 0.1, 0.5 and 0.9 respectively in figure $\ref{pdsim101112r5}$. For all 3 simulations there are constant values for mutation rate of 0.1 and exploitation rate of 0.5. As the death rate increases, as expected the gap between the number of strategies representing `Defect' and `Cooperate' reduces. 
 \begin{figure}[H]       
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
@@ -217,7 +136,7 @@ For the following graphs resulting from simulations 10, 11 and 12 an death rate 
     \label{pdsim101112r5}
 \end{figure}
 
-When comparing the graphs in figure $\ref{pdsim101112r5}$ with the graphs from simulation 3, 4 and 5 from figure $\ref{pdsim345r5}$ which have an increasing value of death rate and a mutation rate of 0.1 behave in a similar way. But when comparing graphs from simulation 5 and 12 with each other. They both have a death rate of 0.9 and a mutation rate of 0.1, but a different exploitation rate value of 1 and 0.5 respectively. We can see that since a lower exploitation rate makes other strategies reproduce with the same probability as the strategy with the highest accumulated utility from the generation, a larger gap between strategies is present. Meaning that even if `Cooperate' accumulates a high utility, if there is `Defect' strategy within the 50\% of the population that is allowed to reproduce, it has a possibility to reproduce. This `randomization' gives an equilibrium between the presence of strategies in the population. Simulations 19, 20 and 21 have the same values as these other groups of simulations, but an exploitation rate of 0.1, which makes the graph from simulation 21 behave very similar to the graph from simulation 12. 
+When comparing the graphs in figure $\ref{pdsim101112r5}$ with the graphs from simulation 3, 4 and 5 from figure $\ref{pdsim345r5}$ which have an increasing value of death rate and a mutation rate of 0.1 behave in a similar way. But when comparing graphs from simulation 5 and 12 with each other. They both have a death rate of 0.9 and a mutation rate of 0.1, but a different exploitation rate value of 1 and 0.5 respectively. It can be seen that since a lower exploitation rate makes other strategies reproduce with the same probability as the strategy with the highest accumulated utility from the generation, a larger gap between strategies is present. Meaning that even if `Cooperate' accumulates a high utility, if there is `Defect' strategy within the 50\% of the population that is allowed to reproduce, it has a possibility to reproduce. This `randomization' gives an equilibrium between the presence of strategies in the population. Simulations 19, 20 and 21 have the same values as these other groups of simulations, but an exploitation rate of 0.1, which makes the graph from simulation 21 behave very similar to the graph from simulation 12. 
 
 For the following graphs representing simulations 16, 17 and 18 the value that changes is death rate 0.1, 0.5 and 0.9 respectively in figure $\ref{pdsim161718r5}$. With constant values of mutation rate  0.9 and exploitation rate 0.5. As seen before the effect of the death rate reflects with a reducing gap between the type of strategies as death rate increases. 
  
@@ -248,7 +167,7 @@ For the following graphs representing simulations 16, 17 and 18 the value that c
 \end{figure}
 
 A particular characteristic can be seen in the graph for simulation 16. It reaches the lowest value for `Cooperate' strategy later than other simulations with the same death rate. Graphs from simulations 3, 8, 9, 10, 13, 19 and 22 they all reach the lowest value for `Cooperate' around generation 10. Simulation 16 reaches it closer to generation 20, we see a similar behaviour for simulation 25. What this two simulations have in common other than death rate value, is their mutation rate is 0.9. Since mutation rate allows any strategy to reproduce except for the agent with strategy with that accumulated the highest utility, this delays the `Cooperate' strategy for reaching its lowest value.		  
-The remaining simulations, behave in a similar way to the one that have been discussed  so far. It can be seen that the variable that acts as an enabler for the other variables to have an effect is the death rate. 
+The remaining simulations, behave in a similar way to the one that have been discussed  so far. It can be seen that the variable that acts as an enabler for the other variables to have an effect in population behaviour is the death rate. 
 From the analysis of all the previous graphs for prisoner's dilemma it can be concluded that death rate is the parameter that has a major influence in how the population behaves, without it the dominance of a strategy will be absolute in this project. Death rate in combination with mutation rate makes the dominance of a strategy more significant if the death rate is low and less significant if death rate is higher.
 The calculations for Nash equilibrium and evolutionary stable strategy for this game can be found in appendix $\ref{app:pdnashess}$.
 
@@ -284,7 +203,7 @@ For simulations 1, 2 and 3 with 5, 25 and 100 rounds per generation respectively
     \label{firstthreesimulations}
 \end{figure}
 
-The behaviour for the graphs for each simulation is similar with an increasing amplitude until simulation 10 for the three different number of rounds. For simulation 10 the amplitude increases when having a lower exploitation rate in combination with low death rate (0.1) and low mutation rate (0.1) in a very similar way for the different number of rounds. This behaviour is because the exploitation rate allows the 50\% of the population to reproduce with the same probability. So almost any strategy can reproduce unless it has the lowest accumulated utility, which means they will be eliminated. And the low death rate allows them to accumulate in a greater number.
+For simulation 10 the amplitude increases when having a lower exploitation rate in combination with low death rate (0.1) and low mutation rate (0.1) in a very similar way for the different number of rounds. This happens because the exploitation rate allows 50\% of the population to reproduce with the same probability. And the low death rate allows them to accumulate in a greater number.
 
 \begin{figure}[H]       
     \centering
@@ -421,7 +340,7 @@ In simulation 13, 14 and 15  there is an interesting behaviour when an increasin
     \label{mpsim131415simulations100}
 \end{figure}
 
-An increasing amplitude with the different increasing number of rounds can be seen. Nevertheless in simulation 15 with death rate of 0.9 the amplitude for all of them decreases. This is given to the mutation rate of 0.5 in combination with 0.5 exploitation rate, these values make the creation of new agents with a high possibility of randomness, so the agent with the highest accumulated utility has same less probability of reproducing than others because the mutation rate gives opportunity to any agent strategy except for that with the highest accumulated payoff. And a similar behaviour is expected when death rate is 0.9 with mutation rate of 0.9, which will practically rule out the possibility of the best agent strategy with the highest accumulated utility to reproduce.
+In simulation 15 with death rate of 0.9 the amplitude for all of them decreases when different rounds per generation are tested. This is given to the mutation rate of 0.5 in combination with 0.5 exploitation rate, these values make the creation of new agents with a high possibility of randomness, so the agent with the highest accumulated utility has same less probability of reproducing than others because the mutation rate gives opportunity to any agent strategy except for that with the highest accumulated payoff. And a similar behaviour is expected when death rate is 0.9 with mutation rate of 0.9, which will practically rule out the possibility of the best agent strategy with the highest accumulated utility to reproduce.
 
 Simulation 16, 17 and 18  have constant values of mutation rate for 0.9 and exploitation rate of 0.5 with increasing death rate of 0.1, 0.5 and 0.9 respectively. For 16 and 17 with increasing death rate it can be see when comparing with 5, 25 and 100 rounds per generation, the amplitude increases. Something interesting with the high value of 0.9 in death rate that they virtually have the same amplitude.
 
@@ -504,8 +423,7 @@ Simulation 16, 17 and 18  have constant values of mutation rate for 0.9 and expl
 \end{figure}
 
 As expected with a high mutation rate (0.9) and high death rate (0.9) the amplitude is smaller, as seen in graphs from simulation 15 and in graphs from simulation 18.
-
-For simulations 19, 20 and 21 we have a low constant value of 0.1 mutation rate and 0.1 exploitation rate, and increasing death rate 0.1, 0.5 and 0.9. The amplitude behaves the same with 5, 25 and 100 rounds, and the frequency increases for all the cases with the increasing death rate.
+\\\\For simulations 19, 20 and 21 we have a low constant value of 0.1 mutation rate and 0.1 exploitation rate, and increasing death rate 0.1, 0.5 and 0.9. The amplitude behaves the same with 5, 25 and 100 rounds, and the frequency increases for all the cases with the increasing death rate.
 
 \begin{figure}[H]       
     \centering
@@ -586,8 +504,8 @@ For simulations 19, 20 and 21 we have a low constant value of 0.1 mutation rate 
     \label{mpsim192021simulations100}
 \end{figure}
 
-This behaviour is given to the fact that the mutation rate is low, and the low exploitation (0.1) rate allows any  strategy to reproduce with the same probability including the agent strategy with the highest accumulated utility, and it makes the selection is not as random than when also having a high mutation rate, but still many agents are candidates to reproduce. So the high frequency in the graphs with high death rate is present because  a high number of agents are allowed to reproduce each generation and also the same number are eliminated. So the brief dominance of an agent strategy is given to the random factor. 
-Only for to see how the strategies look in proportion in the population when the frequency increases, the stack plots from simulations 19, 20 and 21 with 25 rounds per generation are shown in the following figure $\ref{mpsim192021simulations25s}$:
+This behaviour is given to the fact that the mutation rate is low, and the low exploitation (0.1) rate allows any  strategy to reproduce with the same probability including the agent strategy with the highest accumulated utility, and it makes the selection is not as random than when also having a high mutation rate, but still many agents are candidates to reproduce.  
+Only to observe how the strategies look in proportion in the population when the frequency increases, the stack plots from simulations 19, 20 and 21 with 25 rounds per generation are shown in the following figure $\ref{mpsim192021simulations25s}$:
 
 \begin{figure}[H]       
     \centering
@@ -615,7 +533,7 @@ Only for to see how the strategies look in proportion in the population when the
     \label{mpsim192021simulations25s}
 \end{figure}
 It can be seen in figure $\ref{mpsim192021simulations25s}$ how the frequency increases as the death rate increases, reflecting how death rate affects the periods of dominance from a strategy. Also the behaviour from the stack plots reflects the mixed Nash equilibrium. Because it can be seen how when a strategy is dominating the counterpart appears and dominates it.
-\\\\Simulations 22, 23, 24 have an increasing death rate of 0.1, 0.5 and 0.9 respectively, with constant mutation rate of 0.5 and exploitation rate of 0.1. With death rate 0.1 we see an expected increase in the amplitude when increasing number of rounds. With death rate of 0.5 we see an increase in the frequency and a reduced amplitude for the graphs for 5, 25 and 100 rounds. And with death rate 0.9 a much smaller amplitude is perceived and still with a high frequency.
+\\\\Simulations 22, 23, 24 have an increasing death rate of 0.1, 0.5 and 0.9 respectively, with constant mutation rate of 0.5 and exploitation rate of 0.1. 
 
 \begin{figure}[H]       
     \centering
@@ -696,7 +614,7 @@ It can be seen in figure $\ref{mpsim192021simulations25s}$ how the frequency inc
     \label{mpsim222324simulations100}
 \end{figure}
 
-As expected the only difference between simulations with 5, 25 and 100 rounds is an increasing amplitude when increasing number of rounds. Also the expected reduced amplitude when death rate is increased since there is a high mutation rate and a relatively low exploitation rate, population is renewed almost disregarding the performance of each agent strategy.
+As expected the only difference between simulations with 5, 25 and 100 rounds is an increasing amplitude when increasing number of rounds, increasing frequency when increasing death rate. Also the expected reduced amplitude when death rate is increased since there is a high mutation rate and a relatively low exploitation rate, population is renewed almost disregarding the performance of each agent strategy.
 
 With increasing death rate of 0.1, 0.5 and 0.9 for simulation 25, 26 and 27 respectively; and constant mutation rate of 0.9 and exploitation rate of 0.1 for the three simulations. A similar behaviour as the previous simulations (22, 23 and 24) analised, can be seen in the following graphs and stackplots for simulations 25, 26 and 27.
 
@@ -778,7 +696,7 @@ With increasing death rate of 0.1, 0.5 and 0.9 for simulation 25, 26 and 27 resp
     \label{mpsim252627simulations100}
 \end{figure}
 
-The amplitude increases as the number of rounds per generation are increased in 5, 25 and 100. For these simulations the increasing amplitude is smaller, because of the random factor that the mutation rate introduces (and how it excludes the agent strategy with highest accumulated utility). It should also be noted the incrementing frequency when using 0.5 and 0.9 death rate. And for simulation 27, it can be seen that for the different number of rounds the amplitude and frequency are similar for all, these  can be attributed to the high mutation rate and high death rate. It is also important to mention that the low exploitation rate in combination with high mutation rate will have an effect on the simulation, and therefore all the agent strategies will be present in very similar proportions in the population. The following stack plots in figure $\ref{mpsim252627simulationssp525100}$  can be observed to have a better visual understanding:  
+For these simulations the increasing amplitude is smaller, because of the random factor that the mutation rate introduces (and how it excludes the agent strategy with highest accumulated utility). It should also be noted the incrementing frequency when using 0.5 and 0.9 death rate. And for simulation 27, it can be seen that for the different number of rounds the amplitude and frequency are similar for all, these  can be attributed to the high mutation rate and high death rate. It is also important to mention that the low exploitation rate in combination with high mutation rate will have an effect on the simulation, and therefore all the agent strategies will be present in very similar proportions in the population. The following stack plots in figure $\ref{mpsim252627simulationssp525100}$  can be observed to have a better visual understanding:  
 
 \begin{figure}[H]       
     \centering
@@ -855,8 +773,8 @@ For simulation 4:
     \label{bossim4simulationgsp25}
 \end{figure}
 
-From the previous figures $\ref{bossim4simulationgsp5}$ and $\ref{bossim4simulationgsp25}$ it can be seen that rounds per generation that rounds per generation appears to allow strategies to have a more clear dominance with the configuration of simulation 4. But the important observation comes with the set of graphs and stack plots shown in figures $\ref{bossim19simulationgsp5}$ and $\ref{bossim19simulationgsp25}$ for simulation 19 without setting an initial distribution.
-For simulation 19 these are the resulting graphs and plots for 5 and 25 rounds per generation:
+From the previous figures $\ref{bossim4simulationgsp5}$ and $\ref{bossim4simulationgsp25}$ it can be seen that rounds per generation that rounds per generation appears to allow strategies to have a more clear dominance with the configuration of simulation 4. But the important observation comes with figures $\ref{bossim19simulationgsp5}$ and $\ref{bossim19simulationgsp25}$ from simulation 19 without setting an initial distribution.
+
 \begin{figure}[H]       
     \centering
     \begin{subfigure}[b]{0.4\textwidth}
@@ -894,7 +812,7 @@ For simulation 19 these are the resulting graphs and plots for 5 and 25 rounds p
     \caption{Graph and stack plot for simulation 19 with no inputed initial strategy, with 25 rounds per generation}
     \label{bossim19simulationgsp25}
 \end{figure}
-For the previous graphs and stack plots in figures $\ref{bossim19simulationgsp5}$ and $\ref{bossim19simulationgsp25}$  it appears that the number of rounds per generation has an impact on which strategies will dominate through time. Even if  in simulation 4 this was not true. The number of rounds per generation do not influence in which strategy will be dominating. What happened in simulation 19 was that python does not assign exactly 0.5 for each strategy the tables $\ref{tab:bossim19r5}$ and $\ref{tab:bossim19r25}$  will show what was the initial distribution for simulation 19 with 5 and 25 rounds per generation.
+From figures $\ref{bossim19simulationgsp5}$ and $\ref{bossim19simulationgsp25}$  it appears that the number of rounds per generation has an impact on which strategies will dominate through time. Even if  in simulation 4 this was not true. The number of rounds per generation do not influence in which strategy will be dominating. What happened in simulation 19 was that python does not assign exactly 0.5 for each strategy the tables $\ref{tab:bossim19r5}$ and $\ref{tab:bossim19r25}$  will show what was the initial distribution for simulation 19 with 5 and 25 rounds per generation.
 
 \begin{table}[H]
 \begin{center}
@@ -930,7 +848,7 @@ Col agents &  0.494 & 0.506\\
 
 From the previous tables it can be seen that there does not appear to be a pattern determining which strategy will be dominating. This may suggest that when there is no significant difference between the distributions, the dominating strategy will be determined by random factors which can work in favour of either strategy. To prove this initial strategies distribution will be set 0.5 for each strategy for simulation 4 and simulation 19 will be used.
 
-The following figures $\ref{bossim45simulationgsp5initial}$ and $\ref{bossim45simulationgsp5rainitial}$ graphs can be found where the behaviour when using an initial distribution of 0.5 for each strategy for simulation 4 can be seen:
+Figures $\ref{bossim45simulationgsp5initial}$ and $\ref{bossim45simulationgsp5rainitial}$ graphs can be found where the behaviour when using an initial distribution of 0.5 for each strategy for simulation 4 can be seen:
 
 \begin{figure}[H]       
     \centering
@@ -970,7 +888,7 @@ The following figures $\ref{bossim45simulationgsp5initial}$ and $\ref{bossim45si
     \label{bossim45simulationgsp5rainitial}
 \end{figure}
 
-By looking at the previous stack plots and graphs in figures $\ref{bossim45simulationgsp5initial}$ and $\ref{bossim45simulationgsp5rainitial}$ for simulation 4 with 5 rounds per generation, it can be seen that for each run a different strategy was dominating. It is important to remember that an initial strategy distribution of 0.5 for each has been set.
+From the previous figures $\ref{bossim45simulationgsp5initial}$ and $\ref{bossim45simulationgsp5rainitial}$ for simulation 4 with 5 rounds per generation, it can be seen that for each run a different strategy was dominating. It is important to remember that an initial strategy distribution of 0.5 for each has been set.
 Now simulation 4 with 25 rounds per generation with 0.5 as initial proportion for each strategy is run and the following graphs and stackplots show the behaviour after running it twice with the same parameters:
 
 \begin{figure}[H]       
@@ -1010,7 +928,7 @@ Now simulation 4 with 25 rounds per generation with 0.5 as initial proportion fo
     \caption{Graph and stack plot for simulation 4 with initial strategy, with 25 rounds per generation}
     \label{bossim425simulationgsp25rainitial}
 \end{figure}
-From the previous stackplots and graphs in figures $\ref{bossim425simulationgsp5initial}$ and $\ref{bossim425simulationgsp25rainitial}$ it can be seen that the behaviour for simulation 4 with 25 rounds per generation is also random. So it  can be said that with equal initial proportions for each strategy the behaviour of which will dominate is random. Now we check to  see if this behaviour is true for simulation 19. 
+From the previous figures $\ref{bossim425simulationgsp5initial}$ and $\ref{bossim425simulationgsp25rainitial}$ it can be seen that the behaviour for simulation 4 with 25 rounds per generation is also random. So it  can be said that with equal initial proportions for each strategy the behaviour of which will dominate is random. Now we check to  see if this behaviour is true for simulation 19. 
 
 Simulation 19 with 5 rounds per generation and 0.5 initial proportion for each strategy, run twice with the same parameters gives the following graphs and stack plots from figures $\ref{bossim195simulationgsp5initial}$ and $\ref{bossim195simulationgsp5rainitial}$:
 \begin{figure}[H]       
@@ -1342,7 +1260,7 @@ The stack plots from figures $\ref{hdsim89s}$ and $\ref{hdsim1214s}$ it can be s
     \label{hdsim1214s}
 \end{figure}
 
-With these the conclusion that, as it can be seen in appendix $\ref{app:hdnashess}$ when calculating Nash equilibria, randomness determines which of the 2 existing Nash equilibria will be the result for this game. Now the Nash equilibria and the ESS for this game will be determined.  Unlike prisoner's dilemma, in hawk and dove game if an `agressive' strategy is present in the population, the agents playing against that strategy do better by using `dove' strategy than retaliating.
+With these the conclusion that, as it can be seen in appendix $\ref{app:hdnashess}$ when calculating Nash equilibria, unlike prisoner's dilemma in hawk and dove game if an `agressive' strategy is present in the population, the agents playing against that strategy do better by using `dove' strategy than retaliating.  
 The calculations for Nash equilibrium and evolutionary stable strategy for this game can be found in appendix $\ref{app:hdnashess}$.
 
 
@@ -1506,6 +1424,6 @@ Tit For Tat & Strategy 5\\
 \label{tab:axltoabl}
 \end{table}
 
-By comparing the stack plots in figure $\ref{fig:ablearnaxelrodstackbasic}$ produced by `ablearn' with the stack plot produced by `axelrod' in figure $\ref{fig:axelrodstackbasic1000}$, it can be seen that stack plot $\ref{fig:axlbasic5rpgs}$ shows results more similar to `axelrod' stack plot. Where `Tit for Tat' increases and dominates the other strategies, and all strategies except for `Tit for Tat' are reduced in time, and `Cooperator' also prevails and increases in population at some point in time as in the stack plot `axelrod' package. So it can be seen here also that cooperative strategies dominate throught time.  What makes `ablearn' stack plots behave slightly different is that the concept of mutation rate allows strategies that could disappear in a long run to remain, since it gives the same possibility to any strategy to have a copy of itself. 
+By comparing the stack plots in figure $\ref{fig:ablearnaxelrodstackbasic}$ produced by `ablearn' with the stack plot produced by `axelrod' in figure $\ref{fig:axelrodstackbasic100}$, it can be seen that stack plot $\ref{fig:axlbasic5rpgs}$ shows results more similar to `axelrod' stack plot. Where `Tit for Tat' increases and dominates the other strategies, and all strategies except for `Tit for Tat' are reduced in time, and `Cooperator' also prevails and increases in population at some point in time as in the stack plot `axelrod' package. So it can be seen here also that cooperative strategies dominate throught time.  What makes `ablearn' stack plots behave slightly different is that the concept of mutation rate allows strategies that could disappear in a long run to remain, since it gives the same possibility to any strategy to have a copy of itself. 
 
 By analyzing strategies from Axelrod's tournament and the basic strategies from the package `axelrod' it can be seen that the package `ablearn' produces similar behaviours to the expected  under the parameters of 0.1 death rate, 0.1 mutation rate and 1 exploitation rate, when using the payoff matrix produced by `axelrod' package.
